@@ -6,7 +6,7 @@
         <div class="subcontent-container">
           <p class="subtext">
             Leetcode Solutions Visualized and journaled for personal use and use
-            of others.
+            of others
           </p>
           <button class="button">
             View Solutions
@@ -61,7 +61,7 @@
           border-radius: 0.5rem;
           background: #1b1f22;
           text-align: left;
-          color: #ffffffc8;
+          color: #ffffffe6;
           font-weight: 600;
           font-size: 1.2rem;
           cursor: pointer;
