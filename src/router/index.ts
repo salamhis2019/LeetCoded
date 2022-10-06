@@ -3,7 +3,7 @@ import MainView from "../views/MainView.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: "/home",
+    path: "/solutions",
     name: "MainView",
     component: MainView,
   },
