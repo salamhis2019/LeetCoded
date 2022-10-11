@@ -19,7 +19,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    color: white;
+    color: #ff9900;
     .logo-container {
       h1 {
         margin: 0 0.5rem;
