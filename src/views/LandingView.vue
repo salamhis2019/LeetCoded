@@ -8,10 +8,10 @@
             Leetcode Solutions Visualized and journaled for personal use and use
             of others
           </p>
-          <button class="button">
+          <router-link :to="'/solutions'" class="button">
             View Solutions
             <i class="fas fa-long-arrow-alt-right" style="font-size: 24px"></i>
-          </button>
+          </router-link>
         </div>
       </div>
     </div>
@@ -61,6 +61,7 @@
           border-radius: 0.5rem;
           background: #1b1f22;
           text-align: left;
+          text-decoration: none;
           color: #ffffffe6;
           font-weight: 600;
           font-size: 1.2rem;

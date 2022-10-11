@@ -1,12 +1,8 @@
 <template>
   <div class="app-wrapper">
-    <LandingView />
+    <router-view></router-view>
   </div>
 </template>
-
-<script lang="ts" setup>
-import LandingView from "@/views/LandingView.vue";
-</script>
 
 <style lang="scss">
 html,
