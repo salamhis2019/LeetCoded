@@ -56,7 +56,7 @@ const problems = Problems;
     max-width: 1050px;
     max-height: 550px;
     min-width: 300px;
-    min-height: 550px;
+    min-height: 300px;
     width: 700px;
     margin: 0 2rem;
     padding: 1rem;
