@@ -100,11 +100,9 @@ function updateCurrentPage(index: number) {
     flex-direction: column;
     gap: 0.5rem;
     box-sizing: border-box;
-    max-width: 1050px;
-    max-height: 550px;
-    min-width: 300px;
-    min-height: 300px;
     width: 700px;
+    max-height: 550px;
+    min-height: 300px;
     margin: 0 2rem 2rem 2rem;
     padding: 1rem;
     background-color: #1b1f22;
@@ -166,6 +164,22 @@ function updateCurrentPage(index: number) {
       background: none;
     }
   }
+  @media only screen and (max-width: 750px) {
+    .results-container {
+      width: 300px;
+      .problem-card {
+        .problem-card-left {
+          .problem-link {
+            font-size: 1rem;
+          }
+          .difficulty-badge {
+            display: none;
+            font-size: 0.6rem;
+          }
+        }
+      }
+    }
+  }
   .pagination-container {
     display: flex;
     justify-content: center;
@@ -199,6 +213,16 @@ function updateCurrentPage(index: number) {
     .active {
       background: #ff9900;
       color: #1b1f22;
+    }
+  }
+  @media only screen and (max-width: 750px) {
+    .pagination-container {
+      gap: 0.5rem;
+      width: 300px;
+      .button {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.9rem;
+      }
     }
   }
 }
