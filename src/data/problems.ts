@@ -32,40 +32,40 @@ export const problems: any = [
     difficulty: "Hard",
   },
   {
-    name: "Two Sum",
+    name: "Palindrom Number",
     difficulty: "Easy",
   },
   {
-    name: "Valid Parens",
-    difficulty: "Easy",
-  },
-  {
-    name: "Add Two Numbers",
+    name: "Container with Most water Parens",
     difficulty: "Medium",
   },
   {
-    name: "Reverse Linked List",
-    difficulty: "Easy",
-  },
-  {
-    name: "Median of Two Sorted Arrays",
-    difficulty: "Hard",
-  },
-  {
-    name: "Two Sum",
-    difficulty: "Easy",
-  },
-  {
-    name: "Reverse Integer",
+    name: "Integer to Romain",
     difficulty: "Medium",
   },
   {
-    name: "Regular Expression Matching",
-    difficulty: "Hard",
+    name: "Roman to Integer",
+    difficulty: "Easy",
   },
   {
-    name: "Two Sum",
+    name: "Longest Common Prefix",
     difficulty: "Easy",
+  },
+  {
+    name: "3Sum",
+    difficulty: "Medium",
+  },
+  {
+    name: "3Sum Closest",
+    difficulty: "Medium",
+  },
+  {
+    name: "4Sum",
+    difficulty: "Medium",
+  },
+  {
+    name: "Merge k Sorted Lists",
+    difficulty: "Hard",
   },
   {
     name: "Valid Parens",

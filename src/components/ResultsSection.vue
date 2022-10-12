@@ -3,7 +3,7 @@
     <div class="results-container">
       <div
         v-for="({ name, difficulty }, index) in currentProblems"
-        :key="name"
+        :key="index"
         class="problem-card"
         :class="{ 'card-dark': index % 2 !== 0 }"
       >
@@ -62,19 +62,21 @@ const pageEnd = ref(9);
 const currentProblems = ref(problems.slice(pageStart.value, pageEnd.value));
 
 watch(currentPage, (newPage, oldPage) => {
-  console.log(oldPage, newPage);
-
+  console.log(newPage, oldPage);
   if (newPage > oldPage) {
-    pageStart.value += 8;
-    pageEnd.value += 8;
+    console.log("increase");
+    pageStart.value += (currentPage.value - oldPage) * 8;
+    pageEnd.value += (currentPage.value - oldPage) * 8;
   }
 
   if (newPage < oldPage) {
-    pageStart.value -= 8;
-    pageEnd.value -= 8;
+    console.log("reduce");
+    pageStart.value -= (oldPage - newPage) * 8;
+    pageEnd.value -= (oldPage - newPage) * 8;
   }
 
   if (currentPage.value === 1) {
+    currentProblems.value = [];
     pageStart.value = 0;
     pageEnd.value = 9;
   }
@@ -184,6 +186,7 @@ function updateCurrentPage(index: number) {
       transition: 0.2s;
       &:hover {
         background: #353a3e;
+        color: white;
       }
       &:active {
         background: #ff9900;
