@@ -74,7 +74,7 @@ const problems = Problems;
       .problem-card-left {
         display: flex;
         align-items: center;
-        gap: 2rem;
+        gap: 1rem;
         .problem-link {
           margin: 0;
           color: white;
@@ -88,6 +88,7 @@ const problems = Problems;
         }
         .difficulty-badge {
           font-weight: 600;
+          font-size: 0.9rem;
           color: rgb(0, 0, 0);
           padding: 0.3rem 1rem;
           border-radius: 10px;
