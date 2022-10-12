@@ -45,7 +45,6 @@ const problems = Problems;
 .results-parent-container {
   display: flex;
   justify-content: center;
-  align-items: center;
   height: calc(100% - 60px);
   margin: 0 auto;
   .results-container {
