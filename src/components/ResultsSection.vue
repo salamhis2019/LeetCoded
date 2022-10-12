@@ -9,7 +9,16 @@
       >
         <div class="problem-card-left">
           <router-link to="/" class="problem-link">{{ name }}</router-link>
-          <div class="difficulty-badge">
+          <div
+            class="difficulty-badge"
+            :class="
+              difficulty === 'Easy'
+                ? 'easy'
+                : difficulty === 'Medium'
+                ? 'medium'
+                : 'hard'
+            "
+          >
             <p>{{ difficulty }}</p>
           </div>
         </div>
@@ -27,6 +36,7 @@
 
 <script lang="ts" setup>
 import Problems from "@/data/problems";
+import { diff } from "jest-diff";
 
 const problems = Problems;
 </script>
@@ -64,6 +74,7 @@ const problems = Problems;
       .problem-card-left {
         display: flex;
         align-items: center;
+        gap: 2rem;
         .problem-link {
           margin: 0;
           color: white;
@@ -76,9 +87,22 @@ const problems = Problems;
           }
         }
         .difficulty-badge {
+          font-weight: 600;
+          color: rgb(0, 0, 0);
+          padding: 0.3rem 1rem;
+          border-radius: 10px;
           p {
             margin: 0;
           }
+        }
+        .easy {
+          background: #52b5a3;
+        }
+        .medium {
+          background: #efbe48;
+        }
+        .hard {
+          background: #eb4b63;
         }
       }
       input[type="checkbox"] {

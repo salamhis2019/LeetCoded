@@ -1,4 +1,4 @@
-export const problems = [
+export const problems: any = [
   {
     name: "Two Sum",
     difficulty: "Easy",
