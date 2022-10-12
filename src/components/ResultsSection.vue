@@ -111,6 +111,7 @@ const problems = Problems;
       .checkbox {
         height: 24px;
         width: 24px;
+        cursor: pointer;
       }
     }
     .card-dark {
