@@ -45,7 +45,7 @@ const problems = Problems;
 .results-parent-container {
   display: flex;
   justify-content: center;
-  height: calc(100% - 60px);
+  align-items: center;
   margin: 0 auto;
   .results-container {
     display: flex;
@@ -57,7 +57,7 @@ const problems = Problems;
     min-width: 300px;
     min-height: 300px;
     width: 700px;
-    margin: 0 2rem;
+    margin: 0 2rem 6rem 2rem;
     padding: 1rem;
     background-color: #1b1f22;
     border-radius: 12px;
