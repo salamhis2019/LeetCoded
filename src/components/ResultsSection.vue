@@ -2,7 +2,7 @@
   <div class="results-parent-container">
     <div class="results-container">
       <div
-        v-for="({ name, difficulty }, index) in problems"
+        v-for="({ name, difficulty }, index) in currentProblems"
         :key="name"
         class="problem-card"
         :class="{ 'card-dark': index % 2 !== 0 }"
@@ -31,22 +31,68 @@
         />
       </div>
     </div>
+    <div class="pagination-container">
+      <button
+        class="button"
+        :class="{ active: currentPage === index + 1 }"
+        v-for="(item, index) in pages"
+        :key="item"
+        @click="updateCurrentPage(index)"
+      >
+        {{ index + 1 }}
+      </button>
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import Problems from "@/data/problems";
-import { diff } from "jest-diff";
+import { ref, computed, watch } from "vue";
 
 const problems = Problems;
+
+const pages = computed(() => {
+  return problems.length / 8;
+});
+
+const currentPage = ref<number>(1);
+const pageStart = ref(0);
+const pageEnd = ref(9);
+
+const currentProblems = ref(problems.slice(pageStart.value, pageEnd.value));
+
+watch(currentPage, (newPage, oldPage) => {
+  console.log(oldPage, newPage);
+
+  if (newPage > oldPage) {
+    pageStart.value += 8;
+    pageEnd.value += 8;
+  }
+
+  if (newPage < oldPage) {
+    pageStart.value -= 8;
+    pageEnd.value -= 8;
+  }
+
+  if (currentPage.value === 1) {
+    pageStart.value = 0;
+    pageEnd.value = 9;
+  }
+
+  currentProblems.value = problems.slice(pageStart.value, pageEnd.value);
+});
+
+function updateCurrentPage(index: number) {
+  currentPage.value = index + 1;
+}
 </script>
 
 <style lang="scss">
 .results-parent-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
   .results-container {
     display: flex;
     flex-direction: column;
@@ -57,7 +103,7 @@ const problems = Problems;
     min-width: 300px;
     min-height: 300px;
     width: 700px;
-    margin: 0 2rem 6rem 2rem;
+    margin: 0 2rem 2rem 2rem;
     padding: 1rem;
     background-color: #1b1f22;
     border-radius: 12px;
@@ -116,6 +162,40 @@ const problems = Problems;
     }
     .card-dark {
       background: none;
+    }
+  }
+  .pagination-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 1050px;
+    min-width: 300px;
+    width: 700px;
+    margin-bottom: 2rem;
+    .button {
+      padding: 0.75rem 1rem;
+      color: white;
+      font-weight: 600;
+      font-size: 1.2rem;
+      background: #1b1f22;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.2s;
+      &:hover {
+        background: #353a3e;
+      }
+      &:active {
+        background: #ff9900;
+      }
+      &:focus {
+        outline: none;
+        box-shadow: 0px 0px 6px white;
+      }
+    }
+    .active {
+      background: #ff9900;
+      color: #1b1f22;
     }
   }
 }
