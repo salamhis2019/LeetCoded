@@ -31,62 +31,16 @@
         />
       </div>
     </div>
-    <div class="pagination-container">
-      <button
-        class="button"
-        :class="{ active: currentPage === index + 1 }"
-        v-for="(item, index) in pages"
-        :key="item"
-        @click="updateCurrentPage(index)"
-      >
-        {{ index + 1 }}
-      </button>
-    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import Problems from "@/data/problems";
-import { ref, computed, watch } from "vue";
+import ProblemsStore from "@/stores/problems.store";
+import { storeToRefs } from "pinia";
 
-const problems = Problems;
+const problemsStore = ProblemsStore();
 
-const pages = computed(() => {
-  return problems.length / 8;
-});
-
-const currentPage = ref<number>(1);
-const pageStart = ref(0);
-const pageEnd = ref(9);
-
-const currentProblems = ref(problems.slice(pageStart.value, pageEnd.value));
-
-watch(currentPage, (newPage, oldPage) => {
-  console.log(newPage, oldPage);
-  if (newPage > oldPage) {
-    console.log("increase");
-    pageStart.value += (currentPage.value - oldPage) * 8;
-    pageEnd.value += (currentPage.value - oldPage) * 8;
-  }
-
-  if (newPage < oldPage) {
-    console.log("reduce");
-    pageStart.value -= (oldPage - newPage) * 8;
-    pageEnd.value -= (oldPage - newPage) * 8;
-  }
-
-  if (currentPage.value === 1) {
-    currentProblems.value = [];
-    pageStart.value = 0;
-    pageEnd.value = 9;
-  }
-
-  currentProblems.value = problems.slice(pageStart.value, pageEnd.value);
-});
-
-function updateCurrentPage(index: number) {
-  currentPage.value = index + 1;
-}
+const { currentProblems } = storeToRefs(problemsStore);
 </script>
 
 <style lang="scss">
@@ -164,9 +118,11 @@ function updateCurrentPage(index: number) {
       background: none;
     }
   }
-  @media only screen and (max-width: 750px) {
+  @media only screen and (max-width: 750px) and (min-width: 350px) {
     .results-container {
-      width: 300px;
+      min-width: 300px;
+      max-width: 650px;
+      width: 400px;
       .problem-card {
         .problem-card-left {
           .problem-link {
