@@ -67,9 +67,6 @@ function updateCurrentPage(index: number) {
   display: flex;
   justify-content: center;
   gap: 1rem;
-  max-width: 1050px;
-  min-width: 300px;
-  width: 700px;
   margin-bottom: 2rem;
   .button {
     padding: 0.75rem 1rem;

@@ -117,12 +117,26 @@ const { currentProblems } = storeToRefs(problemsStore);
       background: none;
     }
   }
-  @media only screen and (max-width: 750px) and (min-width: 350px) {
+  @media only screen and (max-width: 750px) and (min-width: 550px) {
     .results-container {
       .problem-card {
         .problem-card-left {
           .problem-link {
-            font-size: 1rem;
+            font-size: 1.2rem;
+          }
+          .difficulty-badge {
+            font-size: 0.6rem;
+          }
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 550px) {
+    .results-container {
+      .problem-card {
+        .problem-card-left {
+          .problem-link {
+            font-size: 1.2rem;
           }
           .difficulty-badge {
             display: none;
