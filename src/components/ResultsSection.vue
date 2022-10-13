@@ -146,5 +146,24 @@ const { currentProblems } = storeToRefs(problemsStore);
       }
     }
   }
+  @media only screen and (max-width: 550px) {
+    .results-container {
+      .problem-card {
+        .problem-card-left {
+          .problem-link {
+            font-size: 0.9rem;
+          }
+          .difficulty-badge {
+            display: none;
+            font-size: 0.6rem;
+          }
+        }
+        .checkbox {
+          height: 18px;
+          width: 18px;
+        }
+      }
+    }
+  }
 }
 </style>
