@@ -100,8 +100,6 @@ function updateCurrentPage(index: number) {
 }
 @media only screen and (max-width: 750px) {
   .pagination-container {
-    gap: 0.5rem;
-    width: 300px;
     .button {
       padding: 0.5rem 0.8rem;
       font-size: 0.9rem;

@@ -43,10 +43,9 @@ const problemsStore = ProblemsStore();
 const { currentProblems } = storeToRefs(problemsStore);
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .results-parent-container {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   .results-container {
@@ -120,9 +119,6 @@ const { currentProblems } = storeToRefs(problemsStore);
   }
   @media only screen and (max-width: 750px) and (min-width: 350px) {
     .results-container {
-      min-width: 300px;
-      max-width: 650px;
-      width: 400px;
       .problem-card {
         .problem-card-left {
           .problem-link {
