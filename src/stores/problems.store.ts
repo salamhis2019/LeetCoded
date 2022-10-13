@@ -6,9 +6,4 @@ export const useCounterStore = defineStore('counter', {
       currentProblems: [],
     };
   },
-  actions: {
-    increment() {
-      this.count++;
-    },
-  },
 });
