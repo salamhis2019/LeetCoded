@@ -66,4 +66,10 @@
     }
   }
 }
+
+@media only screen and (max-width: 450px) {
+  .search-bar-parent-container {
+    height: 150px;
+  }
+}
 </style>
