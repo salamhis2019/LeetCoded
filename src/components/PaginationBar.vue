@@ -79,8 +79,7 @@ function updateCurrentPage(index: number) {
     cursor: pointer;
     transition: 0.2s;
     &:hover {
-      background: #353a3e;
-      color: white;
+      filter: brightness(150%);
     }
     &:active {
       background: #52b5a3;
