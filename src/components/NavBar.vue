@@ -4,14 +4,12 @@
       <div class="logo-container">
         <img src="@/assets/leetcoded-logo.png" alt="" />
       </div>
-      <div class="login-container">
-        <p>Login</p>
-      </div>
+      <button class="login-button">Login</button>
     </nav>
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .nav-parent-container {
   height: 60px;
   background-color: #1b1f22;
@@ -30,10 +28,14 @@
         cursor: pointer;
       }
     }
-    .login-container {
-      p {
-        margin: 0 0.5rem;
-      }
+    .login-button {
+      padding: 0.5rem 1.5rem;
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      background: #ff9900b5;
     }
   }
 }
