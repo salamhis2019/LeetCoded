@@ -1,14 +1,17 @@
 export const problems: any = [
   {
     name: "Two Sum",
+    param: "twosum",
     difficulty: "Easy",
   },
   {
     name: "Valid Parens",
+    param: "validparens",
     difficulty: "Easy",
   },
   {
     name: "Add Two Numbers",
+    param: "addtwonumbers",
     difficulty: "Medium",
   },
   {
