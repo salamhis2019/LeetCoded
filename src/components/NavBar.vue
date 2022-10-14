@@ -2,7 +2,7 @@
   <div class="nav-parent-container">
     <nav class="nav-container">
       <div class="logo-container">
-        <h1>Logo</h1>
+        <img src="@/assets/leetcoded-logo.png" alt="" />
       </div>
       <div class="login-container">
         <p>Login</p>
@@ -13,16 +13,21 @@
 
 <style lang="scss">
 .nav-parent-container {
+  height: 60px;
   background-color: #1b1f22;
   .nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    height: 100%;
+    padding: 0 3rem;
     color: #ff9900;
     .logo-container {
-      h1 {
-        margin: 0 0.5rem;
+      display: flex;
+      align-items: center;
+      img {
+        width: 120px;
+        cursor: pointer;
       }
     }
     .login-container {
