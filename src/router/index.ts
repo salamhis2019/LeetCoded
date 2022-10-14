@@ -13,9 +13,8 @@ const routes: Array<RouteRecordRaw> = [
     component: MainView,
   },
   {
-    path: "/solution/:problem",
-    name: "ProblemSolution",
-    component: ProblemSolution,
+    path: "/solutions/:problem",
+    component: MainView,
   },
 ];
 
