@@ -83,7 +83,7 @@ function updateCurrentPage(index: number) {
       color: white;
     }
     &:active {
-      background: #ff9900;
+      background: #52b5a3;
     }
     &:focus {
       outline: none;
@@ -91,7 +91,7 @@ function updateCurrentPage(index: number) {
     }
   }
   .active {
-    background: #ff9900;
+    background: #52b5a3;
     color: #1b1f22;
   }
 }
