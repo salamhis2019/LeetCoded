@@ -3,6 +3,27 @@ export const problems: any = [
     name: "Two Sum",
     param: "twosum",
     difficulty: "Easy",
+    solutions: [
+      {
+        solutionTitle: "Optimal Solution Using Complement",
+        "solution-description": "This is the description for the solution",
+        code: `var twoSum = function(nums, target) {
+          const map = {}
+          
+          for (let i = 0; i < nums.length; i++) {
+            const value = nums[i]
+            const complement = target - nums[i]
+            
+            if (map[complement] !== undefined) {
+                return [map[complement], i]
+            } else {
+                map[value] = i
+            }
+          }
+        };
+      }`,
+      },
+    ],
   },
   {
     name: "Valid Parens",
