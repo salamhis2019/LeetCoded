@@ -8,9 +8,13 @@
         :class="{ 'card-dark': index % 2 !== 0 }"
       >
         <div class="problem-card-left">
-          <router-link :to="`/solutions/${param}`" class="problem-link">{{
-            name
-          }}</router-link>
+          <router-link
+            :to="`/solutions/${param}`"
+            class="problem-link"
+            @click="setCurrentProblem(index)"
+          >
+            {{ name }}
+          </router-link>
           <div
             class="difficulty-badge"
             :class="
@@ -38,11 +42,18 @@
 
 <script lang="ts" setup>
 import ProblemsStore from "@/stores/problems.store";
+import { ref } from "vue";
 import { storeToRefs } from "pinia";
 
 const problemsStore = ProblemsStore();
 
 const { currentProblems } = storeToRefs(problemsStore);
+
+const curentProblemSolution = ref();
+
+function setCurrentProblem(index: any) {
+  curentProblemSolution.value = currentProblems.value[index];
+}
 </script>
 
 <style lang="scss" scoped>
