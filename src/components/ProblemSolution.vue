@@ -87,7 +87,6 @@ const { currentProblemSolution }: any = storeToRefs(problemsStore);
       border-radius: 12px;
       .code-block-container {
         min-width: 400px;
-        max-width: 550px;
         padding: 1rem;
         background: #282a35;
         border-radius: 12px;
