@@ -42,17 +42,15 @@
 
 <script lang="ts" setup>
 import ProblemsStore from "@/stores/problems.store";
-import { ref } from "vue";
 import { storeToRefs } from "pinia";
 
 const problemsStore = ProblemsStore();
 
-const { currentProblems } = storeToRefs(problemsStore);
-
-const curentProblemSolution = ref();
+const { currentProblems, showSolution } = storeToRefs(problemsStore);
 
 function setCurrentProblem(index: any) {
-  curentProblemSolution.value = currentProblems.value[index];
+  // currentProblemSolution.value = currentProblems.value[index];
+  showSolution.value = true;
 }
 </script>
 
