@@ -21,7 +21,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 200px;
+  height: 150px;
   margin: 0 2rem;
   .search-bar-container {
     display: flex;
