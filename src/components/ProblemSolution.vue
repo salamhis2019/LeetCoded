@@ -14,6 +14,23 @@
           </router-link>
         </div>
       </div>
+      <div class="solutions-explanation-container">
+        <div
+          class="solutions-content"
+          v-for="{
+            solutionTitle,
+            solutionDescription,
+            code,
+          } in currentProblemSolution.solutions"
+          :key="code"
+        >
+          <p class="solution-description">{{ solutionDescription }}</p>
+          <h3 class="solution-title">{{ solutionTitle }}</h3>
+          <div class="code-block-container">
+            <code>{{ code }}</code>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -40,6 +57,7 @@ const { currentProblemSolution }: any = storeToRefs(problemsStore);
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin-bottom: 1rem;
       .header-left {
         display: flex;
         align-items: center;
@@ -60,6 +78,23 @@ const { currentProblemSolution }: any = storeToRefs(problemsStore);
           &:hover {
             background: hsla(207, 8%, 23%, 0.8);
           }
+        }
+      }
+    }
+    .solutions-explanation-container {
+      padding: 1rem;
+      background: #1b1f22;
+      border-radius: 12px;
+      .code-block-container {
+        min-width: 400px;
+        max-width: 550px;
+        padding: 1rem;
+        background: #282a35;
+        border-radius: 12px;
+        code {
+          font-weight: 500;
+          font-size: 1rem;
+          white-space: pre;
         }
       }
     }
