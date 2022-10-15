@@ -6,7 +6,7 @@ export const problems: any = [
     solutions: [
       {
         solutionTitle: "Optimal Solution Using Complement",
-        "solution-description": "This is the description for the solution",
+        solutionDescription: "This is the description for the solution",
         code: `var twoSum = function(nums, target) {
           const map = {}
           
