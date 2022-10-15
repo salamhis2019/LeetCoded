@@ -4,6 +4,7 @@ export const useProblemsStore = defineStore("problems", {
   state: () => {
     return {
       currentProblems: [],
+      currentProblemSolution: null,
       showSolution: false,
     };
   },

@@ -46,10 +46,11 @@ import { storeToRefs } from "pinia";
 
 const problemsStore = ProblemsStore();
 
-const { currentProblems, showSolution } = storeToRefs(problemsStore);
+const { currentProblems, currentProblemSolution, showSolution } =
+  storeToRefs(problemsStore);
 
 function setCurrentProblem(index: any) {
-  // currentProblemSolution.value = currentProblems.value[index];
+  currentProblemSolution.value = currentProblems.value[index];
   showSolution.value = true;
 }
 </script>
