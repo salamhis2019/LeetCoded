@@ -35,7 +35,7 @@ watch(param, (newParam) => {
 });
 </script>
 
-<style lang="scss" setup>
+<style lang="scss" scoped>
 .parent-container {
   display: flex;
   justify-content: center;
