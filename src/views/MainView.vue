@@ -15,10 +15,24 @@ import Results from "@/components/ResultsSection.vue";
 import ProblemsSolution from "@/components/ProblemSolution.vue";
 import PaginationBar from "@/components/PaginationBar.vue";
 import useProblemsStore from "@/stores/problems.store";
+import { computed, watch } from "vue";
+import { useRoute } from "vue-router";
 import { storeToRefs } from "pinia";
 
+const route = useRoute();
 const problemsStore = useProblemsStore();
+
 const { showSolution } = storeToRefs(problemsStore);
+
+const param = computed(() => route.params.problem);
+
+watch(param, (newParam) => {
+  if (newParam === undefined) {
+    showSolution.value = false;
+  } else {
+    showSolution.value = true;
+  }
+});
 </script>
 
 <style lang="scss" setup>
