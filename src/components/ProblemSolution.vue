@@ -4,7 +4,9 @@
       <div class="header-content">
         <div class="header-left">
           <h2>{{ currentProblemSolution.name }}</h2>
-          <p>{{ currentProblemSolution.difficulty }}</p>
+          <DifficultyBadge :difficulty="currentProblemSolution.difficulty">{{
+            currentProblemSolution.difficulty
+          }}</DifficultyBadge>
         </div>
         <div class="header-right">
           <button>Go back to Problems</button>
@@ -17,6 +19,7 @@
 <script lang="ts" setup>
 import { storeToRefs } from "pinia";
 import useProblemsStore from "@/stores/problems.store";
+import DifficultyBadge from "@/components/common/difficulty-badge.vue";
 
 const problemsStore = useProblemsStore();
 const { currentProblemSolution }: any = storeToRefs(problemsStore);
