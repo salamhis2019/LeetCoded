@@ -56,6 +56,6 @@ watch(param, (newParam) => {
   opacity: 0;
 }
 .v-enter-active {
-  transition: opacity 0.5s ease-in;
+  transition: opacity 0.3s ease-in;
 }
 </style>
