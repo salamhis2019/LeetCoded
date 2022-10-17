@@ -2,7 +2,7 @@
   <div class="nav-parent-container">
     <nav class="nav-container">
       <div class="logo-container">
-        <router-link to="/">
+        <router-link class="router-link" to="/">
           <img src="@/assets/leetcoded.png" alt="" />
         </router-link>
       </div>
@@ -25,9 +25,13 @@
     .logo-container {
       display: flex;
       align-items: center;
-      img {
-        width: 150px;
-        cursor: pointer;
+      .router-link {
+        display: flex;
+        align-items: center;
+        img {
+          width: 150px;
+          cursor: pointer;
+        }
       }
     }
     .login-button {
