@@ -1,11 +1,13 @@
 <template>
   <NavBar />
-  <div class="mainview-parent-container" v-if="!showSolution">
-    <SearchBar />
-    <Results />
-    <PaginationBar />
-  </div>
-  <ProblemsSolution v-else />
+  <Transition>
+    <div class="mainview-parent-container" v-if="!showSolution">
+      <SearchBar />
+      <Results />
+      <PaginationBar />
+    </div>
+    <ProblemsSolution v-else />
+  </Transition>
 </template>
 
 <script lang="ts" setup>
@@ -35,7 +37,7 @@ watch(param, (newParam) => {
 });
 </script>
 
-<style lang="scss" setup>
+<style lang="scss" scoped>
 .parent-container {
   display: flex;
   justify-content: center;
@@ -54,6 +56,6 @@ watch(param, (newParam) => {
   opacity: 0;
 }
 .v-enter-active {
-  transition: opacity 0.5s ease-in;
+  transition: opacity 0.3s ease-in;
 }
 </style>

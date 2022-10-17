@@ -67,7 +67,7 @@ function updateCurrentPage(index: number) {
   display: flex;
   justify-content: center;
   gap: 1rem;
-  margin-bottom: 2rem;
+  padding-bottom: 2rem;
   .button {
     padding: 0.75rem 1rem;
     color: white;
