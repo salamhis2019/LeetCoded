@@ -10,7 +10,7 @@
         </div>
         <div class="header-right">
           <router-link :to="'/solutions/'" class="button solutions">
-            Go Back to Solutions
+            Back to Solutions
           </router-link>
         </div>
       </div>
