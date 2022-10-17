@@ -34,8 +34,13 @@
       font-weight: 600;
       font-size: 1rem;
       border: none;
-      border-radius: 10px;
-      background: #ff9900b5;
+      border-radius: 8px;
+      background: #353a3e;
+      transition: 0.2s;
+      cursor: pointer;
+      &:hover {
+        box-shadow: 0px 0px 2px orange;
+      }
     }
   }
 }
