@@ -2,7 +2,7 @@
   <div class="nav-parent-container">
     <nav class="nav-container">
       <div class="logo-container">
-        <img src="@/assets/leetcoded-logo.png" alt="" />
+        <img src="@/assets/leetcoded.png" alt="" />
       </div>
       <button class="login-button">Login</button>
     </nav>
@@ -24,7 +24,7 @@
       display: flex;
       align-items: center;
       img {
-        width: 120px;
+        width: 150px;
         cursor: pointer;
       }
     }
