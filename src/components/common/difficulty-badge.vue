@@ -39,4 +39,11 @@ defineProps(["difficulty"]);
 .hard {
   background: #eb4b63;
 }
+
+@media only screen and (max-width: 400px) {
+  .difficulty-badge {
+    padding: 0.2rem 0.8rem;
+    font-size: 0.7rem;
+  }
+}
 </style>
