@@ -7,21 +7,21 @@ export const problems: any = [
       {
         solutionTitle: "Optimal Solution Using Complement",
         solutionDescription: "This is the description for the solution",
-        code: `var twoSum = function(nums, target) {
-          const map = {}
-          
-          for (let i = 0; i < nums.length; i++) {
-            const value = nums[i]
-            const complement = target - nums[i]
-            
-            if (map[complement] !== undefined) {
-                return [map[complement], i]
-            } else {
-                map[value] = i
-            }
-          }
-        };
-      }`,
+        code: [
+          "var twoSum = function(nums, target) {",
+          "  const map = {}",
+          " ",
+          "  for (let i = 0; i < nums.length; i++) {",
+          "     const value = nums[i]",
+          "     const complement = target - nums[i]",
+          "     if (map[complement] !== undefined) {",
+          "         return [map[complement], i]",
+          "     } else {",
+          "         map[value] = i",
+          "     }",
+          "  }",
+          "};",
+        ],
       },
     ],
   },
