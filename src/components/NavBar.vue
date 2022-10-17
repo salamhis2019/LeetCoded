@@ -2,7 +2,9 @@
   <div class="nav-parent-container">
     <nav class="nav-container">
       <div class="logo-container">
-        <img src="@/assets/leetcoded.png" alt="" />
+        <router-link to="/">
+          <img src="@/assets/leetcoded.png" alt="" />
+        </router-link>
       </div>
       <button class="login-button">Login</button>
     </nav>
