@@ -121,12 +121,20 @@ const { currentProblemSolution }: any = storeToRefs(problemsStore);
     margin: 2rem;
     .solution-content-container {
       .header-content {
+        gap: 1rem;
         .header-left {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: left;
           h3 {
             font-size: 1rem;
           }
         }
         .header-right {
+          min-width: 145px;
+          display: flex;
+          justify-content: center;
           .button {
             font-size: 0.8rem;
           }
