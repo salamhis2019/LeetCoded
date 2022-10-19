@@ -1,8 +1,6 @@
 <template>
   <div class="app-wrapper">
-    <Transition>
-      <router-view></router-view>
-    </Transition>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -17,16 +15,5 @@ body,
   .app-wrapper {
     height: 100%;
   }
-}
-
-// .v-leave-from {
-//   display: none;
-// }
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
-}
-.v-enter-active {
-  transition: opacity 0.5s ease-in;
 }
 </style>
