@@ -4,9 +4,12 @@
       <div class="header-content">
         <div class="header-left">
           <h3>{{ currentProblemSolution.name }}</h3>
-          <DifficultyBadge :difficulty="currentProblemSolution.difficulty">{{
-            currentProblemSolution.difficulty
-          }}</DifficultyBadge>
+          <DifficultyBadge
+            :color="currentProblemSolution.difficulty.toLowerCase()"
+            :size="'secondary'"
+          >
+            {{ currentProblemSolution.difficulty }}</DifficultyBadge
+          >
         </div>
         <div class="header-right">
           <router-link :to="'/solutions/'" class="button solutions">
