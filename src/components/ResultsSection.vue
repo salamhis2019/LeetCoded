@@ -15,18 +15,9 @@
           >
             {{ name }}
           </router-link>
-          <div
-            class="difficulty-badge"
-            :class="
-              difficulty === 'Easy'
-                ? 'easy'
-                : difficulty === 'Medium'
-                ? 'medium'
-                : 'hard'
-            "
-          >
-            <p>{{ difficulty }}</p>
-          </div>
+          <DifficultyBadge :size="'primary'" :color="difficulty.toLowerCase()">
+            {{ difficulty }}
+          </DifficultyBadge>
         </div>
         <input
           type="checkbox"
@@ -42,6 +33,7 @@
 
 <script lang="ts" setup>
 import ProblemsStore from "@/stores/problems.store";
+import DifficultyBadge from "@/components/common/difficulty-badge.vue";
 import { storeToRefs } from "pinia";
 
 const problemsStore = ProblemsStore();
