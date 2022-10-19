@@ -146,24 +146,10 @@ function setCurrentProblem(index: any) {
   @media only screen and (max-width: 550px) {
     .results-container {
       .problem-card {
+        gap: 0.5rem;
         .problem-card-left {
           .problem-link {
-            font-size: 1.2rem;
-          }
-          .difficulty-badge {
-            display: none;
-            font-size: 0.6rem;
-          }
-        }
-      }
-    }
-  }
-  @media only screen and (max-width: 550px) {
-    .results-container {
-      .problem-card {
-        .problem-card-left {
-          .problem-link {
-            font-size: 0.9rem;
+            font-size: 1rem;
           }
           .difficulty-badge {
             display: none;
