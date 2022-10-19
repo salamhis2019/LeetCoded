@@ -75,4 +75,19 @@
     }
   }
 }
+
+@media only screen and (max-width: 550px) {
+  .landing-view-container {
+    background-image: url("@/assets/blob-scene-mobile.svg");
+    .parent-wrapper {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin: 0;
+      .content-wrapper {
+        max-width: 350px;
+      }
+    }
+  }
+}
 </style>
