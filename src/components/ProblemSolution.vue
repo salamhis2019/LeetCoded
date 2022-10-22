@@ -17,7 +17,10 @@
           </router-link>
         </div>
       </div>
-      <div class="solutions-explanation-container">
+      <div
+        class="solutions-explanation-container"
+        v-if="currentProblemSolution.solutions"
+      >
         <div
           class="solutions-content"
           v-for="{
@@ -37,6 +40,12 @@
             </code>
           </div>
         </div>
+      </div>
+      <div class="solution-unavailable-container" v-else>
+        <figure class="content-container">
+          <img src="@/assets/waiting.svg" alt="waiting image" />
+          <figcaption>Sorry, this one hasn't been cracked yet!</figcaption>
+        </figure>
       </div>
     </div>
   </div>
@@ -153,6 +162,11 @@ const { currentProblemSolution }: any = storeToRefs(problemsStore);
         }
         .code-block-container {
           padding: 0.5rem;
+        }
+      }
+      .unsolved-parent-container {
+        .waiting-image {
+          width: 300px;
         }
       }
     }
