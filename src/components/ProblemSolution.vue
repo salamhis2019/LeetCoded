@@ -43,8 +43,14 @@
       </div>
       <div class="solution-unavailable-container" v-else>
         <figure class="content-container">
-          <img src="@/assets/waiting.svg" alt="waiting image" />
-          <figcaption>Sorry, this one hasn't been cracked yet!</figcaption>
+          <img
+            class="waiting-image"
+            src="@/assets/waiting.svg"
+            alt="waiting image"
+          />
+          <figcaption class="image-caption">
+            Sorry, this one hasn't been cracked yet...
+          </figcaption>
         </figure>
       </div>
     </div>
@@ -123,6 +129,25 @@ const { currentProblemSolution }: any = storeToRefs(problemsStore);
               }
             }
           }
+        }
+      }
+    }
+    .solution-unavailable-container {
+      display: flex;
+      justify-content: center;
+      border-radius: 12px;
+      background: #1b1f22;
+      .content-container {
+        .waiting-image {
+          display: flex;
+          justify-content: center;
+          width: 250px;
+        }
+        .image-caption {
+          margin: 1rem 0;
+          text-align: center;
+          font-size: 1.5rem;
+          font-weight: 200;
         }
       }
     }
