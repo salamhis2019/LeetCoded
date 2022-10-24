@@ -158,6 +158,7 @@ const { currentProblemSolution }: any = storeToRefs(problemsStore);
     margin: 2rem;
     .solution-content-container {
       .header-content {
+        align-items: flex-start;
         gap: 1rem;
         .header-left {
           display: flex;
