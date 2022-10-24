@@ -2,7 +2,7 @@
   <div class="nav-parent-container">
     <nav class="nav-container">
       <div class="logo-container">
-        <router-link class="router-link" to="/">
+        <router-link class="router-link" to="/" @click="logoClicked">
           <img src="@/assets/leetcoded.png" alt="" />
         </router-link>
       </div>
@@ -10,6 +10,18 @@
     </nav>
   </div>
 </template>
+
+<script lang="ts" setup>
+import useProblemsStore from "@/stores/problems.store";
+import { storeToRefs } from "pinia";
+
+const problemsStore = useProblemsStore();
+const { showSolution } = storeToRefs(problemsStore);
+
+function logoClicked() {
+  showSolution.value = false;
+}
+</script>
 
 <style lang="scss" scoped>
 .nav-parent-container {
