@@ -65,6 +65,11 @@
       "name": "Palindrome Number",
       "param": "palindromenumber",
       "difficulty": "Easy"
+    },
+    {
+      "name": "Palindrome Number",
+      "param": "palindromenumber",
+      "difficulty": "Easy"
     }
   ]
 }
