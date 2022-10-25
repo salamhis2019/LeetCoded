@@ -87,6 +87,11 @@ function setCurrentProblem(index: any) {
           &:hover {
             color: #ff9900;
           }
+          &:focus {
+            color: #ff9900;
+            outline: none;
+            text-shadow: 2px 2px 0px black;
+          }
         }
         .difficulty-badge {
           font-weight: 600;
