@@ -120,6 +120,12 @@ function setCurrentProblem(index: any) {
         height: 24px;
         width: 24px;
         cursor: pointer;
+        transition: 0.2s;
+        &:focus {
+          outline-style: solid;
+          outline-color: #ff9900;
+          outline-width: 2px;
+        }
       }
     }
     .card-dark {
