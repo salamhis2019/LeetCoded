@@ -59,7 +59,7 @@ function setCurrentProblem(index: any) {
     box-sizing: border-box;
     width: 700px;
     max-height: 550px;
-    min-height: 300px;
+    min-height: 50px;
     margin: 0 2rem 2rem 2rem;
     padding: 1rem;
     background-color: #1b1f22;
