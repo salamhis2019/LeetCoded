@@ -25,7 +25,12 @@ const { currentProblems } = storeToRefs(problemsStore);
 const problems = Problems;
 
 const pages = computed(() => {
-  return problems.length / 8;
+  if (problems.length % 8 === 0) {
+    return problems.length / 8;
+  } else {
+    const remainder = problems.length % 8;
+    return (problems.length - remainder + 8) / 8;
+  }
 });
 
 const currentPage = ref<number>(1);
@@ -35,15 +40,12 @@ const pageEnd = ref(9);
 currentProblems.value = ref(problems.slice(pageStart.value, pageEnd.value));
 
 watch(currentPage, (newPage, oldPage) => {
-  console.log(newPage, oldPage);
   if (newPage > oldPage) {
-    console.log("increase");
     pageStart.value += (currentPage.value - oldPage) * 8;
     pageEnd.value += (currentPage.value - oldPage) * 8;
   }
 
   if (newPage < oldPage) {
-    console.log("reduce");
     pageStart.value -= (oldPage - newPage) * 8;
     pageEnd.value -= (oldPage - newPage) * 8;
   }
