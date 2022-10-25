@@ -33,10 +33,6 @@ const pages = computed(() => {
   }
 });
 
-setTimeout(() => {
-  console.log(problems.length);
-}, 1000);
-
 const currentPage = ref<number>(1);
 const pageStart = ref(0);
 const pageEnd = ref(9);
@@ -44,15 +40,12 @@ const pageEnd = ref(9);
 currentProblems.value = ref(problems.slice(pageStart.value, pageEnd.value));
 
 watch(currentPage, (newPage, oldPage) => {
-  console.log(newPage, oldPage);
   if (newPage > oldPage) {
-    console.log("increase");
     pageStart.value += (currentPage.value - oldPage) * 8;
     pageEnd.value += (currentPage.value - oldPage) * 8;
   }
 
   if (newPage < oldPage) {
-    console.log("reduce");
     pageStart.value -= (oldPage - newPage) * 8;
     pageEnd.value -= (oldPage - newPage) * 8;
   }
