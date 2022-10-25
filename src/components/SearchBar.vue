@@ -5,9 +5,6 @@
         <input class="search-bar" type="text" placeholder="Search..." />
       </div>
       <div class="search-bar-right">
-        <div class="filter">
-          <p>Filter</p>
-        </div>
         <div class="sort">
           <p>Sort</p>
         </div>
