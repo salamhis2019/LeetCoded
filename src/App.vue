@@ -15,5 +15,9 @@ body,
   .app-wrapper {
     height: 100%;
   }
+  ::selection {
+    background: white;
+    color: black;
+  }
 }
 </style>
