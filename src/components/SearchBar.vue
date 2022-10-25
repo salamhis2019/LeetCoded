@@ -1,9 +1,15 @@
 <template>
   <div class="search-bar-parent-container">
     <div class="search-bar-container">
-      <div class="input-container">
-        <input class="search-bar" type="text" placeholder="Search..." />
-      </div>
+      <form class="input-container">
+        <input
+          v-model="inputText"
+          class="search-bar"
+          type="text"
+          placeholder="Search..."
+          @keydown.enter="searchProblems"
+        />
+      </form>
       <div class="search-bar-right">
         <div class="sort">
           <p>Sort</p>
@@ -12,6 +18,16 @@
     </div>
   </div>
 </template>
+
+<script lang="ts" setup>
+import { ref } from "vue";
+
+const inputText = ref();
+
+function searchProblems() {
+  console.log("this is working");
+}
+</script>
 
 <style lang="scss" scoped>
 .search-bar-parent-container {
