@@ -25,8 +25,17 @@ const { currentProblems } = storeToRefs(problemsStore);
 const problems = Problems;
 
 const pages = computed(() => {
-  return problems.length / 8;
+  if (problems.length % 8 === 0) {
+    return problems.length / 8;
+  } else {
+    const remainder = problems.length % 8;
+    return (problems.length - remainder + 8) / 8;
+  }
 });
+
+setTimeout(() => {
+  console.log(problems.length);
+}, 1000);
 
 const currentPage = ref<number>(1);
 const pageStart = ref(0);
