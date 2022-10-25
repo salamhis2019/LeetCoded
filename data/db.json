@@ -25,6 +25,46 @@
           ]
         }
       ]
+    },
+    {
+      "name": "Valid Parens",
+      "param": "validparens",
+      "difficulty": "Easy"
+    },
+    {
+      "name": "Add Two Numbers",
+      "param": "addtwonumbers",
+      "difficulty": "Medium"
+    },
+    {
+      "name": "Reverse Linked List",
+      "param": "reverselinkedlist",
+      "difficulty": "Easy"
+    },
+    {
+      "name": "Median of Two Sorted Arrays",
+      "param": "medianoftwosortedarrays",
+      "difficulty": "Hard"
+    },
+    {
+      "name": "Merge Sorted Linked List",
+      "param": "mergesortedlinkedlist",
+      "difficulty": "Easy"
+    },
+    {
+      "name": "Reverse Integer",
+      "param": "reverseinteger",
+      "difficulty": "Medium"
+    },
+    {
+      "name": "Regular Expression Matching",
+      "param": "regularexpressionmatching",
+      "difficulty": "Hard"
+    },
+    {
+      "name": "Palindrome Number",
+      "param": "palindromenumber",
+      "difficulty": "Easy"
     }
   ]
 }
