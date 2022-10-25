@@ -11,7 +11,7 @@ body,
   margin: 0;
   height: 100%;
   background: #000203;
-  font-family: sans-serif;
+  font-family: "Encode Sans", sans-serif;
   .app-wrapper {
     height: 100%;
   }
