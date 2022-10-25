@@ -41,6 +41,9 @@ const problemsStore = ProblemsStore();
 const { currentProblems, currentProblemSolution, showSolution } =
   storeToRefs(problemsStore);
 
+const { fetchData } = problemsStore;
+fetchData();
+
 function setCurrentProblem(index: any) {
   currentProblemSolution.value = currentProblems.value[index];
   showSolution.value = true;
