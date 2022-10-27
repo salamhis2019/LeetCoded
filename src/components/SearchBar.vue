@@ -14,13 +14,19 @@
       </form>
       <div class="search-bar-right">
         <div class="sort dropdown">
-          <button
-            ref="button"
-            class="sort-button"
-            @click="showDropdown = !showDropdown"
-          >
-            Sort
-          </button>
+          <div class="dropdown-button">
+            <button
+              ref="button"
+              class="sort-button"
+              @click="showDropdown = !showDropdown"
+            >
+              Sort
+            </button>
+            <i
+              class="fa fa-angle-down"
+              :class="{ 'chevron-clicked': showDropdown }"
+            ></i>
+          </div>
           <div class="dropdown-menu" v-show="showDropdown">
             <ul>
               <li>Easy</li>
@@ -91,14 +97,23 @@ const showDropdown = ref(false);
           margin: 0;
         }
       }
-      .sort-button {
-        font-family: "Encode Sans", sans-serif;
-        font-size: 1rem;
-        color: white;
-        background: none;
-        border: none;
-        cursor: pointer;
-        transition: 0.2s ease-in-out;
+      .dropdown-button {
+        display: flex;
+        .sort-button {
+          font-family: "Encode Sans", sans-serif;
+          font-size: 1rem;
+          color: white;
+          background: none;
+          border: none;
+          cursor: pointer;
+          transition: transform 0.2s ease-in-out;
+        }
+        .fa-angle-down {
+          font-size: 1.5rem;
+        }
+        .chevron-clicked {
+          transform: rotate(270deg);
+        }
         &:hover {
           opacity: 0.8;
         }
