@@ -7,7 +7,9 @@
           class="search-bar"
           type="text"
           placeholder="Search..."
-          @keydown.enter="searchProblems"
+          @keydown.enter="
+            searchData(inputText.replace(/\s/g, '').toLowerCase())
+          "
         />
       </form>
       <div class="search-bar-right">
@@ -21,12 +23,11 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
+import useProblemsStore from "@/stores/problems.store";
 
-const inputText = ref();
+const { searchData } = useProblemsStore();
 
-function searchProblems() {
-  console.log("this is working");
-}
+const inputText = ref("");
 </script>
 
 <style lang="scss" scoped>
