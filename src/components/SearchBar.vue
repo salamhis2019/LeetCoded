@@ -23,18 +23,36 @@
           </div>
           <div class="dropdown-menu" v-show="showDropdown">
             <ul>
-              <li
-                class="filter-item"
-                v-for="difficulty in difficulties"
-                :key="difficulty"
-              >
-                <a>{{ difficulty }}</a>
-                <input
-                  type="checkbox"
-                  class="checkbox"
-                  :id="difficulty"
-                  :name="difficulty"
-                />
+              <li class="filter-item">
+                <form class="container">
+                  <div class="radio-container">
+                    <input
+                      type="radio"
+                      id="easy"
+                      name="difficulty"
+                      value="easy"
+                    />
+                    <label for="easy">Easy</label>
+                  </div>
+                  <div class="radio-container">
+                    <input
+                      type="radio"
+                      id="medium"
+                      name="difficulty"
+                      value="medium"
+                    />
+                    <label for="medium">Medium</label>
+                  </div>
+                  <div class="radio-container">
+                    <input
+                      type="radio"
+                      id="hard"
+                      name="difficulty"
+                      value="hard"
+                    />
+                    <label for="hard">Hard</label>
+                  </div>
+                </form>
               </li>
             </ul>
           </div>
@@ -149,14 +167,15 @@ function onClickAway() {
               display: flex;
               justify-content: space-between;
               gap: 1rem;
-            }
-            .checkbox {
-              height: 16px;
-              width: 16px;
-              cursor: pointer;
-            }
-            input[type="checkbox"] {
-              accent-color: #52b5a3;
+              .container {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                .radio-container {
+                  display: flex;
+                  gap: 0.5rem;
+                }
+              }
             }
           }
         }
