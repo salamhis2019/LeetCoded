@@ -2,7 +2,12 @@
   <div class="landing-view-container">
     <div class="parent-wrapper">
       <div class="content-wrapper">
-        <h1 class="hero-text">Its All LeetCoded .</h1>
+        <h1 class="hero-text">
+          Its All
+          <span class="leetcoded-text"
+            >LeetCoded <span class="code-brackets">&lt; / ></span></span
+          >
+        </h1>
         <div class="subcontent-container">
           <p class="subtext">
             Leetcode Solutions Visualized and journaled for personal use and use
@@ -40,6 +45,13 @@
         margin: 0;
         color: #ffffffe0;
         font-size: 3.5rem;
+        .leetcoded-text {
+          font-style: italic;
+        }
+        .code-brackets {
+          color: orange;
+          font-weight: 900;
+        }
       }
       .subcontent-container {
         display: flex;
