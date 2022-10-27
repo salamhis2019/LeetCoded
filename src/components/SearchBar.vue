@@ -13,8 +13,21 @@
         />
       </form>
       <div class="search-bar-right">
-        <div class="sort">
-          <p>Sort</p>
+        <div class="sort dropdown">
+          <button
+            ref="button"
+            class="sort-button"
+            @click="showDropdown = !showDropdown"
+          >
+            Sort
+          </button>
+          <div class="dropdown-menu" v-show="showDropdown">
+            <ul>
+              <li>Easy</li>
+              <li>Medium</li>
+              <li>Hard</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -28,6 +41,8 @@ import useProblemsStore from "@/stores/problems.store";
 const { searchData } = useProblemsStore();
 
 const inputText = ref("");
+
+const showDropdown = ref(false);
 </script>
 
 <style lang="scss" scoped>
@@ -67,14 +82,47 @@ const inputText = ref("");
     .search-bar-right {
       display: flex;
       gap: 2rem;
-      .sort,
-      .filter {
+      .sort {
         display: flex;
         align-items: center;
         color: hsla(0, 0%, 100%, 0.9);
         p {
           font-size: 1.2rem;
           margin: 0;
+        }
+      }
+      .sort-button {
+        font-family: "Encode Sans", sans-serif;
+        font-size: 1rem;
+        color: white;
+        background: none;
+        border: none;
+        cursor: pointer;
+        transition: 0.2s ease-in-out;
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+      .dropdown {
+        position: relative;
+        .dropdown-menu {
+          position: absolute;
+          left: 0;
+          top: calc(100% + 1.2rem);
+          border-radius: 8px;
+          background: #282a35;
+          box-shadow: 0 2px 5px 0 rgba(255, 255, 255, 0.1);
+          pointer-events: none;
+          transform: translateY(-10px);
+          transition: opacity 150px ease-in-out, transform 150ms ease-in-out;
+          ul {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            list-style-type: none;
+            margin: 0;
+            padding: 0.5rem;
+          }
         }
       }
     }
