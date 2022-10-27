@@ -190,7 +190,6 @@ function onClickAway() {
                   }
                   .radio {
                     accent-color: orange;
-                    border: white;
                   }
                 }
               }
