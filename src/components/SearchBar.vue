@@ -13,12 +13,8 @@
         />
       </form>
       <div class="search-bar-right">
-        <div class="sort dropdown">
-          <div
-            class="dropdown-button"
-            v-click-away="onClickAway"
-            @click="showDropdown = !showDropdown"
-          >
+        <div class="sort dropdown" v-click-away="onClickAway">
+          <div class="dropdown-button" @click="showDropdown = !showDropdown">
             <button class="sort-button">Sort</button>
             <i
               class="fa fa-angle-down"
