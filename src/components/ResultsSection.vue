@@ -46,10 +46,6 @@ const problemsStore = ProblemsStore();
 const { allProblems, currentProblems, currentProblemSolution, showSolution } =
   storeToRefs(problemsStore);
 
-setTimeout(() => {
-  console.log(allProblems.value.length);
-}, 1000);
-
 const { fetchData } = problemsStore;
 fetchData();
 
