@@ -14,15 +14,12 @@
       </form>
       <div class="search-bar-right">
         <div class="sort dropdown">
-          <div class="dropdown-button">
-            <button
-              ref="button"
-              class="sort-button"
-              v-click-away="onClickAway"
-              @click="showDropdown = !showDropdown"
-            >
-              Sort
-            </button>
+          <div
+            class="dropdown-button"
+            v-click-away="onClickAway"
+            @click="showDropdown = !showDropdown"
+          >
+            <button class="sort-button">Sort</button>
             <i
               class="fa fa-angle-down"
               :class="{ 'chevron-clicked': showDropdown }"
