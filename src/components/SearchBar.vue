@@ -33,7 +33,12 @@
                 :key="difficulty"
               >
                 <a>{{ difficulty }}</a>
-                <input type="checkbox" :id="difficulty" :name="difficulty" />
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  :id="difficulty"
+                  :name="difficulty"
+                />
               </li>
             </ul>
           </div>
@@ -149,6 +154,9 @@ function onClickAway() {
               display: flex;
               justify-content: space-between;
               gap: 1rem;
+            }
+            .checkbox {
+              cursor: pointer;
             }
           }
         }
