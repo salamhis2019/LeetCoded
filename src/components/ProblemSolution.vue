@@ -153,7 +153,7 @@ const { currentProblemSolution }: any = storeToRefs(problemsStore);
     }
   }
 }
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 500px) {
   .solutions-parent-container {
     margin: 2rem;
     .solution-content-container {
