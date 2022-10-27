@@ -27,7 +27,11 @@
           </div>
           <div class="dropdown-menu" v-show="showDropdown">
             <ul>
-              <li v-for="difficulty in difficulties" :key="difficulty">
+              <li
+                class="filter-item"
+                v-for="difficulty in difficulties"
+                :key="difficulty"
+              >
                 <a>{{ difficulty }}</a>
                 <input type="checkbox" :id="difficulty" :name="difficulty" />
               </li>
@@ -132,7 +136,6 @@ function onClickAway() {
           border-radius: 8px;
           background: #282a35;
           box-shadow: 0 2px 5px 0 rgba(255, 255, 255, 0.1);
-          pointer-events: none;
           transform: translateY(-10px);
           transition: opacity 150px ease-in-out, transform 150ms ease-in-out;
           ul {
@@ -142,6 +145,11 @@ function onClickAway() {
             list-style-type: none;
             margin: 0;
             padding: 1rem;
+            .filter-item {
+              display: flex;
+              justify-content: space-between;
+              gap: 1rem;
+            }
           }
         }
       }
