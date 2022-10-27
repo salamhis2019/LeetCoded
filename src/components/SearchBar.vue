@@ -101,7 +101,6 @@ function onClickAway() {
     }
     .search-bar-right {
       display: flex;
-      gap: 2rem;
       .sort {
         display: flex;
         align-items: center;
