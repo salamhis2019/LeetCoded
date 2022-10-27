@@ -28,6 +28,19 @@ export const useProblemsStore = defineStore("problems", {
         this.fetchData();
       }
     },
+    async filterData(difficulty: any) {
+      console.log(difficulty);
+      if (difficulty !== "All") {
+        const response = await fetch(
+          `http://localhost:3000/problems?difficulty=${difficulty}`
+        );
+        const data = await response.json();
+        this.allProblems = data;
+        console.log(data);
+      } else {
+        this.fetchData();
+      }
+    },
   },
 });
 

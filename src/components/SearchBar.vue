@@ -29,6 +29,7 @@
                     class="radio-container"
                     v-for="difficulty in difficulties"
                     :key="difficulty"
+                    @click="filterData(difficulty)"
                   >
                     <input
                       type="radio"
@@ -54,13 +55,13 @@
 import { ref } from "vue";
 import useProblemsStore from "@/stores/problems.store";
 
-const { searchData } = useProblemsStore();
+const { searchData, filterData } = useProblemsStore();
 
 const inputText = ref("");
 
 const showDropdown = ref(false);
 
-const difficulties = ["Easy", "Medium", "Hard"];
+const difficulties = ["Easy", "Medium", "Hard", "All"];
 
 function onClickAway() {
   showDropdown.value = false;
