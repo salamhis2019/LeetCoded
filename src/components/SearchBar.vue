@@ -18,6 +18,7 @@
             <button
               ref="button"
               class="sort-button"
+              v-click-away="onClickAway"
               @click="showDropdown = !showDropdown"
             >
               Sort
@@ -49,6 +50,10 @@ const { searchData } = useProblemsStore();
 const inputText = ref("");
 
 const showDropdown = ref(false);
+
+function onClickAway() {
+  showDropdown.value = false;
+}
 </script>
 
 <style lang="scss" scoped>
