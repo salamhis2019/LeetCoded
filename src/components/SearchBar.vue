@@ -126,6 +126,7 @@ function onClickAway() {
         }
         .fa-angle-down {
           font-size: 1.5rem;
+          cursor: pointer;
         }
         .chevron-clicked {
           transform: rotate(270deg);
