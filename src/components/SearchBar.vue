@@ -25,32 +25,20 @@
             <ul>
               <li class="filter-item">
                 <form class="container">
-                  <div class="radio-container">
+                  <div
+                    class="radio-container"
+                    v-for="difficulty in difficulties"
+                    :key="difficulty"
+                  >
                     <input
                       type="radio"
-                      id="easy"
+                      :id="difficulty.toLowerCase()"
                       name="difficulty"
-                      value="easy"
+                      :value="difficulty.toLowerCase()"
                     />
-                    <label for="easy">Easy</label>
-                  </div>
-                  <div class="radio-container">
-                    <input
-                      type="radio"
-                      id="medium"
-                      name="difficulty"
-                      value="medium"
-                    />
-                    <label for="medium">Medium</label>
-                  </div>
-                  <div class="radio-container">
-                    <input
-                      type="radio"
-                      id="hard"
-                      name="difficulty"
-                      value="hard"
-                    />
-                    <label for="hard">Hard</label>
+                    <label class="radio-label" :for="difficulty.toLowerCase()">
+                      {{ difficulty }}
+                    </label>
                   </div>
                 </form>
               </li>
@@ -65,6 +53,7 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import useProblemsStore from "@/stores/problems.store";
+import { diff } from "jest-diff";
 
 const { searchData } = useProblemsStore();
 
@@ -173,7 +162,17 @@ function onClickAway() {
                 gap: 1rem;
                 .radio-container {
                   display: flex;
+                  align-items: center;
                   gap: 0.5rem;
+                  width: 100%;
+                  padding: 0.1rem;
+                  border-radius: 5px;
+                  &:hover {
+                    color: rgba(255, 145, 0, 0.75);
+                  }
+                  .radio-label {
+                    cursor: pointer;
+                  }
                 }
               }
             }
