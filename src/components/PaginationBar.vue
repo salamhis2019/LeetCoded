@@ -38,8 +38,6 @@ const pageStart = ref(0);
 const pageEnd = ref(8);
 
 onBeforeUpdate(() => {
-  console.log("watcher fired");
-  console.log("start", pageStart.value, "end", pageEnd.value);
   currentProblems.value = ref(
     allProblems.value.slice(pageStart.value, pageEnd.value)
   );
