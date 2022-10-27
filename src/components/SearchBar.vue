@@ -53,7 +53,6 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import useProblemsStore from "@/stores/problems.store";
-import { diff } from "jest-diff";
 
 const { searchData } = useProblemsStore();
 
