@@ -35,6 +35,7 @@
                   >
                     <input
                       type="radio"
+                      class="radio"
                       :id="difficulty.toLowerCase()"
                       name="difficulty"
                       :value="difficulty.toLowerCase()"
@@ -186,6 +187,10 @@ function onClickAway() {
                   }
                   .radio-label {
                     cursor: pointer;
+                  }
+                  .radio {
+                    accent-color: orange;
+                    border: white;
                   }
                 }
               }
