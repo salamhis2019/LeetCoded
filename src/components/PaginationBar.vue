@@ -1,5 +1,5 @@
 <template>
-  <div class="pagination-container">
+  <div class="pagination-container" v-if="allProblems.length !== 0">
     <button
       class="button"
       :class="{ active: currentPage === index + 1 }"
@@ -13,31 +13,37 @@
 </template>
 
 <script lang="ts" setup>
-import Problems from "@/data/problems";
-import { ref, computed, watch } from "vue";
+import { ref, computed, watch, onBeforeUpdate } from "vue";
 import ProblemsStore from "@/stores/problems.store";
 import { storeToRefs } from "pinia";
 
 const problemsStore = ProblemsStore();
 
-const { currentProblems } = storeToRefs(problemsStore);
-
-const problems = Problems;
+const { allProblems, currentProblems }: any = storeToRefs(problemsStore);
 
 const pages = computed(() => {
-  if (problems.length % 8 === 0) {
-    return problems.length / 8;
+  if (allProblems.value.length === 0 || undefined || NaN) {
+    return 1;
+  }
+  if (allProblems.value.length % 8 === 0) {
+    return allProblems.length / 8;
   } else {
-    const remainder = problems.length % 8;
-    return (problems.length - remainder + 8) / 8;
+    const remainder = allProblems.value.length % 8;
+    return (allProblems.value.length - remainder + 8) / 8;
   }
 });
 
 const currentPage = ref<number>(1);
 const pageStart = ref(0);
-const pageEnd = ref(9);
+const pageEnd = ref(8);
 
-currentProblems.value = ref(problems.slice(pageStart.value, pageEnd.value));
+onBeforeUpdate(() => {
+  console.log("watcher fired");
+  console.log("start", pageStart.value, "end", pageEnd.value);
+  currentProblems.value = ref(
+    allProblems.value.slice(pageStart.value, pageEnd.value)
+  );
+});
 
 watch(currentPage, (newPage, oldPage) => {
   if (newPage > oldPage) {
@@ -53,10 +59,13 @@ watch(currentPage, (newPage, oldPage) => {
   if (currentPage.value === 1) {
     currentProblems.value = [];
     pageStart.value = 0;
-    pageEnd.value = 9;
+    pageEnd.value = 8;
   }
 
-  currentProblems.value = problems.slice(pageStart.value, pageEnd.value);
+  currentProblems.value = allProblems.value.slice(
+    pageStart.value,
+    pageEnd.value
+  );
 });
 
 function updateCurrentPage(index: number) {
