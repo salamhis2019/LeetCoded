@@ -151,7 +151,12 @@ function onClickAway() {
               gap: 1rem;
             }
             .checkbox {
+              height: 16px;
+              width: 16px;
               cursor: pointer;
+            }
+            input[type="checkbox"] {
+              accent-color: #52b5a3;
             }
           }
         }
