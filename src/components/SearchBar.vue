@@ -7,7 +7,7 @@
           class="search-bar"
           type="text"
           placeholder="Search..."
-          @keydown.enter="
+          @keydown.enter.prevent="
             searchData(inputText.replace(/\s/g, '').toLowerCase())
           "
         />
