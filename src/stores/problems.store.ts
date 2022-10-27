@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import axios from "axios";
 
 export const useProblemsStore = defineStore("problems", {
   state: () => {
@@ -11,10 +12,16 @@ export const useProblemsStore = defineStore("problems", {
   },
   actions: {
     async fetchData() {
-      console.log("fetch data fired");
-      const response = await fetch("http://localhost:3000/problems/");
-      const data = await response.json();
-      this.allProblems = data;
+      try {
+        console.log("fetch data fired");
+        const response = await axios.get<any, any>(
+          "http://localhost:3000/problems/"
+        );
+        const data = await response.json();
+        this.allProblems = data;
+      } catch (error) {
+        console.log(error);
+      }
     },
     async searchData(searchText: any) {
       console.log(searchText);
