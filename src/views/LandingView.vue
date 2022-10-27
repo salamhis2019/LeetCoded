@@ -45,8 +45,10 @@
         margin: 0;
         color: #ffffffe0;
         font-size: 3.5rem;
+        font-weight: 300;
         .leetcoded-text {
           font-style: italic;
+          font-weight: 600;
         }
         .code-brackets {
           color: orange;
