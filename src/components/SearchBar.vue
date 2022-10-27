@@ -15,11 +15,13 @@
       <div class="search-bar-right">
         <div class="sort dropdown" v-click-away="onClickAway">
           <div class="dropdown-button" @click="showDropdown = !showDropdown">
-            <button class="sort-button">Sort</button>
-            <i
-              class="fa fa-angle-down"
-              :class="{ 'chevron-clicked': showDropdown }"
-            ></i>
+            <button class="sort-button">
+              Sort
+              <i
+                class="fa fa-angle-down"
+                :class="{ 'chevron-clicked': showDropdown }"
+              ></i>
+            </button>
           </div>
           <div class="dropdown-menu" v-show="showDropdown">
             <ul>
@@ -115,21 +117,32 @@ function onClickAway() {
       }
       .dropdown-button {
         display: flex;
+        box-sizing: border-box;
         .sort-button {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
           font-family: "Encode Sans", sans-serif;
           font-size: 1rem;
           color: white;
           background: none;
           border: none;
           cursor: pointer;
-          transition: transform 0.2s ease-in-out;
-        }
-        .fa-angle-down {
-          font-size: 1.5rem;
-          cursor: pointer;
-        }
-        .chevron-clicked {
-          transform: rotate(270deg);
+          transition: 0.2s ease;
+          .fa-angle-down {
+            font-size: 1.5rem;
+            cursor: pointer;
+          }
+          .chevron-clicked {
+            transform: rotate(270deg);
+          }
+          &:focus {
+            outline: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            background: #353a3e;
+            box-shadow: 0 2px 5px 0 rgba(255, 255, 255, 0.103);
+          }
         }
         &:hover {
           opacity: 0.8;
