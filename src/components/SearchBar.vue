@@ -84,7 +84,7 @@ function onClickAway() {
     padding: 0.5rem 1rem;
     height: 50px;
     min-width: 300px;
-    width: 650px;
+    width: 600px;
     background: #1b1f22;
     border-radius: 12px;
     .input-container {
