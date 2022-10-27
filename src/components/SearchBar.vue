@@ -27,9 +27,10 @@
           </div>
           <div class="dropdown-menu" v-show="showDropdown">
             <ul>
-              <li>Easy</li>
-              <li>Medium</li>
-              <li>Hard</li>
+              <li v-for="difficulty in difficulties" :key="difficulty">
+                <a>{{ difficulty }}</a>
+                <input type="checkbox" :id="difficulty" :name="difficulty" />
+              </li>
             </ul>
           </div>
         </div>
@@ -47,6 +48,8 @@ const { searchData } = useProblemsStore();
 const inputText = ref("");
 
 const showDropdown = ref(false);
+
+const difficulties = ["Easy", "Medium", "Hard"];
 
 function onClickAway() {
   showDropdown.value = false;
@@ -135,10 +138,10 @@ function onClickAway() {
           ul {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: 0.75rem;
             list-style-type: none;
             margin: 0;
-            padding: 0.5rem;
+            padding: 1rem;
           }
         }
       }
