@@ -1,33 +1,38 @@
 <template>
   <div class="results-parent-container">
-    <div class="results-container">
-      <div
-        v-for="({ name, param, difficulty }, index) in currentProblems"
-        :key="index"
-        class="problem-card"
-        :class="{ 'card-dark': index % 2 !== 0 }"
-      >
-        <div class="problem-card-left">
-          <router-link
-            :to="`/solutions/${param}`"
-            class="problem-link"
-            @click="setCurrentProblem(index)"
-          >
-            {{ name }}
-          </router-link>
-          <DifficultyBadge :size="'primary'" :color="difficulty.toLowerCase()">
-            {{ difficulty }}
-          </DifficultyBadge>
+    <TransitionGroup name="fade">
+      <div class="results-container" v-if="allProblems.length !== 0">
+        <div
+          v-for="({ name, param, difficulty }, index) in currentProblems"
+          :key="index"
+          class="problem-card"
+          :class="{ 'card-dark': index % 2 !== 0 }"
+        >
+          <div class="problem-card-left">
+            <router-link
+              :to="`/solutions/${param}`"
+              class="problem-link"
+              @click="setCurrentProblem(index)"
+            >
+              {{ name }}
+            </router-link>
+            <DifficultyBadge
+              :size="'primary'"
+              :color="difficulty.toLowerCase()"
+            >
+              {{ difficulty }}
+            </DifficultyBadge>
+          </div>
+          <input
+            type="checkbox"
+            id="vehicle1"
+            name="vehicle1"
+            value="Bike"
+            class="checkbox"
+          />
         </div>
-        <input
-          type="checkbox"
-          id="vehicle1"
-          name="vehicle1"
-          value="Bike"
-          class="checkbox"
-        />
       </div>
-    </div>
+    </TransitionGroup>
   </div>
 </template>
 
@@ -38,8 +43,12 @@ import { storeToRefs } from "pinia";
 
 const problemsStore = ProblemsStore();
 
-const { currentProblems, currentProblemSolution, showSolution } =
+const { allProblems, currentProblems, currentProblemSolution, showSolution } =
   storeToRefs(problemsStore);
+
+setTimeout(() => {
+  console.log(allProblems.value.length);
+}, 1000);
 
 const { fetchData } = problemsStore;
 fetchData();
@@ -55,6 +64,15 @@ function setCurrentProblem(index: any) {
   display: flex;
   justify-content: center;
   align-items: center;
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.5s ease;
+  }
+
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
+  }
   .results-container {
     display: flex;
     flex-direction: column;
