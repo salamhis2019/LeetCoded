@@ -16,7 +16,7 @@
         <div class="sort dropdown" v-click-away="onClickAway">
           <div class="dropdown-button" @click="showDropdown = !showDropdown">
             <button class="sort-button">
-              Sort
+              Filter By
               <i
                 class="fa fa-angle-down"
                 :class="{ 'chevron-clicked': showDropdown }"
