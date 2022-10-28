@@ -1,22 +1,28 @@
 <template>
-  <div class="dropdown-menu" v-show="displayMenu">
-    <ul>
-      <li class="filter-item">
-        <form class="container">
+  <div
+    class="dropdown-menu absolute left-0 rounded-lg bg-[#282a35] shadow-lg"
+    v-show="displayMenu"
+  >
+    <ul flex flex-col gap-3 list-none m-0 p-4>
+      <li class="filter-item flex justify-between gap-4">
+        <form class="container flex flex-col gap-4 p-3">
           <div
-            class="radio-container"
+            class="radio-container flex items-center gap-2 w-full p-0.5 rounded-md ease duration-200 hover:text-amber-500"
             v-for="difficulty in options"
             :key="difficulty"
             @click="filterData(difficulty)"
           >
             <input
               type="radio"
-              class="radio"
+              class="radio cursor-pointer accent-amber-500"
               :id="difficulty.toLowerCase()"
               name="difficulty"
               :value="difficulty.toLowerCase()"
             />
-            <label class="radio-label" :for="difficulty.toLowerCase()">
+            <label
+              class="radio-label cursor-pointer"
+              :for="difficulty.toLowerCase()"
+            >
               {{ difficulty }}
             </label>
           </div>
@@ -37,48 +43,8 @@ const { filterData } = useProblemsStore();
 
 <style lang="scss" scoped>
 .dropdown-menu {
-  position: absolute;
-  left: 0;
   top: calc(100% + 1.2rem);
-  border-radius: 8px;
-  background: #282a35;
-  box-shadow: 0 2px 5px 0 rgba(255, 255, 255, 0.1);
   transform: translateY(-10px);
   transition: opacity 150px ease-in-out, transform 150ms ease-in-out;
-  ul {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    list-style-type: none;
-    margin: 0;
-    padding: 1rem;
-    .filter-item {
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      .container {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        .radio-container {
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-          width: 100%;
-          padding: 0.1rem;
-          border-radius: 5px;
-          &:hover {
-            color: rgba(255, 145, 0, 0.75);
-          }
-          .radio-label {
-            cursor: pointer;
-          }
-          .radio {
-            accent-color: orange;
-          }
-        }
-      }
-    }
-  }
 }
 </style>
