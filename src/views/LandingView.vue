@@ -1,19 +1,25 @@
 <template>
-  <div class="landing-view-container">
-    <div class="parent-wrapper">
-      <div class="content-wrapper">
-        <h1 class="hero-text">
+  <div class="landing-view-container h-full w-full bg-cover bg-center">
+    <div class="parent-wrapper flex items-center h-full ml-40 font-sans">
+      <div class="content-wrapper flex flex-col gap-8 mb-8">
+        <h1 class="hero-text text-white/90 font-light text-6xl">
           Its All
-          <span class="leetcoded-text"
-            >LeetCoded <span class="code-brackets">&lt; / ></span></span
+          <span class="font-semibold italic leetcoded-text"
+            >LeetCoded
+            <span class="code-brackets text-amber-500 font-black"
+              >&lt; / ></span
+            ></span
           >
         </h1>
-        <div class="subcontent-container">
-          <p class="subtext">
+        <div class="subcontent-container flex flex-col gap-8 w-9/12">
+          <p class="subtext text-white/90 text-base m-0">
             Leetcode Solutions Visualized and journaled for personal use and use
             of others
           </p>
-          <router-link :to="'/solutions'" class="button">
+          <router-link
+            :to="'/solutions'"
+            class="button flex items-center justify-between w-full h-10 py-0 px-6 border-none rounded-lg text-left no-underline text-white/90 font-semibold text-lg cursor-pointer"
+          >
             View Solutions
             <i class="fas fa-long-arrow-alt-right" style="font-size: 24px"></i>
           </router-link>
@@ -25,61 +31,12 @@
 
 <style lang="scss" scoped>
 .landing-view-container {
-  width: 100%;
-  height: 100%;
   background-image: url("@/assets/blob-background.svg");
-  background-size: cover;
-  background-position: center;
   .parent-wrapper {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    margin-left: 10rem;
-    font-family: sans-serif;
     .content-wrapper {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-      margin-bottom: 2rem;
-      .hero-text {
-        margin: 0;
-        color: #ffffffe0;
-        font-size: 3.5rem;
-        font-weight: 300;
-        .leetcoded-text {
-          font-style: italic;
-          font-weight: 600;
-        }
-        .code-brackets {
-          color: orange;
-          font-weight: 900;
-        }
-      }
       .subcontent-container {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        width: 75%;
-        .subtext {
-          color: #ffffffe0;
-          margin: 0;
-        }
         .button {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          width: 100%;
-          height: 2.5rem;
-          padding: 0 1.5rem;
-          border: none;
-          border-radius: 0.5rem;
           background: #1b1f22;
-          text-align: left;
-          text-decoration: none;
-          color: #ffffffe6;
-          font-weight: 600;
-          font-size: 1.2rem;
-          cursor: pointer;
           transition: 0.2s;
           &:hover {
             box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.54);
