@@ -23,31 +23,7 @@
               ></i>
             </button>
           </div>
-          <div class="dropdown-menu" v-show="showDropdown">
-            <ul>
-              <li class="filter-item">
-                <form class="container">
-                  <div
-                    class="radio-container"
-                    v-for="difficulty in difficulties"
-                    :key="difficulty"
-                    @click="filterData(difficulty)"
-                  >
-                    <input
-                      type="radio"
-                      class="radio"
-                      :id="difficulty.toLowerCase()"
-                      name="difficulty"
-                      :value="difficulty.toLowerCase()"
-                    />
-                    <label class="radio-label" :for="difficulty.toLowerCase()">
-                      {{ difficulty }}
-                    </label>
-                  </div>
-                </form>
-              </li>
-            </ul>
-          </div>
+          <DropdownMenu :options="difficulties" :displayMenu="showDropdown" />
         </div>
       </div>
     </div>
@@ -57,8 +33,9 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import useProblemsStore from "@/stores/problems.store";
+import DropdownMenu from "@/components/common/vue-dropdown.vue";
 
-const { searchData, filterData } = useProblemsStore();
+const { searchData } = useProblemsStore();
 
 const inputText = ref("");
 
@@ -151,51 +128,6 @@ function onClickAway() {
       }
       .dropdown {
         position: relative;
-        .dropdown-menu {
-          position: absolute;
-          left: 0;
-          top: calc(100% + 1.2rem);
-          border-radius: 8px;
-          background: #282a35;
-          box-shadow: 0 2px 5px 0 rgba(255, 255, 255, 0.1);
-          transform: translateY(-10px);
-          transition: opacity 150px ease-in-out, transform 150ms ease-in-out;
-          ul {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            list-style-type: none;
-            margin: 0;
-            padding: 1rem;
-            .filter-item {
-              display: flex;
-              justify-content: space-between;
-              gap: 1rem;
-              .container {
-                display: flex;
-                flex-direction: column;
-                gap: 1rem;
-                .radio-container {
-                  display: flex;
-                  align-items: center;
-                  gap: 0.5rem;
-                  width: 100%;
-                  padding: 0.1rem;
-                  border-radius: 5px;
-                  &:hover {
-                    color: rgba(255, 145, 0, 0.75);
-                  }
-                  .radio-label {
-                    cursor: pointer;
-                  }
-                  .radio {
-                    accent-color: orange;
-                  }
-                }
-              }
-            }
-          }
-        }
       }
     }
   }
