@@ -1,24 +1,24 @@
 <template>
   <div class="landing-view-container h-full w-full bg-cover bg-center">
-    <div class="parent-wrapper flex items-center h-full ml-40 font-sans">
-      <div class="content-wrapper flex flex-col gap-8 mb-8">
-        <h1 class="hero-text text-white/90 font-light text-6xl">
+    <div class="parent-wrapper ml-40 flex h-full items-center font-sans">
+      <div class="content-wrapper mb-8 flex flex-col gap-8">
+        <h1 class="hero-text text-6xl font-light text-white/90">
           Its All
-          <span class="font-semibold italic leetcoded-text"
+          <span class="leetcoded-text font-semibold italic"
             >LeetCoded
-            <span class="code-brackets text-amber-500 font-black"
+            <span class="code-brackets font-black text-amber-500"
               >&lt; / ></span
             ></span
           >
         </h1>
-        <div class="subcontent-container flex flex-col gap-8 w-9/12">
-          <p class="subtext text-white/90 text-base m-0">
+        <div class="subcontent-container flex w-9/12 flex-col gap-8">
+          <p class="subtext m-0 text-base text-white/90">
             Leetcode Solutions Visualized and journaled for personal use and use
             of others
           </p>
           <router-link
             :to="'/solutions'"
-            class="button flex items-center justify-between w-full h-10 py-0 px-6 border-none rounded-lg text-left no-underline text-white/90 font-semibold text-lg cursor-pointer"
+            class="button flex h-10 w-full cursor-pointer items-center justify-between rounded-lg border-none py-0 px-6 text-left text-lg font-semibold text-white/90 no-underline"
           >
             View Solutions
             <i class="fas fa-long-arrow-alt-right" style="font-size: 24px"></i>
