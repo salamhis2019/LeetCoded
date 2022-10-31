@@ -1,19 +1,19 @@
 <template>
   <div class="nav-parent-container h-14 bg-[#1b1f22]">
     <nav
-      class="nav-container flex justify-between items-center h-full py-0 px-12"
+      class="nav-container flex h-full items-center justify-between py-0 px-12"
     >
       <div class="logo-container flex items-center">
         <router-link
-          class="router-link flex items-center no-underline hover:opacity-80 focus:outline-0 focus:scale-105 focus:shadow-lg focus:bg-zinc-700 focus:px-4 focus:rounded-lg ease-in-out duration-200"
+          class="router-link flex items-center no-underline duration-200 ease-in-out hover:opacity-80 focus:scale-105 focus:rounded-lg focus:bg-zinc-700 focus:px-4 focus:shadow-lg focus:outline-none"
           to="/"
           @click="logoClicked"
         >
-          <h1 class="hero-text text-white/90 text-2xl">
+          <h1 class="hero-text text-2xl text-white/90">
             <span
-              class="leetcoded-text flex items-center gap-2 italic font-semibold"
+              class="leetcoded-text flex items-center gap-2 font-semibold italic"
               >LeetCoded
-              <span class="code-brackets text-amber-500 text-4xl font-medium"
+              <span class="code-brackets 4xl font-medium text-amber-500"
                 >&lt;></span
               ></span
             >
@@ -21,7 +21,7 @@
         </router-link>
       </div>
       <button
-        class="login-button py-1.5 px-6 text-white/90 text-base font-semibold bg-[#353a3e] border-none rounded-lg ease duration-200 cursor-pointer hover:scale-105 focus:scale-105 focus:outline-0 focus:shadow-lg"
+        class="login-button ease cursor-pointer rounded-lg border-none bg-[#353a3e] py-1.5 px-6 text-base font-semibold text-white/90 duration-200 hover:scale-105 focus:scale-105 focus:shadow-lg focus:outline-0"
       >
         Login
       </button>
