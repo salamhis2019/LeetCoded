@@ -2,7 +2,7 @@
   <div
     class="search-bar-parent-container my-0 mx-8 flex h-36 items-center justify-center"
   >
-    <div class="search-bar-container min-w-300 box-border flex h-12 py-4 px-6">
+    <div class="search-bar-container min-w-300 box-border flex h-12 py-2 px-4">
       <form class="input-container">
         <input
           v-model="inputText"
