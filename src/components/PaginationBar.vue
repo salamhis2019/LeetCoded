@@ -1,7 +1,10 @@
 <template>
-  <div class="pagination-container" v-if="allProblems.length !== 0">
+  <div
+    class="pagination-container flex justify-center gap-2 pb-8"
+    v-if="allProblems.length !== 0"
+  >
     <button
-      class="button"
+      class="button cursor-pointer rounded-lg border-0 bg-[#1b1f22] px-4 py-2 text-xl font-semibold text-white duration-200 hover:brightness-150 focus:shadow focus:shadow-white focus:outline-0 active:bg-[52b5a3]"
       :class="{ active: currentPage === index + 1 }"
       v-for="(item, index) in pages"
       :key="item"
@@ -72,36 +75,9 @@ function updateCurrentPage(index: number) {
 </script>
 
 <style lang="scss" scoped>
-.pagination-container {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  padding-bottom: 2rem;
-  .button {
-    padding: 0.75rem 1rem;
-    color: white;
-    font-weight: 600;
-    font-size: 1.2rem;
-    background: #1b1f22;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.2s;
-    &:hover {
-      filter: brightness(150%);
-    }
-    &:active {
-      background: #52b5a3;
-    }
-    &:focus {
-      outline: none;
-      box-shadow: 0px 0px 6px white;
-    }
-  }
-  .active {
-    background: #52b5a3;
-    color: #1b1f22;
-  }
+.active {
+  background: #52b5a3;
+  color: #1b1f22;
 }
 @media only screen and (max-width: 750px) {
   .pagination-container {
