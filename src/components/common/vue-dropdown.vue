@@ -7,7 +7,7 @@
       <li class="filter-item flex justify-between gap-4">
         <form class="container flex flex-col gap-4 p-3">
           <div
-            class="radio-container flex items-center gap-2 w-full p-0.5 rounded-md ease duration-200 hover:text-amber-500"
+            class="radio-container ease flex w-full items-center gap-2 rounded-md p-0.5 duration-200 hover:text-amber-500"
             v-for="difficulty in options"
             :key="difficulty"
             @click="filterData(difficulty)"
