@@ -1,6 +1,8 @@
 <template>
-  <div class="search-bar-parent-container">
-    <div class="search-bar-container">
+  <div
+    class="search-bar-parent-container my-0 mx-8 flex h-36 items-center justify-center"
+  >
+    <div class="search-bar-container min-w-300 box-border flex h-12 py-4 px-6">
       <form class="input-container">
         <input
           v-model="inputText"
@@ -50,17 +52,7 @@ function onClickAway() {
 
 <style lang="scss" scoped>
 .search-bar-parent-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 150px;
-  margin: 0 2rem;
   .search-bar-container {
-    display: flex;
-    box-sizing: border-box;
-    padding: 0.5rem 1rem;
-    height: 50px;
-    min-width: 300px;
     width: 600px;
     background: #1b1f22;
     border-radius: 12px;
