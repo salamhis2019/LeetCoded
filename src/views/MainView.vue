@@ -1,7 +1,7 @@
 <template>
   <NavBar />
   <Transition>
-    <div class="mainview-parent-container" v-if="!showSolution">
+    <div class="mainview-parent-container bg-black" v-if="!showSolution">
       <SearchBar />
       <Results />
       <PaginationBar />
