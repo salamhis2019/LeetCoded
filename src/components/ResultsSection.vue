@@ -1,17 +1,20 @@
 <template>
-  <div class="results-parent-container">
+  <div class="results-parent-container flex items-center justify-center">
     <TransitionGroup name="fade">
-      <div class="results-container" v-if="allProblems.length !== 0">
+      <div
+        class="results-container min-h-50 mx-8 mt-0 mb-8 box-border flex flex-col gap-2 rounded-xl bg-[#1b1f22] p-4"
+        v-if="allProblems.length !== 0"
+      >
         <div
           v-for="({ name, param, difficulty }, index) in currentProblems"
           :key="index"
-          class="problem-card"
-          :class="{ 'card-dark': index % 2 !== 0 }"
+          class="problem-card box-border flex h-12 items-center justify-between rounded-lg bg-[#353a3e] py-2 px-6"
+          :class="{ 'bg-transparent': index % 2 !== 0 }"
         >
-          <div class="problem-card-left">
+          <div class="problem-card-left flex items-center gap-4">
             <router-link
               :to="`/solutions/${param}`"
-              class="problem-link"
+              class="problem-link m-0 text-lg font-semibold text-white/90 no-underline duration-200 hover:text-amber-500 focus:text-amber-500 focus:shadow-md focus:outline-none"
               @click="setCurrentProblem(index)"
             >
               {{ name }}
@@ -28,7 +31,7 @@
             id="vehicle1"
             name="vehicle1"
             value="Bike"
-            class="checkbox"
+            class="checkbox h-6 w-6 cursor-pointer accent-[#52b5a3] duration-200"
           />
         </div>
       </div>
@@ -57,9 +60,6 @@ function setCurrentProblem(index: any) {
 
 <style lang="scss" scoped>
 .results-parent-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   .fade-enter-active,
   .fade-leave-active {
     transition: opacity 0.5s ease;
@@ -70,84 +70,8 @@ function setCurrentProblem(index: any) {
     opacity: 0;
   }
   .results-container {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    box-sizing: border-box;
     width: 700px;
     max-height: 550px;
-    min-height: 50px;
-    margin: 0 2rem 2rem 2rem;
-    padding: 1rem;
-    background-color: #1b1f22;
-    border-radius: 12px;
-    .problem-card {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 50px;
-      box-sizing: border-box;
-      background: #353a3e;
-      padding: 0.5rem 1.5rem;
-      border-radius: 10px;
-      .problem-card-left {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        .problem-link {
-          margin: 0;
-          color: white;
-          text-decoration: none;
-          font-weight: 600;
-          font-size: 1.2rem;
-          transition: 0.2s;
-          &:hover {
-            color: #ff9900;
-          }
-          &:focus {
-            color: #ff9900;
-            outline: none;
-            text-shadow: 2px 2px 0px black;
-          }
-        }
-        .difficulty-badge {
-          font-weight: 600;
-          font-size: 0.9rem;
-          color: rgb(0, 0, 0);
-          padding: 0.3rem 1rem;
-          border-radius: 10px;
-          p {
-            margin: 0;
-          }
-        }
-        .easy {
-          background: #52b5a3;
-        }
-        .medium {
-          background: #efbe48;
-        }
-        .hard {
-          background: #eb4b63;
-        }
-      }
-      input[type="checkbox"] {
-        accent-color: #52b5a3;
-      }
-      .checkbox {
-        height: 24px;
-        width: 24px;
-        cursor: pointer;
-        transition: 0.2s;
-        &:focus {
-          outline-style: solid;
-          outline-color: #ff9900;
-          outline-width: 2px;
-        }
-      }
-    }
-    .card-dark {
-      background: none;
-    }
   }
   @media only screen and (max-width: 750px) and (min-width: 550px) {
     .results-container {
