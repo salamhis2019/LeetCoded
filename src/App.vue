@@ -1,5 +1,5 @@
 <template>
-  <div class="app-wrapper">
+  <div class="app-wrapper h-full">
     <router-view></router-view>
   </div>
 </template>
@@ -10,11 +10,8 @@ body,
 #app {
   margin: 0;
   height: 100%;
-  background: #000203;
+  background: #1b1f22;
   font-family: "Encode Sans", sans-serif;
-  .app-wrapper {
-    height: 100%;
-  }
   ::selection {
     background: white;
     color: black;
