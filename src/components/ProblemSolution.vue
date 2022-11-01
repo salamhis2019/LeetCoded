@@ -1,9 +1,13 @@
 <template>
-  <div class="solutions-parent-container">
-    <div class="solution-content-container">
-      <div class="header-content">
-        <div class="header-left">
-          <h3>{{ currentProblemSolution.name }}</h3>
+  <div
+    class="solutions-parent-container my-12 mx-0 flex items-center justify-center text-white/90"
+  >
+    <div class="solution-content-container my-0 mx-4">
+      <div class="header-content mb-4 flex items-center justify-between">
+        <div class="header-left flex items-center gap-4">
+          <h3 class="m-0 text-2xl font-bold">
+            {{ currentProblemSolution.name }}
+          </h3>
           <DifficultyBadge
             :color="currentProblemSolution.difficulty.toLowerCase()"
             :size="'secondary'"
@@ -12,13 +16,16 @@
           >
         </div>
         <div class="header-right">
-          <router-link :to="'/solutions/'" class="button solutions">
+          <router-link
+            :to="'/solutions/'"
+            class="button solutions rounded-lg bg-[#353a3e] py-2 px-4 font-semibold text-white no-underline hover:bg-[#363b3fcc]"
+          >
             Back to Solutions
           </router-link>
         </div>
       </div>
       <div
-        class="solutions-explanation-container"
+        class="solutions-explanation-container rounded-xl bg-[#1b1f22] p-4"
         v-if="currentProblemSolution.solutions"
       >
         <div
@@ -30,10 +37,12 @@
           } in currentProblemSolution.solutions"
           :key="code"
         >
-          <p class="solution-description">{{ solutionDescription }}</p>
+          <p class="solution-description mb-2">{{ solutionDescription }}</p>
           <h3 class="solution-title">{{ solutionTitle }}</h3>
-          <div class="code-block-container">
-            <code>
+          <div class="code-block-container rounded-xl bg-[#282a35] p-4">
+            <code
+              class="flex flex-col gap-1 whitespace-pre text-base font-medium"
+            >
               <span v-for="line in code" :key="line" class="line">{{
                 line
               }}</span>
@@ -41,14 +50,19 @@
           </div>
         </div>
       </div>
-      <div class="solution-unavailable-container" v-else>
+      <div
+        class="solution-unavailable-container flex justify-center rounded-xl bg-[#1b1f22]"
+        v-else
+      >
         <figure class="content-container">
           <img
-            class="waiting-image"
+            class="waiting-image flex w-64 justify-center"
             src="@/assets/waiting.svg"
             alt="waiting image"
           />
-          <figcaption class="image-caption">
+          <figcaption
+            class="image-caption my-4 mx-0 text-center text-lg font-extralight"
+          >
             Sorry, this one hasn't been cracked yet...
           </figcaption>
         </figure>
@@ -67,87 +81,17 @@ const { currentProblemSolution }: any = storeToRefs(problemsStore);
 </script>
 
 <style lang="scss" scoped>
-.solutions-parent-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  margin: 3rem 0;
-  .solution-content-container {
-    margin: 0 1rem;
-    width: 700px;
-    .header-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1rem;
-      .header-left {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        h3 {
-          margin: 0;
-          font-size: 1.5rem;
-        }
-      }
-      .header-right {
-        .button {
-          padding: 0.5rem 1rem;
-          background: #353a3e;
-          border-radius: 10px;
-          color: rgba(255, 255, 255, 0.9);
-          font-weight: 600;
-          text-decoration: none;
-          &:hover {
-            background: hsla(207, 8%, 23%, 0.8);
-          }
-        }
-      }
-    }
-    .solutions-explanation-container {
-      padding: 1rem;
-      background: #1b1f22;
-      border-radius: 12px;
-      .solutions-content {
-        .solution-description {
-          margin: 0;
-        }
-        .code-block-container {
-          padding: 1rem;
-          background: #282a35;
-          border-radius: 12px;
-          code {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-            font-weight: 500;
-            font-size: 1rem;
-            white-space: pre;
-            @media only screen and (max-width: 400px) {
-              .line {
-                font-size: 0.7rem;
-              }
+.solution-content-container {
+  width: 700px;
+  .solutions-explanation-container {
+    .solutions-content {
+      .code-block-container {
+        code {
+          @media only screen and (max-width: 400px) {
+            .line {
+              font-size: 0.7rem;
             }
           }
-        }
-      }
-    }
-    .solution-unavailable-container {
-      display: flex;
-      justify-content: center;
-      border-radius: 12px;
-      background: #1b1f22;
-      .content-container {
-        .waiting-image {
-          display: flex;
-          justify-content: center;
-          width: 250px;
-        }
-        .image-caption {
-          margin: 1rem 0;
-          text-align: center;
-          font-size: 1.5rem;
-          font-weight: 200;
         }
       }
     }
