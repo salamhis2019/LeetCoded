@@ -23,7 +23,7 @@
         >
           <div class="dropdown-button" @click="showDropdown = !showDropdown">
             <button
-              class="sort-button ease box-border flex cursor-pointer items-center gap-2 border-none bg-transparent text-white/90 duration-200 hover:opacity-80 focus:rounded-lg focus:bg-[#353a3e] focus:outline-none"
+              class="sort-button ease box-border flex cursor-pointer items-center gap-2 border-none bg-transparent px-1 text-white/90 duration-200 hover:opacity-80 focus:rounded-lg focus:bg-[#353a3e] focus:outline-0"
             >
               Filter By
               <i
