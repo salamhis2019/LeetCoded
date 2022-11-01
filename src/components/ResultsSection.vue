@@ -1,11 +1,17 @@
 <template>
   <div
-    class="results-parent-container flex min-h-[504px] flex-col items-center justify-start"
+    class="results-parent-container flex h-3/6 min-h-[504px] flex-col items-center justify-start"
   >
-    <TransitionGroup name="fade">
+    <TransitionGroup>
+      <img
+        class="h-full w-32"
+        src="@/assets/loading.svg"
+        v-if="dataLoading"
+        alt="loading image"
+      />
       <div
         class="results-container min-h-50 mx-8 mt-0 mb-8 box-border flex flex-col gap-2 rounded-xl bg-[#1b1f22] p-4"
-        v-if="allProblems.length !== 0"
+        v-if="allProblems.length !== 0 && !dataLoading"
       >
         <div
           v-for="({ name, param, difficulty }, index) in currentProblems"
@@ -48,8 +54,13 @@ import { storeToRefs } from "pinia";
 
 const problemsStore = ProblemsStore();
 
-const { allProblems, currentProblems, currentProblemSolution, showSolution } =
-  storeToRefs(problemsStore);
+const {
+  allProblems,
+  currentProblems,
+  currentProblemSolution,
+  showSolution,
+  dataLoading,
+} = storeToRefs(problemsStore);
 
 const { fetchData } = problemsStore;
 fetchData();
@@ -62,14 +73,15 @@ function setCurrentProblem(index: any) {
 
 <style lang="scss" scoped>
 .results-parent-container {
-  .fade-enter-active,
-  .fade-leave-active {
-    transition: opacity 0.5s ease;
+  .v-leave-from {
+    display: none;
   }
-
-  .fade-enter-from,
-  .fade-leave-to {
+  .v-enter-from,
+  .v-leave-to {
     opacity: 0;
+  }
+  .v-enter-active {
+    transition: opacity 0.3s ease-in;
   }
   .results-container {
     width: 700px;
