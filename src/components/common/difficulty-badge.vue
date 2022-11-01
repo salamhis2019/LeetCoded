@@ -21,46 +21,16 @@ defineProps({
   },
 });
 
-const baseClasses = "difficulty-badge";
+const baseClasses = "font-semibold text-black";
 
 const sizeClasses: any = {
-  primary: "primary",
-  secondary: "secondary",
+  primary: "text-base py-1 px-4 rounded-lg",
+  secondary: "text-sm py-1 px-3 rounded-md",
 };
 
 const colorClasses: any = {
-  easy: "easy",
-  medium: "medium",
-  hard: "hard",
+  easy: "bg-[#52b5a3]",
+  medium: "bg-[#efbe48]",
+  hard: "bg-[#eb4b63]",
 };
 </script>
-
-<style lang="scss" scoped>
-.difficulty-badge {
-  font-weight: 600;
-  color: rgb(0, 0, 0);
-  p {
-    margin: 0;
-  }
-}
-.primary {
-  font-size: 1rem;
-  padding: 0.3rem 1rem;
-  border-radius: 10px;
-}
-
-.secondary {
-  font-size: 0.8rem;
-  padding: 0.2rem 0.8rem;
-  border-radius: 8px;
-}
-.easy {
-  background: #52b5a3;
-}
-.medium {
-  background: #efbe48;
-}
-.hard {
-  background: #eb4b63;
-}
-</style>
