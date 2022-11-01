@@ -5,7 +5,7 @@
   >
     <button
       class="button cursor-pointer rounded-lg border-0 bg-[#1b1f22] px-4 py-2 text-xl font-semibold text-white duration-200 hover:brightness-150 focus:shadow focus:shadow-white focus:outline-0 active:bg-[52b5a3]"
-      :class="{ active: currentPage === index + 1 }"
+      :class="{ ['bg-[#52b5a3] text-black']: currentPage === index + 1 }"
       v-for="(item, index) in pages"
       :key="item"
       @click="updateCurrentPage(index)"
@@ -75,10 +75,6 @@ function updateCurrentPage(index: number) {
 </script>
 
 <style lang="scss" scoped>
-.active {
-  background: #52b5a3;
-  color: #1b1f22;
-}
 @media only screen and (max-width: 750px) {
   .pagination-container {
     .button {
