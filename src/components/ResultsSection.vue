@@ -74,17 +74,11 @@ function setCurrentProblem(index: any) {
     max-height: 550px;
   }
   @media only screen and (max-width: 750px) and (min-width: 550px) {
-    .results-container {
-      .problem-card {
-        .problem-card-left {
-          .problem-link {
-            font-size: 1.2rem;
-          }
-          .difficulty-badge {
-            font-size: 0.75rem;
-          }
-        }
-      }
+    .problem-link {
+      font-size: 1.2rem;
+    }
+    .difficulty-badge {
+      font-size: 0.75rem;
     }
   }
   @media only screen and (max-width: 550px) {
