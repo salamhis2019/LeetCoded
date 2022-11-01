@@ -1,5 +1,7 @@
 <template>
-  <div class="results-parent-container flex items-center justify-center">
+  <div
+    class="results-parent-container flex min-h-[504px] flex-col items-center justify-start"
+  >
     <TransitionGroup name="fade">
       <div
         class="results-container min-h-50 mx-8 mt-0 mb-8 box-border flex flex-col gap-2 rounded-xl bg-[#1b1f22] p-4"
