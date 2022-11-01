@@ -157,7 +157,7 @@ function setCurrentProblem(index: any) {
             font-size: 1.2rem;
           }
           .difficulty-badge {
-            font-size: 0.6rem;
+            font-size: 0.75rem;
           }
         }
       }
