@@ -25,7 +25,6 @@ export const useProblemsStore = defineStore("problems", {
       );
       const data = await response.json();
       this.allProblems = data;
-      console.log(data);
       if (data.length === 0) {
         this.fetchData();
       }
