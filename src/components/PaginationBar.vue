@@ -1,6 +1,6 @@
 <template>
   <div
-    class="pagination-container flex justify-center gap-2 pb-8"
+    class="pagination-container flex justify-center gap-2"
     v-if="allProblems.length !== 0"
   >
     <button
