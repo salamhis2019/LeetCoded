@@ -2,19 +2,37 @@
   <div
     class="search-bar-parent-container my-0 mx-8 flex h-36 items-center justify-center"
   >
-    <div
-      class="search-bar-container min-w-300 box-border flex h-12 rounded-xl bg-[#1b1f22] py-2 px-4"
-    >
-      <form class="input-container flex grow">
+    <div class="search-bar-container flex gap-4">
+      <form
+        class="input-container relative w-full min-w-[300px] rounded-lg bg-[#1b1f22]"
+      >
         <input
           v-model="inputText"
-          class="search-bar h-full w-full rounded-xl border-none bg-transparent text-base text-white/90 placeholder-white outline-none"
+          class="search-bar block h-full w-full rounded-lg bg-[#1b1f22] py-3 px-4 text-base text-white/90 placeholder-white duration-100 focus:outline focus:outline-white"
           type="text"
           placeholder="Search..."
           @keydown.enter.prevent="
             searchData(inputText.replace(/\s/g, '').toLowerCase())
           "
         />
+        <button
+          type="submit"
+          class="absolute top-0 right-0 z-20 inline-block border-none bg-transparent py-3.5 px-3"
+        >
+          <svg
+            aria-hidden="true"
+            class="h-5 w-5 text-gray-500 dark:text-gray-400"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </button>
       </form>
       <div class="search-bar-right flex">
         <div
