@@ -4,7 +4,7 @@
   >
     <div class="search-bar-container flex gap-4">
       <form
-        class="input-container relative w-full min-w-[300px] rounded-lg bg-[#1b1f22]"
+        class="input-container relative w-full min-w-[200px] rounded-lg bg-[#1b1f22]"
       >
         <input
           v-model="inputText"
