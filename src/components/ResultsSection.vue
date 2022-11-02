@@ -4,7 +4,7 @@
   >
     <TransitionGroup>
       <img
-        class="h-full w-32"
+        class="mt-40 h-full w-32"
         src="@/assets/loading.svg"
         v-if="dataLoading"
         alt="loading image"
