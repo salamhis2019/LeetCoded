@@ -6,7 +6,7 @@
       <div class="logo-container flex items-center">
         <router-link
           class="router-link flex items-center no-underline duration-200 ease-in-out hover:opacity-80 focus:scale-105 focus:rounded-lg focus:bg-zinc-700 focus:px-4 focus:shadow-lg focus:outline-none"
-          to="/"
+          to="/home"
           @click="logoClicked"
         >
           <h1 class="hero-text text-2xl text-white/90">
