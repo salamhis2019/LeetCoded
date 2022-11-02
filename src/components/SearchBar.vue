@@ -8,7 +8,7 @@
       >
         <input
           v-model="inputText"
-          class="search-bar block h-full w-full rounded-lg bg-[#1b1f22] py-3 px-4 text-base text-white/90 placeholder-white duration-100 focus:outline focus:outline-white"
+          class="search-bar block h-full w-full rounded-lg bg-[#1b1f22] py-2 px-4 text-base text-white/90 placeholder-white duration-100 focus:outline focus:outline-white"
           type="text"
           placeholder="Search..."
           @keydown.enter.prevent="
@@ -17,7 +17,7 @@
         />
         <button
           type="submit"
-          class="absolute top-0 right-0 z-20 inline-block border-none bg-transparent py-3.5 px-3"
+          class="absolute top-0 right-0 z-20 inline-block border-none bg-transparent py-2.5 px-3"
         >
           <svg
             aria-hidden="true"
@@ -39,9 +39,12 @@
           class="sort dropdown relative flex items-center text-base text-white"
           v-click-away="onClickAway"
         >
-          <div class="dropdown-button" @click="showDropdown = !showDropdown">
+          <div
+            class="dropdown-button flex justify-center"
+            @click="showDropdown = !showDropdown"
+          >
             <button
-              class="sort-button ease box-border flex cursor-pointer items-center gap-2 border-none bg-transparent px-1 text-white/90 duration-200 hover:opacity-80 focus:rounded-lg focus:bg-[#353a3e] focus:outline-0"
+              class="sort-button ease box-border flex w-[120px] cursor-pointer items-center justify-between gap-2 rounded-lg border-none bg-[#1b1f22] px-4 py-1 text-white/90 shadow-lg duration-200 hover:opacity-80"
             >
               Filter By
               <i
