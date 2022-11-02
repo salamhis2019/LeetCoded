@@ -1,6 +1,12 @@
 <template>
   <div class="app-wrapper h-full">
-    <router-view></router-view>
+    <router-view v-slot="{ Component, route }">
+      <Transition>
+        <div :key="route.path" class="h-full">
+          <component :is="Component" />
+        </div>
+      </Transition>
+    </router-view>
   </div>
 </template>
 
@@ -16,5 +22,15 @@ body,
     background: white;
     color: black;
   }
+}
+.v-leave-from {
+  display: none;
+}
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+.v-enter-active {
+  transition: opacity 0.5s ease-in-out;
 }
 </style>
