@@ -45,23 +45,19 @@ export const useProblemsStore = defineStore("problems", {
       }
     },
     async searchData(searchText: any) {
+      console.log(searchText);
       this.dataLoading = true;
-      try {
-        const response = await fetch(
-          `http://localhost:3000/problems?param=${searchText}`
-        );
-        const data = await response.json();
-        this.allProblems = data;
-        if (data.length === 0) {
-          this.fetchData();
-        }
-        setTimeout(() => {
-          this.dataLoading = false;
-        }, 1000);
-      } catch (error) {
-        this.dataLoading = false;
-        console.log(error);
+      const filteredItems = this.allProblems.filter((item: any) => {
+        return item.param === searchText;
+      });
+      console.log(filteredItems);
+      this.currentProblems = filteredItems;
+      if (filteredItems.length === 0) {
+        this.fetchData();
       }
+      setTimeout(() => {
+        this.dataLoading = false;
+      }, 1000);
     },
     async filterData(difficulty: any) {
       this.dataLoading = true;
