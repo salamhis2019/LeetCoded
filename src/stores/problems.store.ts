@@ -8,8 +8,6 @@ interface State {
   dataLoading: any;
 }
 
-// let the search bar, filter, and pageload fire the same pinia action. Ensure that the initial search and filter values are null. If the search values are true, filter the values and assign them. When the user searches set the value equal to null. When the user filters keep the value.
-
 export const useProblemsStore = defineStore("problems", {
   state: (): State => {
     return {
