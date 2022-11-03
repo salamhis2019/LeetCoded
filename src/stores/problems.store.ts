@@ -8,6 +8,8 @@ interface State {
   dataLoading: any;
 }
 
+// let the search bar, filter, and pageload fire the same pinia action. Ensure that the initial search and filter values are null. If the search values are true, filter the values and assign them. When the user searches set the value equal to null. When the user filters keep the value.
+
 export const useProblemsStore = defineStore("problems", {
   state: (): State => {
     return {
@@ -19,23 +21,45 @@ export const useProblemsStore = defineStore("problems", {
     };
   },
   actions: {
-    async resolveData(data: any) {
-      const newArr: any = [];
+    async resolveData(data: any, searchText: any, filterValue: any) {
+      let newArr: any = [];
       return new Promise((resolve) => {
+        console.log("filter value: ", filterValue);
         for (const item in data) {
           newArr.push(data[item]);
+        }
+
+        let filteredItems: any;
+
+        if (searchText && searchText !== "") {
+          filteredItems = newArr.filter((item: any) => {
+            return item.param === searchText;
+          });
+          newArr = filteredItems;
+        }
+
+        if (filterValue && filterValue !== "All") {
+          console.log(newArr);
+          const data = newArr.filter((item: any) => {
+            return item.difficulty === filterValue;
+          });
+          newArr = data;
         }
         resolve(newArr);
       });
     },
-    async fetchData() {
+    async fetchData(searchText: any, filterValue: any) {
       this.dataLoading = true;
       try {
         const response = await fetch(
           "https://leetcoded-14a63-default-rtdb.firebaseio.com/problems.json"
         );
         const data = await response.json();
-        const fireBaseArr = await this.resolveData(data);
+        const fireBaseArr = await this.resolveData(
+          data,
+          searchText,
+          filterValue
+        );
         this.allProblems = fireBaseArr;
         setTimeout(() => {
           this.dataLoading = false;
@@ -43,37 +67,6 @@ export const useProblemsStore = defineStore("problems", {
       } catch (error) {
         console.error(error);
       }
-    },
-    async searchData(searchText: any) {
-      console.log(searchText);
-      this.dataLoading = true;
-      const filteredItems = this.allProblems.filter((item: any) => {
-        return item.param === searchText;
-      });
-      console.log(filteredItems);
-      this.currentProblems = filteredItems;
-      if (filteredItems.length === 0) {
-        this.fetchData();
-      }
-      setTimeout(() => {
-        this.dataLoading = false;
-      }, 1000);
-    },
-    async filterData(difficulty: any) {
-      console.log(difficulty);
-      this.dataLoading = true;
-      if (difficulty !== "All") {
-        const data = this.allProblems.filter((item: any) => {
-          return item.difficulty === difficulty;
-        });
-        console.log(data);
-        this.currentProblems = data;
-      } else {
-        this.fetchData();
-      }
-      setTimeout(() => {
-        this.dataLoading = false;
-      }, 1000);
     },
   },
 });
