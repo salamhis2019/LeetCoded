@@ -29,7 +29,7 @@
             </router-link>
             <DifficultyBadge
               :size="'primary'"
-              :color="difficulty.toLowerCase()"
+              :color="difficulty?.toLowerCase()"
             >
               {{ difficulty }}
             </DifficultyBadge>
@@ -62,8 +62,9 @@ const {
   dataLoading,
 } = storeToRefs(problemsStore);
 
-const { fetchData } = problemsStore;
+const { firebaseArr, fetchData } = problemsStore;
 fetchData();
+firebaseArr();
 
 function setCurrentProblem(index: any) {
   currentProblemSolution.value = currentProblems.value[index];
