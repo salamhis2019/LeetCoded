@@ -1,13 +1,10 @@
 <template>
-  <NavBar />
-  <Transition>
-    <div class="mainview-parent-container h-full bg-black" v-if="!showSolution">
-      <SearchBar />
-      <Results />
-      <PaginationBar />
-    </div>
-    <ProblemsSolution v-else />
-  </Transition>
+  <div class="mainview-parent-container h-full bg-black" v-if="!showSolution">
+    <SearchBar />
+    <Results />
+    <PaginationBar />
+  </div>
+  <ProblemsSolution v-else />
 </template>
 
 <script lang="ts" setup>
