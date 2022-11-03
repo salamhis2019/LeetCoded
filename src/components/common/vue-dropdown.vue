@@ -10,7 +10,7 @@
             class="radio-container ease flex w-full items-center gap-2 rounded-md p-0.5 duration-200 hover:text-amber-500"
             v-for="difficulty in options"
             :key="difficulty"
-            @click="filterData(difficulty)"
+            @click="fetchData(null, difficulty)"
           >
             <input
               type="radio"
@@ -38,7 +38,7 @@ import useProblemsStore from "@/stores/problems.store";
 
 defineProps(["options", "displayMenu"]);
 
-const { filterData } = useProblemsStore();
+const { fetchData } = useProblemsStore();
 </script>
 
 <style lang="scss" scoped>

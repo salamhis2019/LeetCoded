@@ -12,7 +12,7 @@
           type="text"
           placeholder="Search..."
           @keydown.enter.prevent="
-            searchData(inputText.replace(/\s/g, '').toLowerCase())
+            fetchData(inputText.replace(/\s/g, '').toLowerCase(), null)
           "
         />
         <button
@@ -65,7 +65,7 @@ import { ref } from "vue";
 import useProblemsStore from "@/stores/problems.store";
 import DropdownMenu from "@/components/common/vue-dropdown.vue";
 
-const { searchData } = useProblemsStore();
+const { fetchData } = useProblemsStore();
 
 const inputText = ref("");
 
