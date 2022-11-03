@@ -1,5 +1,5 @@
 <template>
-  <div class="mainview-parent-container h-full bg-black" v-if="!showSolution">
+  <div class="mainview-parent-container h-full" v-if="!showSolution">
     <SearchBar />
     <Results />
     <PaginationBar />
