@@ -2,7 +2,7 @@
   <div class="app-wrapper h-full">
     <router-view v-slot="{ Component, route }">
       <Transition>
-        <div :key="route.path" class="h-full">
+        <div :key="route.path" class="h-full bg-black">
           <component :is="Component" />
         </div>
       </Transition>
