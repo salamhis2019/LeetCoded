@@ -4,6 +4,7 @@ interface State {
   allProblems: any;
   currentProblems: any;
   currentProblemSolution: any;
+  currentPage: any;
   showSolution: any;
   dataLoading: any;
 }
@@ -14,6 +15,7 @@ export const useProblemsStore = defineStore("problems", {
       allProblems: [],
       currentProblems: [],
       currentProblemSolution: null,
+      currentPage: 1,
       showSolution: false,
       dataLoading: false,
     };
@@ -48,6 +50,7 @@ export const useProblemsStore = defineStore("problems", {
     },
     async fetchData(searchText: any, filterValue: any) {
       this.dataLoading = true;
+      this.currentPage = 1;
       try {
         const response = await fetch(
           "https://leetcoded-14a63-default-rtdb.firebaseio.com/problems.json"

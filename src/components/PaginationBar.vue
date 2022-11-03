@@ -22,7 +22,8 @@ import { storeToRefs } from "pinia";
 
 const problemsStore = ProblemsStore();
 
-const { allProblems, currentProblems }: any = storeToRefs(problemsStore);
+const { allProblems, currentProblems, currentPage }: any =
+  storeToRefs(problemsStore);
 
 const pages = computed(() => {
   if (allProblems.value.length === 0 || undefined || NaN) {
@@ -36,7 +37,6 @@ const pages = computed(() => {
   }
 });
 
-const currentPage = ref<number>(1);
 const pageStart = ref(0);
 const pageEnd = ref(8);
 
@@ -46,7 +46,7 @@ onBeforeUpdate(() => {
   );
 });
 
-watch(currentPage, (newPage, oldPage) => {
+watch(currentPage, (newPage: any, oldPage: any) => {
   if (newPage > oldPage) {
     pageStart.value += (currentPage.value - oldPage) * 8;
     pageEnd.value += (currentPage.value - oldPage) * 8;
