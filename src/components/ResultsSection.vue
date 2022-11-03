@@ -62,9 +62,8 @@ const {
   dataLoading,
 } = storeToRefs(problemsStore);
 
-const { firebaseArr, fetchData } = problemsStore;
+const { fetchData } = problemsStore;
 fetchData();
-firebaseArr();
 
 function setCurrentProblem(index: any) {
   currentProblemSolution.value = currentProblems.value[index];
