@@ -37,9 +37,11 @@
           } in currentProblemSolution.solutions"
           :key="code"
         >
-          <p class="solution-description mb-2">{{ solutionDescription }}</p>
-          <h3 class="solution-title">{{ solutionTitle }}</h3>
-          <div class="code-block-container rounded-xl bg-[#282a35] p-4">
+          <p class="solution-description mb-4 font-normal">
+            {{ solutionDescription }}
+          </p>
+          <h3 class="solution-title text-xl font-bold">{{ solutionTitle }}</h3>
+          <div class="code-block-container mt-4 rounded-xl bg-[#282a35] p-4">
             <code
               class="flex flex-col gap-1 whitespace-pre text-base font-medium"
             >
