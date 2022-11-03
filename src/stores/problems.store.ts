@@ -1,7 +1,15 @@
 import { defineStore } from "pinia";
 
+interface State {
+  allProblems: any;
+  currentProblems: any;
+  currentProblemSolution: any;
+  showSolution: any;
+  dataLoading: any;
+}
+
 export const useProblemsStore = defineStore("problems", {
-  state: () => {
+  state: (): State => {
     return {
       allProblems: [],
       currentProblems: [],
