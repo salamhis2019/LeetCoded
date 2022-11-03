@@ -1,5 +1,6 @@
 <template>
   <div class="app-wrapper h-full">
+    <NavBar />
     <router-view v-slot="{ Component, route }">
       <Transition>
         <div :key="route.path" class="h-full bg-black">
@@ -9,6 +10,10 @@
     </router-view>
   </div>
 </template>
+
+<script lang="ts" setup>
+import NavBar from "@/components/NavBar.vue";
+</script>
 
 <style lang="scss">
 html,
