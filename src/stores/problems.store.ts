@@ -60,24 +60,20 @@ export const useProblemsStore = defineStore("problems", {
       }, 1000);
     },
     async filterData(difficulty: any) {
+      console.log(difficulty);
       this.dataLoading = true;
-      try {
-        if (difficulty !== "All") {
-          const response = await fetch(
-            `http://localhost:3000/problems?difficulty=${difficulty}`
-          );
-          const data = await response.json();
-          this.allProblems = data;
-        } else {
-          this.fetchData();
-        }
-        setTimeout(() => {
-          this.dataLoading = false;
-        }, 1000);
-      } catch (error) {
-        this.dataLoading = false;
-        console.error(error);
+      if (difficulty !== "All") {
+        const data = this.allProblems.filter((item: any) => {
+          return item.difficulty === difficulty;
+        });
+        console.log(data);
+        this.currentProblems = data;
+      } else {
+        this.fetchData();
       }
+      setTimeout(() => {
+        this.dataLoading = false;
+      }, 1000);
     },
   },
 });
