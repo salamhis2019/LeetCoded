@@ -1,6 +1,6 @@
 <template>
   <div
-    class="solutions-parent-container my-12 mx-0 flex items-center justify-center text-white/90"
+    class="solutions-parent-container mx-0 flex h-[calc(100%_-_56px)] items-center justify-center text-white/90"
   >
     <div class="solution-content-container my-0 mx-4">
       <div class="header-content mb-4 flex items-center justify-between">
