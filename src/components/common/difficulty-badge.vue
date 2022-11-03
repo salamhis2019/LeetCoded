@@ -21,10 +21,10 @@ defineProps({
   },
 });
 
-const baseClasses: any = "font-semibold text-black max-[550px]:hidden";
+const baseClasses: any = "font-semibold text-black";
 
 const sizeClasses: any = {
-  primary: "text-base py-1 px-4 rounded-lg",
+  primary: "text-base py-1 px-4 rounded-lg  max-[550px]:hidden",
   secondary: "text-sm py-1 px-3 rounded-md",
 };
 
