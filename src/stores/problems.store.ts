@@ -19,12 +19,24 @@ export const useProblemsStore = defineStore("problems", {
     };
   },
   actions: {
+    async resolveData(data: any) {
+      const newArr: any = [];
+      return new Promise((resolve) => {
+        for (const item in data) {
+          newArr.push(data[item]);
+        }
+        resolve(newArr);
+      });
+    },
     async fetchData() {
       this.dataLoading = true;
       try {
-        const response = await fetch("http://localhost:3000/problems/");
+        const response = await fetch(
+          "https://leetcoded-14a63-default-rtdb.firebaseio.com/problems.json"
+        );
         const data = await response.json();
-        this.allProblems = data;
+        const fireBaseArr = await this.resolveData(data);
+        this.allProblems = fireBaseArr;
         setTimeout(() => {
           this.dataLoading = false;
         }, 1000);
