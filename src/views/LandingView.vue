@@ -16,12 +16,14 @@
             Leetcode Solutions Visualized and journaled for personal use and use
             of others
           </p>
-          <router-link
-            :to="'/solutions'"
-            class="button flex h-10 w-full cursor-pointer items-center justify-between rounded-lg border-none py-0 px-6 text-left text-lg font-semibold text-white/90 no-underline"
-          >
-            View Solutions
-            <i class="fas fa-long-arrow-alt-right" style="font-size: 24px"></i>
+          <router-link :to="'/solutions'" class="button">
+            <span class="text">View Solutions</span>
+            <span class="icon">
+              <i
+                class="fas fa-long-arrow-alt-right"
+                style="font-size: 24px"
+              ></i>
+            </span>
           </router-link>
         </div>
       </div>
@@ -36,10 +38,54 @@
     .content-wrapper {
       .subcontent-container {
         .button {
+          width: 350px;
+          height: 40px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          background: red;
+          border: none;
+          border-radius: 5px;
+          box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
           background: #1b1f22;
-          transition: 0.2s;
+          span {
+            transition: 250ms ease-in-out;
+          }
+          .text {
+            transform: translateX(35px);
+            color: white;
+            font-weight: bold;
+          }
+          .icon {
+            position: absolute;
+            transform: translateX(300px);
+            height: 40px;
+            width: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .fa-long-arrow-alt-right {
+              width: 15px;
+              color: white;
+            }
+          }
           &:hover {
-            box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.54);
+            background: #353a3e;
+            .text {
+              color: transparent;
+            }
+            .icon {
+              width: 150px;
+              border-left: none;
+              transform: translateX(210px);
+            }
+          }
+          &:focus {
+            outline-color: white;
+            outline-width: 0.5px;
+          }
+          &:active {
+            transform: translateX(3px);
           }
         }
       }
