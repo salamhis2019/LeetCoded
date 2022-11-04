@@ -1,6 +1,6 @@
 <template>
   <div
-    class="solutions-parent-container mx-0 flex h-[calc(100%_-_56px)] items-center justify-center text-white/90"
+    class="solutions-parent-container mx-0 flex h-[calc(100%_-_56px)] items-start justify-center pt-12 text-white/90"
   >
     <div class="solution-content-container my-0 mx-4">
       <div class="header-content mb-4 flex items-center justify-between">
@@ -24,10 +24,7 @@
           </router-link>
         </div>
       </div>
-      <div
-        class="solutions-explanation-container rounded-xl bg-[#1b1f22] p-4"
-        v-if="currentProblemSolution.solutions"
-      >
+      <div class="solutions-explanation-container rounded-xl bg-[#1b1f22] p-4">
         <div
           class="solutions-content"
           v-for="{
@@ -45,14 +42,14 @@
             <code
               class="flex flex-col gap-1 whitespace-pre text-base font-medium"
             >
-              <span v-for="line in code" :key="line" class="line">{{
+              <span v-for="line in fullSolution" :key="line" class="line">{{
                 line
               }}</span>
             </code>
           </div>
         </div>
       </div>
-      <div
+      <!-- <div
         class="solution-unavailable-container flex justify-center rounded-xl bg-[#1b1f22]"
         v-else
       >
@@ -68,18 +65,34 @@
             Sorry, this one hasn't been cracked yet...
           </figcaption>
         </figure>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { ref, computed, watch } from "vue";
 import { storeToRefs } from "pinia";
 import useProblemsStore from "@/stores/problems.store";
 import DifficultyBadge from "@/components/common/difficulty-badge.vue";
 
 const problemsStore = useProblemsStore();
 const { currentProblemSolution }: any = storeToRefs(problemsStore);
+
+const solutionArr: any = ref([]);
+
+const fullSolution: any = computed(() => {
+  let lineOfCode: any;
+  currentProblemSolution.value.solution.forEach((item: any) => {
+    lineOfCode = item.replaceAll("*", " ");
+    solutionArr.value.push(lineOfCode);
+  });
+  return solutionArr.value;
+});
+
+console.log(currentProblemSolution.solution);
+
+console.log(fullSolution.value);
 </script>
 
 <style lang="scss" scoped>
