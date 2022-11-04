@@ -24,32 +24,29 @@
           </router-link>
         </div>
       </div>
-      <div class="solutions-explanation-container rounded-xl bg-[#1b1f22] p-4">
-        <div
-          class="solutions-content"
-          v-for="{
-            solutionTitle,
-            solutionDescription,
-            code,
-          } in currentProblemSolution.solutions"
-          :key="code"
-        >
+      <div
+        class="solutions-explanation-container rounded-xl bg-[#1b1f22] p-4"
+        v-if="solution"
+      >
+        <div class="solutions-content">
           <p class="solution-description mb-4 font-normal">
-            {{ solutionDescription }}
+            {{ solution?.solutionDescription }}
           </p>
-          <h3 class="solution-title text-xl font-bold">{{ solutionTitle }}</h3>
+          <h3 class="solution-title text-xl font-bold">
+            {{ solution?.solutionTitle }}
+          </h3>
           <div class="code-block-container mt-4 rounded-xl bg-[#282a35] p-4">
             <code
               class="flex flex-col gap-1 whitespace-pre text-base font-medium"
             >
-              <span v-for="line in fullSolution" :key="line" class="line">{{
-                line
+              <span v-for="line in solution?.code" :key="line" class="line">{{
+                line.replaceAll("*", " ")
               }}</span>
             </code>
           </div>
         </div>
       </div>
-      <!-- <div
+      <div
         class="solution-unavailable-container flex justify-center rounded-xl bg-[#1b1f22]"
         v-else
       >
@@ -65,7 +62,7 @@
             Sorry, this one hasn't been cracked yet...
           </figcaption>
         </figure>
-      </div> -->
+      </div>
     </div>
   </div>
 </template>
@@ -79,20 +76,20 @@ import DifficultyBadge from "@/components/common/difficulty-badge.vue";
 const problemsStore = useProblemsStore();
 const { currentProblemSolution }: any = storeToRefs(problemsStore);
 
-const solutionArr: any = ref([]);
+const solution = ref(currentProblemSolution.value.solution);
 
-const fullSolution: any = computed(() => {
-  let lineOfCode: any;
-  currentProblemSolution.value.solution.forEach((item: any) => {
-    lineOfCode = item.replaceAll("*", " ");
-    solutionArr.value.push(lineOfCode);
-  });
-  return solutionArr.value;
-});
+// const solutionArr: any = ref([]);
 
-console.log(currentProblemSolution.solution);
+// const fullSolution: any = computed(() => {
+//   let lineOfCode: any;
+//   currentProblemSolution.value.solution.forEach((item: any) => {
+//     lineOfCode = item.replaceAll("*", " ");
+//     solutionArr.value.push(lineOfCode);
+//   });
+//   return solutionArr.value;
+// });
 
-console.log(fullSolution.value);
+// console.log(fullSolution.value);
 </script>
 
 <style lang="scss" scoped>
