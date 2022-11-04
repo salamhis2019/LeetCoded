@@ -68,7 +68,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, watch } from "vue";
+import { ref } from "vue";
 import { storeToRefs } from "pinia";
 import useProblemsStore from "@/stores/problems.store";
 import DifficultyBadge from "@/components/common/difficulty-badge.vue";
@@ -77,19 +77,6 @@ const problemsStore = useProblemsStore();
 const { currentProblemSolution }: any = storeToRefs(problemsStore);
 
 const solution = ref(currentProblemSolution.value.solution);
-
-// const solutionArr: any = ref([]);
-
-// const fullSolution: any = computed(() => {
-//   let lineOfCode: any;
-//   currentProblemSolution.value.solution.forEach((item: any) => {
-//     lineOfCode = item.replaceAll("*", " ");
-//     solutionArr.value.push(lineOfCode);
-//   });
-//   return solutionArr.value;
-// });
-
-// console.log(fullSolution.value);
 </script>
 
 <style lang="scss" scoped>
