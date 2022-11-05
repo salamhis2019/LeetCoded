@@ -35,8 +35,8 @@
         </button>
       </form>
       <div class="search-bar-right flex gap-4">
-        <DropdownMenu :menuText="'Sort By'" />
-        <DropdownMenu :menuText="'Filter By'" />
+        <DropdownMenu :menuText="'Sort By'" :icon="'fa fa-unsorted'" />
+        <DropdownMenu :menuText="'Filter By'" :icon="'fa fa-angle-down'" />
       </div>
     </div>
   </div>
