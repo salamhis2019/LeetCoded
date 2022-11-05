@@ -36,9 +36,11 @@
 import { defineProps } from "vue";
 import useProblemsStore from "@/stores/problems.store";
 
-defineProps(["options", "displayMenu"]);
+defineProps(["displayMenu"]);
 
 const { fetchData } = useProblemsStore();
+
+const options = ["Easy", "Medium", "Hard", "All"];
 </script>
 
 <style lang="scss" scoped>

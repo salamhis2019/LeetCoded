@@ -34,27 +34,9 @@
           </svg>
         </button>
       </form>
-      <div class="search-bar-right flex">
-        <div
-          class="sort dropdown relative flex items-center text-base text-white"
-          v-click-away="onClickAway"
-        >
-          <div
-            class="dropdown-button flex justify-center"
-            @click="showDropdown = !showDropdown"
-          >
-            <button
-              class="sort-button ease box-border flex w-[120px] cursor-pointer items-center justify-between gap-2 rounded-lg border-none bg-[#1b1f22] px-4 py-1 text-white/90 shadow-lg duration-200 hover:opacity-80"
-            >
-              Filter By
-              <i
-                class="fa fa-angle-down cursor-pointer text-2xl"
-                :class="{ 'chevron-clicked': showDropdown }"
-              ></i>
-            </button>
-          </div>
-          <DropdownMenu :options="difficulties" :displayMenu="showDropdown" />
-        </div>
+      <div class="search-bar-right flex gap-4">
+        <DropdownMenu :menuText="'Sort By'" />
+        <DropdownMenu :menuText="'Filter By'" />
       </div>
     </div>
   </div>
@@ -63,19 +45,11 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import useProblemsStore from "@/stores/problems.store";
-import DropdownMenu from "@/components/common/vue-dropdown.vue";
+import DropdownMenu from "@/components/common/dropdown-menu.vue";
 
 const { fetchData } = useProblemsStore();
 
 const inputText = ref("");
-
-const showDropdown = ref(false);
-
-const difficulties = ["Easy", "Medium", "Hard", "All"];
-
-function onClickAway() {
-  showDropdown.value = false;
-}
 </script>
 
 <style lang="scss" scoped>
