@@ -3,33 +3,27 @@
     class="dropdown-menu absolute left-0 rounded-lg bg-[#282a35] shadow-lg"
     v-show="displayMenu"
   >
-    <ul flex flex-col gap-3 list-none m-0 p-4>
+    <ul>
       <li class="filter-item flex justify-between gap-4">
-        <form v-if="type === 'sort'" class="container flex flex-col gap-4 p-3">
+        <form v-if="type === 'sort'" class="container flex w-36 flex-col">
           <div
-            class="radio-container ease flex w-full items-center gap-2 rounded-md p-0.5 duration-200 hover:text-amber-500"
-            v-for="difficulty in options"
-            :key="difficulty"
+            class="radio-container ease flex w-full items-center gap-2 rounded-md p-2.5 duration-200 hover:text-amber-500"
+            v-for="options in sortOptions"
+            :key="options"
             @click="sortByFunction"
           >
-            <input
-              type="radio"
-              class="radio cursor-pointer accent-amber-500"
-              :id="difficulty.toLowerCase()"
-              name="difficulty"
-              :value="difficulty.toLowerCase()"
-            />
-            <label
-              class="radio-label cursor-pointer"
-              :for="difficulty.toLowerCase()"
+            <p
+              class="radio-label w-full cursor-pointer"
+              :for="options.toLowerCase()"
             >
-              {{ difficulty }}
-            </label>
+              {{ options }}
+            </p>
+            <i class="material-icons">check</i>
           </div>
         </form>
         <form
           v-if="type === 'filter'"
-          class="container flex flex-col gap-4 p-3"
+          class="container flex flex-col gap-4 p-3 pr-6"
         >
           <div
             class="radio-container ease flex w-full items-center gap-2 rounded-md p-0.5 duration-200 hover:text-amber-500"
@@ -66,6 +60,8 @@ defineProps(["displayMenu", "type"]);
 const { fetchData } = useProblemsStore();
 
 const options = ["Easy", "Medium", "Hard", "All"];
+
+const sortOptions = ["Low to High", "High to Low", "None"];
 
 function sortByFunction() {
   console.log("poop");
