@@ -8,6 +8,7 @@
         <form v-if="type === 'sort'" class="container flex w-36 flex-col">
           <div
             class="radio-container ease flex w-full items-center gap-2 rounded-md p-2.5 duration-200 hover:text-amber-500"
+            :class="{ 'bg-[#353a3e] text-amber-500': id === sortId }"
             v-for="({ text, id }, index) in sortOptions"
             :key="text"
             @click="fetchData(null, text)"
