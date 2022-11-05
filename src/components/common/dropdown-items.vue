@@ -5,7 +5,32 @@
   >
     <ul flex flex-col gap-3 list-none m-0 p-4>
       <li class="filter-item flex justify-between gap-4">
-        <form class="container flex flex-col gap-4 p-3">
+        <form v-if="type === 'sort'" class="container flex flex-col gap-4 p-3">
+          <div
+            class="radio-container ease flex w-full items-center gap-2 rounded-md p-0.5 duration-200 hover:text-amber-500"
+            v-for="difficulty in options"
+            :key="difficulty"
+            @click="sortByFunction"
+          >
+            <input
+              type="radio"
+              class="radio cursor-pointer accent-amber-500"
+              :id="difficulty.toLowerCase()"
+              name="difficulty"
+              :value="difficulty.toLowerCase()"
+            />
+            <label
+              class="radio-label cursor-pointer"
+              :for="difficulty.toLowerCase()"
+            >
+              {{ difficulty }}
+            </label>
+          </div>
+        </form>
+        <form
+          v-if="type === 'filter'"
+          class="container flex flex-col gap-4 p-3"
+        >
           <div
             class="radio-container ease flex w-full items-center gap-2 rounded-md p-0.5 duration-200 hover:text-amber-500"
             v-for="difficulty in options"
@@ -36,11 +61,15 @@
 import { defineProps } from "vue";
 import useProblemsStore from "@/stores/problems.store";
 
-defineProps(["displayMenu"]);
+defineProps(["displayMenu", "type"]);
 
 const { fetchData } = useProblemsStore();
 
 const options = ["Easy", "Medium", "Hard", "All"];
+
+function sortByFunction() {
+  console.log("poop");
+}
 </script>
 
 <style lang="scss" scoped>

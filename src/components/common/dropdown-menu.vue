@@ -14,7 +14,7 @@
         <i :class="icon" class="cursor-pointer text-2xl"></i>
       </button>
     </div>
-    <DropdownItems :displayMenu="showDropdown" />
+    <DropdownItems :displayMenu="showDropdown" :type="type" />
   </div>
 </template>
 
@@ -23,7 +23,7 @@ import { ref, defineProps } from "vue";
 import useProblemsStore from "@/stores/problems.store";
 import DropdownItems from "@/components/common/dropdown-items.vue";
 
-defineProps(["menuText", "icon"]);
+defineProps(["type", "menuText", "icon"]);
 
 const { fetchData } = useProblemsStore();
 
