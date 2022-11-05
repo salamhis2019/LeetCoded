@@ -10,7 +10,7 @@
       <button
         class="sort-button ease box-border flex w-[120px] cursor-pointer items-center justify-between gap-2 rounded-lg border-none bg-[#1b1f22] px-4 py-1 text-white/90 shadow-lg duration-200 hover:opacity-80"
       >
-        Filter By
+        {{ menuText }}
         <i
           class="fa fa-angle-down cursor-pointer text-2xl"
           :class="{ 'chevron-clicked': showDropdown }"
@@ -22,9 +22,11 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
+import { ref, defineProps } from "vue";
 import useProblemsStore from "@/stores/problems.store";
 import DropdownItems from "@/components/common/dropdown-items.vue";
+
+defineProps(["menuText"]);
 
 const { fetchData } = useProblemsStore();
 
