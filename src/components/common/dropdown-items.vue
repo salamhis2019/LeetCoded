@@ -8,17 +8,17 @@
         <form v-if="type === 'sort'" class="container flex w-36 flex-col">
           <div
             class="radio-container ease flex w-full items-center gap-2 rounded-md p-2.5 duration-200 hover:text-amber-500"
-            v-for="options in sortOptions"
-            :key="options"
-            @click="sortByFunction"
+            v-for="({ text, id }, index) in sortOptions"
+            :key="text"
+            @click="fetchData(null, text)"
           >
-            <p
-              class="radio-label w-full cursor-pointer"
-              :for="options.toLowerCase()"
+            <button
+              class="radio-label w-full cursor-pointer text-left"
+              @click="sortByText(id)"
             >
-              {{ options }}
-            </p>
-            <i class="material-icons">check</i>
+              {{ text }}
+            </button>
+            <i v-if="sortId === index" class="material-icons">check</i>
           </div>
         </form>
         <form
@@ -52,7 +52,7 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps } from "vue";
+import { ref, defineProps } from "vue";
 import useProblemsStore from "@/stores/problems.store";
 
 defineProps(["displayMenu", "type"]);
@@ -61,10 +61,25 @@ const { fetchData } = useProblemsStore();
 
 const options = ["Easy", "Medium", "Hard", "All"];
 
-const sortOptions = ["Low to High", "High to Low", "None"];
+const sortId = ref();
 
-function sortByFunction() {
-  console.log("poop");
+const sortOptions = [
+  {
+    text: "Low to High",
+    id: 0,
+  },
+  {
+    text: "High to Low",
+    id: 1,
+  },
+  {
+    text: "None",
+    id: 2,
+  },
+];
+
+function sortByText(id: any) {
+  sortId.value = id;
 }
 </script>
 
