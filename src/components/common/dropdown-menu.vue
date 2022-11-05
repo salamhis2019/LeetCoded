@@ -20,12 +20,9 @@
 
 <script lang="ts" setup>
 import { ref, defineProps } from "vue";
-import useProblemsStore from "@/stores/problems.store";
 import DropdownItems from "@/components/common/dropdown-items.vue";
 
 defineProps(["type", "menuText", "icon"]);
-
-const { fetchData } = useProblemsStore();
 
 const showDropdown = ref(false);
 
