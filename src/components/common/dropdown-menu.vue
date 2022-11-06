@@ -4,7 +4,7 @@
     v-click-away="onClickAway"
   >
     <div
-      class="dropdown-button flex justify-center"
+      class="dropdown-button flex h-full justify-center"
       @click="showDropdown = !showDropdown"
     >
       <button
