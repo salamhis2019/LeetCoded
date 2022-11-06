@@ -29,7 +29,6 @@ export const useProblemsStore = defineStore("problems", {
     ) {
       let newArr: any = [];
       return new Promise((resolve) => {
-        console.log("filter value: ", filterValue);
         for (const item in data) {
           newArr.push(data[item]);
         }
@@ -49,6 +48,18 @@ export const useProblemsStore = defineStore("problems", {
             return item.difficulty === filterValue;
           });
           newArr = data;
+        }
+
+        if (sortBy) {
+          if (sortBy === "Easy to Hard") {
+            newArr.sort(function (a: any, b: any) {
+              return a.difficultyId - b.difficultyId;
+            });
+          } else if (sortBy === "Hard to Easy") {
+            newArr.sort(function (a: any, b: any) {
+              return b.difficultyId - a.difficultyId;
+            });
+          }
         }
         resolve(newArr);
       });
