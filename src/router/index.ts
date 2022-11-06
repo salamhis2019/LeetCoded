@@ -5,7 +5,7 @@ import ProblemSolution from "../components/ProblemSolution.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: "/home",
+    path: "/",
     component: LandingView,
   },
   {
