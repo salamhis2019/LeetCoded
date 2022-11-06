@@ -66,11 +66,11 @@ const sortId = ref();
 
 const sortOptions = [
   {
-    text: "Low to High",
+    text: "Easy to Hard",
     id: 0,
   },
   {
-    text: "High to Low",
+    text: "Hard to Easy",
     id: 1,
   },
   {
