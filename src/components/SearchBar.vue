@@ -37,7 +37,7 @@
       <div class="search-bar-right flex gap-4">
         <DropdownMenu
           :menuText="'Sort By'"
-          :icon="'fa fa-unsorted'"
+          :icon="'fa fa-unsorted text-base'"
           :type="'sort'"
         />
         <DropdownMenu
