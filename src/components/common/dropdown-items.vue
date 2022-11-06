@@ -11,7 +11,7 @@
             :class="{ 'bg-[#353a3e] text-amber-500': id === sortId }"
             v-for="({ text, id }, index) in sortOptions"
             :key="text"
-            @click="fetchData(null, text)"
+            @click="fetchData(null, null, text)"
           >
             <button
               class="radio-label w-full cursor-pointer text-left"
@@ -30,7 +30,7 @@
             class="radio-container ease flex w-full items-center gap-2 rounded-md p-0.5 duration-200 hover:text-amber-500"
             v-for="difficulty in options"
             :key="difficulty"
-            @click="fetchData(null, difficulty)"
+            @click="fetchData(null, difficulty, null)"
           >
             <input
               type="radio"

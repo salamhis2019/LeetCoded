@@ -12,7 +12,7 @@
           type="text"
           placeholder="Search..."
           @keydown.enter.prevent="
-            fetchData(inputText.replace(/\s/g, '').toLowerCase(), null)
+            fetchData(inputText.replace(/\s/g, '').toLowerCase(), null, null)
           "
         />
         <button

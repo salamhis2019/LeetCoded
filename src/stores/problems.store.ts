@@ -21,7 +21,12 @@ export const useProblemsStore = defineStore("problems", {
     };
   },
   actions: {
-    async resolveData(data: any, searchText: any, filterValue: any) {
+    async resolveData(
+      data: any,
+      searchText: any,
+      filterValue: any,
+      sortBy: any
+    ) {
       let newArr: any = [];
       return new Promise((resolve) => {
         console.log("filter value: ", filterValue);
@@ -48,7 +53,7 @@ export const useProblemsStore = defineStore("problems", {
         resolve(newArr);
       });
     },
-    async fetchData(searchText: any, filterValue: any) {
+    async fetchData(searchText: any, filterValue: any, sortBy: any) {
       this.dataLoading = true;
       this.currentPage = 1;
       try {
@@ -59,7 +64,8 @@ export const useProblemsStore = defineStore("problems", {
         const fireBaseArr = await this.resolveData(
           data,
           searchText,
-          filterValue
+          filterValue,
+          sortBy
         );
         this.allProblems = fireBaseArr;
         setTimeout(() => {

@@ -62,7 +62,7 @@ const {
 } = storeToRefs(problemsStore);
 
 const { fetchData } = problemsStore;
-fetchData(null, null);
+fetchData(null, null, null);
 
 function setCurrentProblem(index: any) {
   currentProblemSolution.value = currentProblems.value[index];
