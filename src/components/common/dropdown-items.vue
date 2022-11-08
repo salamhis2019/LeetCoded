@@ -15,7 +15,7 @@
           >
             <button
               class="radio-label w-full cursor-pointer text-left text-sm"
-              @click="sortByText(id)"
+              @click.prevent="sortByText(id)"
             >
               {{ text }}
             </button>
