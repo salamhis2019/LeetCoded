@@ -17,11 +17,14 @@
         />
         <button
           type="submit"
-          class="absolute top-0 right-0 z-20 inline-block border-none bg-transparent py-2.5 px-3 duration-200 focus:scale-105 focus:outline-0"
+          class="absolute top-0 right-0 z-20 inline-block border-none bg-transparent py-2.5 px-3 text-gray-500 duration-200 focus:scale-105 focus:text-amber-500 focus:outline-0 active:translate-x-0.5"
+          @click.prevent="
+            fetchData(inputText.replace(/\s/g, '').toLowerCase(), null, null)
+          "
         >
           <svg
             aria-hidden="true"
-            class="h-5 w-5 text-gray-500 dark:text-gray-400"
+            class="h-5 w-5"
             fill="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
