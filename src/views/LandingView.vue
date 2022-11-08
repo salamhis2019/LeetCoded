@@ -16,7 +16,7 @@
             Leetcode Solutions Visualized and journaled for personal use and use
             of others
           </p>
-          <router-link :to="'/solutions'" class="button">
+          <router-link :to="'/solutions'" class="button duration-200">
             <span class="text">View Solutions</span>
             <span class="icon">
               <i
