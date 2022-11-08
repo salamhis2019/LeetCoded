@@ -14,8 +14,8 @@
             @click="fetchData(null, null, text)"
           >
             <button
-              class="radio-label w-full cursor-pointer text-left"
-              @click="sortByText(id)"
+              class="radio-label w-full cursor-pointer text-left text-sm"
+              @click.prevent="sortByText(id)"
             >
               {{ text }}
             </button>
