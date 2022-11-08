@@ -19,7 +19,9 @@
             >
               {{ text }}
             </button>
-            <i v-if="sortId === index" class="material-icons">check</i>
+            <i v-if="sortId === index" class="material-icons cursor-pointer"
+              >check</i
+            >
           </div>
         </form>
         <form
