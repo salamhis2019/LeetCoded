@@ -17,7 +17,7 @@
         />
         <button
           type="submit"
-          class="absolute top-0 right-0 z-20 inline-block border-none bg-transparent py-2.5 px-3"
+          class="absolute top-0 right-0 z-20 inline-block border-none bg-transparent py-2.5 px-3 duration-200 focus:scale-105 focus:outline-0"
         >
           <svg
             aria-hidden="true"
