@@ -14,7 +14,9 @@
         <i :class="icon" class="cursor-pointer text-2xl"></i>
       </button>
     </div>
-    <DropdownItems :displayMenu="showDropdown" :type="type" />
+    <Transition>
+      <DropdownItems :displayMenu="showDropdown" :type="type" />
+    </Transition>
   </div>
 </template>
 
@@ -39,5 +41,16 @@ function onClickAway() {
 }
 .active {
   transform: rotate(45);
+}
+
+// animations
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.4s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
 }
 </style>
