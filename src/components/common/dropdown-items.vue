@@ -28,7 +28,7 @@
         >
           <div
             class="radio-container ease flex w-full items-center gap-2 rounded-md p-0.5 duration-200 hover:text-amber-500"
-            v-for="difficulty in options"
+            v-for="difficulty in filterOptions"
             :key="difficulty"
             @click="fetchData(null, difficulty, null)"
           >
@@ -60,7 +60,7 @@ defineProps(["displayMenu", "type"]);
 
 const { fetchData } = useProblemsStore();
 
-const options = ["Easy", "Medium", "Hard", "All"];
+const filterOptions = ["Easy", "Medium", "Hard", "All"];
 
 const sortId = ref();
 
