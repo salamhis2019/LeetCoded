@@ -4,7 +4,7 @@
   >
     <div
       v-click-away="hideLoginWindow"
-      class="popup-inner h-[480px] w-96 rounded-xl bg-[#1b1f22] p-6 shadow-lg shadow-black"
+      class="popup-inner w-96 rounded-xl bg-[#1b1f22] p-6 shadow-lg shadow-black"
     >
       <slot />
       <p class="my-6 text-base text-white/80">
@@ -13,6 +13,18 @@
       </p>
       <div class="content-container flex w-full items-start">
         <div class="input-container flex w-full flex-col gap-4">
+          <button
+            class="flex h-12 items-center justify-between rounded-md bg-white/90 px-3 shadow-sm shadow-black duration-100 hover:bg-[#353a3e] hover:text-white active:translate-y-0.5"
+          >
+            <img
+              src="@/assets/google-icon.svg"
+              class="h-full w-10 border-r border-black pr-2"
+              alt=""
+            />
+            <div class="text-container w-full">
+              <p class="font-semibold">Sign in with Google</p>
+            </div>
+          </button>
           <form class="flex flex-col gap-2">
             <label for="email" class="text-white">Email Address:</label>
             <input
