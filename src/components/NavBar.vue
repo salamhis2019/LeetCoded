@@ -21,6 +21,7 @@
         </router-link>
       </div>
       <button
+        @click="showLoginWindow = true"
         class="login-button ease cursor-pointer rounded-lg border-none bg-[#353a3e] py-1.5 px-6 text-base font-semibold text-white/90 duration-200 hover:scale-105 focus:scale-105 focus:shadow-lg focus:outline-0"
       >
         Login
@@ -34,7 +35,7 @@ import useProblemsStore from "@/stores/problems.store";
 import { storeToRefs } from "pinia";
 
 const problemsStore = useProblemsStore();
-const { showSolution } = storeToRefs(problemsStore);
+const { showSolution, showLoginWindow } = storeToRefs(problemsStore);
 
 function logoClicked() {
   showSolution.value = false;

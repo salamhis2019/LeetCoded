@@ -6,6 +6,7 @@ interface State {
   currentProblemSolution: any;
   currentPage: any;
   showSolution: any;
+  showLoginWindow: any;
   dataLoading: any;
 }
 
@@ -17,6 +18,7 @@ export const useProblemsStore = defineStore("problems", {
       currentProblemSolution: null,
       currentPage: 1,
       showSolution: false,
+      showLoginWindow: false,
       dataLoading: false,
     };
   },

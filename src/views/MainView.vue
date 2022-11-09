@@ -1,5 +1,5 @@
 <template>
-  <LoginPage>
+  <LoginPage v-if="showLoginWindow">
     <div class="header flex h-8 justify-between">
       <h2 class="text-xl font-bold text-white">Welcome Back</h2>
       <button
@@ -32,7 +32,7 @@ import { storeToRefs } from "pinia";
 const route = useRoute();
 const problemsStore = useProblemsStore();
 
-const { showSolution } = storeToRefs(problemsStore);
+const { showSolution, showLoginWindow } = storeToRefs(problemsStore);
 
 const param = computed(() => route.params.problem);
 
