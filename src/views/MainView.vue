@@ -1,4 +1,14 @@
 <template>
+  <LoginPage>
+    <div class="header flex h-8 justify-between">
+      <h2 class="text-xl font-bold text-white">Welcome Back</h2>
+      <button
+        class="close-window text-xl text-white duration-100 hover:text-amber-500"
+      >
+        X
+      </button>
+    </div>
+  </LoginPage>
   <div class="mainview-parent-container h-full" v-if="!showSolution">
     <SearchBar />
     <Results />
@@ -13,6 +23,7 @@ import SearchBar from "@/components/SearchBar.vue";
 import Results from "@/components/ResultsSection.vue";
 import ProblemsSolution from "@/components/ProblemSolution.vue";
 import PaginationBar from "@/components/PaginationBar.vue";
+import LoginPage from "@/components/LoginPage.vue";
 import useProblemsStore from "@/stores/problems.store";
 import { computed, watch } from "vue";
 import { useRoute } from "vue-router";
