@@ -6,17 +6,7 @@
     ></div>
   </transition>
   <transition name="fadeUp">
-    <LoginPage v-if="showLoginWindow">
-      <div class="header flex h-8 justify-between">
-        <h2 class="text-xl font-bold text-white">Sign In</h2>
-        <button
-          @click.prevent="showLoginWindow = false"
-          class="close-window text-xl text-white duration-100 hover:text-amber-500"
-        >
-          X
-        </button>
-      </div>
-    </LoginPage>
+    <LoginPage v-if="showLoginWindow" />
   </transition>
   <div class="mainview-parent-container h-full" v-if="!showSolution">
     <SearchBar />
