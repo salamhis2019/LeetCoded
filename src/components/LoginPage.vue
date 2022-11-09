@@ -46,6 +46,14 @@
               class="w-full rounded-lg border-white/80 bg-[#353a3e] p-2 text-white accent-white outline-0 duration-200 focus:border-amber-500 focus:placeholder-transparent"
             />
           </form>
+          <div
+            v-if="renderErrorMessage"
+            class="error-message-container rounded-md border-2 border-black bg-[#F7EAAB] p-2.5 shadow-md shadow-black"
+          >
+            <p class="text-black/80">
+              Please enter valid email address and password
+            </p>
+          </div>
           <button
             @click.prevent="register"
             class="mt-4 flex h-12 justify-center rounded-xl border border-black bg-amber-500 font-bold shadow-md shadow-black duration-150 hover:brightness-125 active:translate-y-1"
@@ -77,6 +85,7 @@ const email = ref<string>("");
 const password = ref<string>("");
 
 const renderLoadingSpinner = ref<boolean>(false);
+const renderErrorMessage = ref<boolean>(false);
 
 const register = () => {
   renderLoadingSpinner.value = true;
@@ -84,13 +93,15 @@ const register = () => {
     .then((data) => {
       setTimeout(() => {
         console.log("successfully registered");
+        showLoginWindow.value = false;
         renderLoadingSpinner.value = false;
-        // showLoginWindow.value = false;
+        renderErrorMessage.value = true;
       }, 1000);
     })
     .catch((error) => {
       showLoginWindow.value = true;
       renderLoadingSpinner.value = false;
+      renderErrorMessage.value = true;
       console.log(error);
     });
 };
