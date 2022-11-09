@@ -28,6 +28,7 @@
           <form class="flex flex-col gap-2">
             <label for="email" class="text-white">Email Address:</label>
             <input
+              v-model="email"
               type="text"
               id="email"
               name="email"
@@ -38,6 +39,7 @@
           <form class="flex flex-col gap-2">
             <label for="password" class="text-white">Password:</label>
             <input
+              v-model="password"
               type="password"
               id="password"
               name="password"
@@ -46,6 +48,7 @@
             />
           </form>
           <button
+            @click="register"
             class="mt-4 rounded-xl border border-black bg-amber-500 p-2.5 font-bold shadow-md shadow-black duration-150 hover:brightness-125 active:translate-y-1"
           >
             Login
@@ -57,11 +60,29 @@
 </template>
 
 <script lang="ts" setup>
+import { ref } from "vue";
 import { storeToRefs } from "pinia";
+import { useRouter } from "vue-router";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import useProblemsStore from "@/stores/problems.store";
 
 const problemsStore = useProblemsStore();
+const router = useRouter();
 const { showLoginWindow } = storeToRefs(problemsStore);
+
+const email = ref<string>("");
+const password = ref<string>("");
+
+const register = () => {
+  createUserWithEmailAndPassword(getAuth(), email.value, password.value)
+    .then((data) => {
+      console.log("successfully registered");
+      router.push("/solutions");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
 
 function hideLoginWindow() {
   showLoginWindow.value = false;
