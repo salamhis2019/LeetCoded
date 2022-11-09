@@ -58,6 +58,14 @@
               Please enter valid email address and password
             </p>
           </div>
+          <div class="signup-container flex gap-1 text-white">
+            <p>Don't have an account yet,</p>
+            <button
+              class="text-[#52b5a3] underline duration-100 hover:brightness-125"
+            >
+              sign up!
+            </button>
+          </div>
           <button
             @click.prevent="register"
             class="mt-4 flex h-12 justify-center rounded-xl border border-black bg-amber-500 font-bold shadow-md shadow-black duration-150 hover:brightness-125 active:translate-y-1"
