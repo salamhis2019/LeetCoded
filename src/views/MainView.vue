@@ -3,6 +3,7 @@
     <div class="header flex h-8 justify-between">
       <h2 class="text-xl font-bold text-white">Welcome Back</h2>
       <button
+        @click.prevent="showLoginWindow = false"
         class="close-window text-xl text-white duration-100 hover:text-amber-500"
       >
         X
