@@ -1,5 +1,11 @@
 <template>
   <transition name="fade">
+    <div
+      v-if="showLoginWindow"
+      class="background-overlay fixed top-0 left-0 right-0 bottom-0 z-50 flex items-center justify-center bg-black/70"
+    ></div>
+  </transition>
+  <transition name="fadeUp">
     <LoginPage v-if="showLoginWindow">
       <div class="header flex h-8 justify-between">
         <h2 class="text-xl font-bold text-white">Welcome Back</h2>
@@ -57,17 +63,6 @@ watch(param, (newParam) => {
     max-width: 700px;
     min-width: 300px;
   }
-}
-
-.v-leave-from {
-  display: none;
-}
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
-}
-.v-enter-active {
-  transition: opacity 0.3s ease-in;
 }
 
 .fade-enter-active,
