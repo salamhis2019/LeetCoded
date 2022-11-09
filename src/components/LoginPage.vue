@@ -1,8 +1,10 @@
 <template>
-  <div class="popup">
+  <div
+    class="popup fixed top-0 left-0 right-0 bottom-0 z-50 flex items-center justify-center"
+  >
     <div
       v-click-away="hideLoginWindow"
-      class="popup-inner h-[480px] w-96 rounded-xl bg-[#1b1f22] shadow-lg shadow-black"
+      class="popup-inner h-[480px] w-96 rounded-xl bg-[#1b1f22] p-6 shadow-lg shadow-black"
     >
       <slot />
       <p class="my-6 text-base text-white/80">
@@ -53,21 +55,3 @@ function hideLoginWindow() {
   showLoginWindow.value = false;
 }
 </script>
-
-<style lang="scss" scoped>
-.popup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 99;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  .popup-inner {
-    padding: 32px;
-  }
-}
-</style>
