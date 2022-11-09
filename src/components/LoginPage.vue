@@ -89,10 +89,12 @@ const renderErrorMessage = ref<boolean>(false);
 
 const register = () => {
   renderLoadingSpinner.value = true;
+  const auth = getAuth();
   createUserWithEmailAndPassword(getAuth(), email.value, password.value)
     .then((data) => {
       setTimeout(() => {
         console.log("successfully registered");
+        console.log(auth.currentUser);
         showLoginWindow.value = false;
         renderLoadingSpinner.value = false;
         renderErrorMessage.value = true;
