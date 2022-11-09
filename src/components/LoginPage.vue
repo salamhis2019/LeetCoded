@@ -13,6 +13,7 @@
       <div class="content-container flex w-full items-start">
         <div class="input-container flex w-full flex-col gap-4">
           <button
+            @click.prevent="signInWithGoogle"
             class="flex h-12 items-center justify-between rounded-md bg-white/90 px-3 shadow-sm shadow-black duration-100 hover:bg-[#353a3e] hover:text-white active:translate-y-0.5"
           >
             <img
@@ -75,7 +76,12 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import { storeToRefs } from "pinia";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
 import useProblemsStore from "@/stores/problems.store";
 
 const problemsStore = useProblemsStore();
@@ -104,6 +110,17 @@ const register = () => {
       showLoginWindow.value = true;
       renderLoadingSpinner.value = false;
       renderErrorMessage.value = true;
+      console.log(error);
+    });
+};
+
+const signInWithGoogle = () => {
+  const provider = new GoogleAuthProvider();
+  signInWithPopup(getAuth(), provider)
+    .then((result) => {
+      console.log(result.user);
+    })
+    .catch((error) => {
       console.log(error);
     });
 };
