@@ -48,10 +48,16 @@
             />
           </form>
           <button
-            @click="register"
-            class="mt-4 rounded-xl border border-black bg-amber-500 p-2.5 font-bold shadow-md shadow-black duration-150 hover:brightness-125 active:translate-y-1"
+            @click.prevent="register"
+            class="mt-4 flex h-12 justify-center rounded-xl border border-black bg-amber-500 font-bold shadow-md shadow-black duration-150 hover:brightness-125 active:translate-y-1"
           >
-            Login
+            <p v-if="!registerLoadingSpinner" class="p-2.5">Login</p>
+            <img
+              v-else
+              src="@/assets/login-loading.svg"
+              alt="loading spinner"
+              class="relative w-12"
+            />
           </button>
         </div>
       </div>
@@ -62,24 +68,29 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import { storeToRefs } from "pinia";
-import { useRouter } from "vue-router";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import useProblemsStore from "@/stores/problems.store";
 
 const problemsStore = useProblemsStore();
-const router = useRouter();
 const { showLoginWindow } = storeToRefs(problemsStore);
 
 const email = ref<string>("");
 const password = ref<string>("");
 
+const registerLoadingSpinner = ref<boolean>(false);
+
 const register = () => {
+  registerLoadingSpinner.value = true;
   createUserWithEmailAndPassword(getAuth(), email.value, password.value)
     .then((data) => {
-      console.log("successfully registered");
-      router.push("/solutions");
+      setTimeout(() => {
+        console.log("successfully registered");
+        registerLoadingSpinner.value = false;
+        showLoginWindow.value = false;
+      }, 1000);
     })
     .catch((error) => {
+      showLoginWindow.value = true;
       console.log(error);
     });
 };
