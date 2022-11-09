@@ -5,7 +5,15 @@
     <div
       class="popup-inner w-96 rounded-xl bg-[#1b1f22] p-6 shadow-lg shadow-black"
     >
-      <slot />
+      <div class="header flex h-8 justify-between">
+        <h2 class="text-xl font-bold text-white">Sign In</h2>
+        <button
+          @click.prevent="showLoginWindow = false"
+          class="close-window text-xl text-white duration-100 hover:text-amber-500"
+        >
+          X
+        </button>
+      </div>
       <p class="my-6 text-base text-white/80">
         Create an account and track your progress on hundreds of leetcode
         problems all solved in JavaScript from one place!
@@ -25,25 +33,20 @@
               <p class="font-semibold">Sign in with Google</p>
             </div>
           </button>
-          <form class="flex flex-col gap-2">
-            <label for="email" class="text-white">Email Address:</label>
+          <form
+            v-for="{ id, placeholder } in inputFields"
+            :key="id"
+            class="flex flex-col gap-2"
+          >
+            <label for="password" class="text-white">{{
+              id[0].toUpperCase() + id.substring(1) + ":"
+            }}</label>
             <input
-              v-model="email"
-              type="text"
-              id="email"
-              name="email"
-              placeholder="Email..."
-              class="w-full rounded-lg border-white/80 bg-[#353a3e] p-2 text-white accent-white outline-0 duration-200 focus:border-amber-500 focus:placeholder-transparent"
-            />
-          </form>
-          <form class="flex flex-col gap-2">
-            <label for="password" class="text-white">Password:</label>
-            <input
-              v-model="password"
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Password..."
+              :v-model="id"
+              :type="id"
+              :id="id"
+              :name="id"
+              :placeholder="placeholder"
               class="w-full rounded-lg border-white/80 bg-[#353a3e] p-2 text-white accent-white outline-0 duration-200 focus:border-amber-500 focus:placeholder-transparent"
             />
           </form>
@@ -89,6 +92,17 @@ const { showLoginWindow } = storeToRefs(problemsStore);
 
 const email = ref<string>("");
 const password = ref<string>("");
+
+const inputFields = [
+  {
+    id: "email",
+    placeholder: "Email...",
+  },
+  {
+    id: "password",
+    placeholder: "Password...",
+  },
+];
 
 const renderLoadingSpinner = ref<boolean>(false);
 const renderErrorMessage = ref<boolean>(false);
