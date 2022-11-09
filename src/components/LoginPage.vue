@@ -3,8 +3,7 @@
     class="popup fixed top-0 left-0 right-0 bottom-0 z-50 flex items-center justify-center"
   >
     <div
-      v-click-away="hideLoginWindow"
-      class="popup-inner h-[510px] w-96 rounded-xl bg-[#1b1f22] p-6 shadow-lg shadow-black"
+      class="popup-inner w-96 rounded-xl bg-[#1b1f22] p-6 shadow-lg shadow-black"
     >
       <slot />
       <p class="my-6 text-base text-white/80">
@@ -96,6 +95,7 @@ const register = () => {
 };
 
 function hideLoginWindow() {
+  console.log("this function fired");
   showLoginWindow.value = false;
 }
 </script>
