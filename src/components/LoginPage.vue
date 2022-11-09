@@ -4,7 +4,7 @@
   >
     <div
       v-click-away="hideLoginWindow"
-      class="popup-inner w-96 rounded-xl bg-[#1b1f22] p-6 shadow-lg shadow-black"
+      class="popup-inner h-[510px] w-96 rounded-xl bg-[#1b1f22] p-6 shadow-lg shadow-black"
     >
       <slot />
       <p class="my-6 text-base text-white/80">
@@ -86,7 +86,7 @@ const register = () => {
       setTimeout(() => {
         console.log("successfully registered");
         registerLoadingSpinner.value = false;
-        showLoginWindow.value = false;
+        // showLoginWindow.value = false;
       }, 1000);
     })
     .catch((error) => {
