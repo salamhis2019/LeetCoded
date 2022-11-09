@@ -1,0 +1,60 @@
+<template>
+  <div class="popup">
+    <div
+      class="popup-inner h-[480px] w-96 rounded-xl bg-[#1b1f22] shadow-lg shadow-black"
+    >
+      <slot />
+      <p class="my-6 text-base text-white/80">
+        Create an account and track your progress on hundreds of leetcode
+        problems all solved in JavaScript from one place!
+      </p>
+      <div class="content-container flex w-full items-start">
+        <div class="input-container flex w-full flex-col gap-4">
+          <form class="flex flex-col gap-2">
+            <label for="email" class="text-white">Email Address:</label>
+            <input
+              type="text"
+              id="email"
+              name="email"
+              placeholder="Email..."
+              class="w-full rounded-lg border-white/80 bg-[#353a3e] p-2 text-white accent-white outline-0 duration-200 focus:border-amber-500 focus:placeholder-transparent"
+            />
+          </form>
+          <form class="flex flex-col gap-2">
+            <label for="password" class="text-white">Password:</label>
+            <input
+              type="text"
+              id="password"
+              name="password"
+              placeholder="Password..."
+              class="w-full rounded-lg border-white/80 bg-[#353a3e] p-2 text-white accent-white outline-0 duration-200 focus:border-amber-500 focus:placeholder-transparent"
+            />
+          </form>
+          <button
+            class="mt-4 rounded-xl border border-black bg-amber-500 p-2.5 font-bold shadow-md shadow-black duration-150 hover:brightness-125 active:translate-y-1"
+          >
+            Login
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style lang="scss" scoped>
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .popup-inner {
+    padding: 32px;
+  }
+}
+</style>
