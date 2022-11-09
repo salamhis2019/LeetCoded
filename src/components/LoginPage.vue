@@ -1,6 +1,7 @@
 <template>
   <div class="popup">
     <div
+      v-click-away="hideLoginWindow"
       class="popup-inner h-[480px] w-96 rounded-xl bg-[#1b1f22] shadow-lg shadow-black"
     >
       <slot />
@@ -23,7 +24,7 @@
           <form class="flex flex-col gap-2">
             <label for="password" class="text-white">Password:</label>
             <input
-              type="text"
+              type="password"
               id="password"
               name="password"
               placeholder="Password..."
@@ -40,6 +41,18 @@
     </div>
   </div>
 </template>
+
+<script lang="ts" setup>
+import { storeToRefs } from "pinia";
+import useProblemsStore from "@/stores/problems.store";
+
+const problemsStore = useProblemsStore();
+const { showLoginWindow } = storeToRefs(problemsStore);
+
+function hideLoginWindow() {
+  showLoginWindow.value = false;
+}
+</script>
 
 <style lang="scss" scoped>
 .popup {
