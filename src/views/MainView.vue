@@ -1,15 +1,17 @@
 <template>
-  <LoginPage v-if="showLoginWindow">
-    <div class="header flex h-8 justify-between">
-      <h2 class="text-xl font-bold text-white">Welcome Back</h2>
-      <button
-        @click.prevent="showLoginWindow = false"
-        class="close-window text-xl text-white duration-100 hover:text-amber-500"
-      >
-        X
-      </button>
-    </div>
-  </LoginPage>
+  <transition name="fade">
+    <LoginPage v-if="showLoginWindow">
+      <div class="header flex h-8 justify-between">
+        <h2 class="text-xl font-bold text-white">Welcome Back</h2>
+        <button
+          @click.prevent="showLoginWindow = false"
+          class="close-window text-xl text-white duration-100 hover:text-amber-500"
+        >
+          X
+        </button>
+      </div>
+    </LoginPage>
+  </transition>
   <div class="mainview-parent-container h-full" v-if="!showSolution">
     <SearchBar />
     <Results />
@@ -66,5 +68,15 @@ watch(param, (newParam) => {
 }
 .v-enter-active {
   transition: opacity 0.3s ease-in;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
