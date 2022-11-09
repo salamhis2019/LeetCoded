@@ -5,81 +5,44 @@
     <div
       class="popup-inner w-96 rounded-xl bg-[#1b1f22] p-6 shadow-lg shadow-black"
     >
-      <div class="header flex h-8 justify-between">
-        <h2 class="text-xl font-bold text-white">Sign In</h2>
-        <button
-          @click.prevent="showLoginWindow = false"
-          class="close-window text-xl text-white duration-100 hover:text-amber-500"
-        >
-          X
-        </button>
-      </div>
-      <p class="my-6 text-base text-white/80">
-        Create an account and track your progress on hundreds of leetcode
-        problems all solved in JavaScript from one place!
-      </p>
-      <div class="content-container flex w-full items-start">
-        <div class="input-container flex w-full flex-col gap-4">
+      <LoginModal
+        v-if="showSignIn"
+        :headerText="'Sign In'"
+        :buttonFunction="signIn"
+        :buttonText="'Sign In'"
+        :signInWithGoogle="signInWithGoogle"
+        :renderLoadingSpinner="renderLoadingSpinner"
+        :renderErrorMessage="renderErrorMessage"
+      >
+        <div class="signup-container flex gap-1 text-white">
+          <p>Don't have an account yet,</p>
           <button
-            @click.prevent="signInWithGoogle"
-            class="flex h-12 items-center justify-between rounded-md bg-white/90 px-3 shadow-sm shadow-black duration-100 hover:bg-[#353a3e] hover:text-white active:translate-y-0.5"
+            @click.prevent="showSignIn = false"
+            class="text-[#52b5a3] underline duration-100 hover:brightness-125"
           >
-            <img
-              src="@/assets/google-icon.svg"
-              class="h-full w-10 border-r border-black pr-2"
-              alt=""
-            />
-            <div class="text-container w-full">
-              <p class="font-semibold">Sign in with Google</p>
-            </div>
-          </button>
-          <form
-            v-for="{ id, placeholder } in inputFields"
-            :key="id"
-            class="flex flex-col gap-2"
-          >
-            <label for="password" class="text-white">{{
-              id[0].toUpperCase() + id.substring(1) + ":"
-            }}</label>
-            <input
-              :v-model="id"
-              :type="id"
-              :id="id"
-              :name="id"
-              :placeholder="placeholder"
-              class="w-full rounded-lg border-white/80 bg-[#353a3e] p-2 text-white accent-white outline-0 duration-200 focus:border-amber-500 focus:placeholder-transparent"
-            />
-          </form>
-          <div
-            v-if="renderErrorMessage"
-            class="error-message-container rounded-md border-2 border-black bg-[#F7EAAB] p-2.5 shadow-md shadow-black"
-          >
-            <p class="text-black/80">
-              Please enter valid email address and password
-            </p>
-          </div>
-          <div class="signup-container flex gap-1 text-white">
-            <p>Don't have an account yet,</p>
-            <button
-              class="text-[#52b5a3] underline duration-100 hover:brightness-125"
-            >
-              sign up!
-            </button>
-          </div>
-          <button
-            @click.prevent="register"
-            class="mt-4 flex h-12 justify-center rounded-xl border border-black bg-amber-500 font-bold shadow-md shadow-black duration-150 hover:brightness-125 active:translate-y-1"
-          >
-            <p v-if="!renderLoadingSpinner" class="p-2.5">Login</p>
-            <img
-              v-else
-              src="@/assets/login-loading.svg"
-              alt="loading spinner"
-              class="relative w-12"
-            />
+            sign up!
           </button>
         </div>
-      </div>
+      </LoginModal>
+      <LoginModal
+        v-else
+        :headerText="'Create Account'"
+        :buttonFunction="register"
+        :buttonText="'Create Account'"
+        :signInWithGoogle="signInWithGoogle"
+        :renderLoadingSpinner="renderLoadingSpinner"
+        :renderErrorMessage="renderErrorMessage"
+      >
+        <div class="signup-container flex gap-1 text-white">
+          <p>Already have an account?</p>
+          <button
+            @click="showSignIn = true"
+            class="text-[#52b5a3] underline duration-100 hover:brightness-125"
+          >
+            Sign In!
+          </button>
+        </div>
+      </LoginModal>
     </div>
   </div>
 </template>
@@ -90,10 +53,12 @@ import { storeToRefs } from "pinia";
 import {
   getAuth,
   createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
 import useProblemsStore from "@/stores/problems.store";
+import LoginModal from "@/components/common/login-modal.vue";
 
 const problemsStore = useProblemsStore();
 const { showLoginWindow } = storeToRefs(problemsStore);
@@ -101,24 +66,37 @@ const { showLoginWindow } = storeToRefs(problemsStore);
 const email = ref<string>("");
 const password = ref<string>("");
 
-const inputFields = [
-  {
-    id: "email",
-    placeholder: "Email...",
-  },
-  {
-    id: "password",
-    placeholder: "Password...",
-  },
-];
-
 const renderLoadingSpinner = ref<boolean>(false);
 const renderErrorMessage = ref<boolean>(false);
+const showSignIn = ref<boolean>(true);
 
 const register = () => {
+  console.log("register function fired");
   renderLoadingSpinner.value = true;
   const auth = getAuth();
   createUserWithEmailAndPassword(getAuth(), email.value, password.value)
+    .then((data) => {
+      setTimeout(() => {
+        console.log("successfully registered");
+        console.log(auth.currentUser);
+        showLoginWindow.value = false;
+        renderLoadingSpinner.value = false;
+        renderErrorMessage.value = true;
+      }, 1000);
+    })
+    .catch((error) => {
+      showLoginWindow.value = true;
+      renderLoadingSpinner.value = false;
+      renderErrorMessage.value = true;
+      console.log(error);
+    });
+};
+
+const signIn = () => {
+  console.log("sign in function fired");
+  renderLoadingSpinner.value = true;
+  const auth = getAuth();
+  signInWithEmailAndPassword(getAuth(), email.value, password.value)
     .then((data) => {
       setTimeout(() => {
         console.log("successfully registered");
@@ -146,9 +124,4 @@ const signInWithGoogle = () => {
       console.log(error);
     });
 };
-
-function hideLoginWindow() {
-  console.log("this function fired");
-  showLoginWindow.value = false;
-}
 </script>
