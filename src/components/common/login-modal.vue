@@ -27,6 +27,31 @@
           <p class="font-semibold">Sign in with Google</p>
         </div>
       </button>
+      <div class="name-info-container flex w-full gap-4">
+        <form class="flex w-full flex-col gap-2">
+          <label for="email" class="text-white">First Name:</label>
+          <input
+            v-model="firstName"
+            type="firstName"
+            id="firstName"
+            name="firstName"
+            placeholder="First Name"
+            class="w-full rounded-lg border-white/80 bg-[#353a3e] p-2 text-white accent-white outline-0 duration-200 focus:border-amber-500 focus:placeholder-transparent"
+          />
+        </form>
+        <form class="flex w-full flex-col gap-2">
+          <label for="email" class="text-white">Last Name:</label>
+          <input
+            v-model="lastName"
+            type="lastName"
+            id="lastName"
+            name="lastName"
+            placeholder="Last Name"
+            class="w-full rounded-lg border-white/80 bg-[#353a3e] p-2 text-white accent-white outline-0 duration-200 focus:border-amber-500 focus:placeholder-transparent"
+          />
+        </form>
+      </div>
+      <!-- Break here -->
       <form class="flex flex-col gap-2">
         <label for="email" class="text-white">Email:</label>
         <input
@@ -59,7 +84,7 @@
       </div>
       <slot></slot>
       <button
-        @click.prevent="buttonFunction(email, password)"
+        @click.prevent="buttonFunction(email, password, fullName)"
         class="mt-4 flex h-12 justify-center rounded-xl border border-black bg-amber-500 font-bold shadow-md shadow-black duration-150 hover:brightness-125 active:translate-y-1"
       >
         <p v-if="!renderLoadingSpinner" class="p-2.5">{{ buttonText }}</p>
@@ -84,6 +109,9 @@ const { showLoginWindow } = storeToRefs(problemsStore);
 
 const email = ref("");
 const password = ref("");
+const firstName = ref("");
+const lastName = ref("");
+const fullName = ref(lastName.value + firstName.value);
 
 defineProps([
   "headerText",
