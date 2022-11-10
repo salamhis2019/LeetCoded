@@ -75,7 +75,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, computed } from "vue";
 import { storeToRefs } from "pinia";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import useProblemsStore from "@/stores/problems.store";
@@ -83,7 +83,8 @@ import DropdownItems from "@/components/common/dropdown-items.vue";
 
 const problemsStore = useProblemsStore();
 const { fetchData } = problemsStore;
-const { showSolution, showLoginWindow } = storeToRefs(problemsStore);
+const { showSolution, showLoginWindow, currentUser } =
+  storeToRefs(problemsStore);
 
 const isLoggedIn = ref(false);
 const showDropdown = ref<boolean>(false);
@@ -103,9 +104,9 @@ const handleDropdown = () => {
   showDropdown.value = false;
 };
 
-const currentUser = ref<any>("");
 let auth: any;
 onMounted(() => {
+  console.log("mounted fired");
   auth = getAuth();
   onAuthStateChanged(auth, (user) => {
     if (user) {

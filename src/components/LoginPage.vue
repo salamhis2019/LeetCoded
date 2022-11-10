@@ -66,14 +66,19 @@ import useProblemsStore from "@/stores/problems.store";
 import LoginModal from "@/components/common/login-modal.vue";
 
 const problemsStore = useProblemsStore();
-const { showLoginWindow } = storeToRefs(problemsStore);
+const { showLoginWindow, currentUser } = storeToRefs(problemsStore);
 
 const errorMessage = ref("");
 const renderLoadingSpinner = ref<boolean>(false);
 const renderErrorMessage = ref<boolean>(false);
 const showSignIn = ref<boolean>(true);
 
-const register = async (email: any, password: any, name: any) => {
+const register = async (
+  email: any,
+  password: any,
+  firstName: any,
+  lastName: any
+) => {
   console.log("register function fired");
   renderLoadingSpinner.value = true;
   const auth = getAuth();
@@ -86,13 +91,11 @@ const register = async (email: any, password: any, name: any) => {
         renderLoadingSpinner.value = false;
         renderErrorMessage.value = true;
       }, 0);
-    })
-    .then(() => {
-      console.log(auth.currentUser);
       updateProfile(auth.currentUser, {
-        displayName: name,
+        displayName: firstName + " " + lastName,
       }).then(() => {
-        console.log(auth.currentUser);
+        console.log(auth.currentUser?.displayName);
+        currentUser.value = firstName + " " + lastName;
       });
     })
     .catch((error) => {
@@ -122,8 +125,7 @@ const register = async (email: any, password: any, name: any) => {
     });
 };
 
-const signIn = (email: any, password: any, fullName: any) => {
-  console.log("sign in function fired");
+const signIn = (email: any, password: any) => {
   renderLoadingSpinner.value = true;
   const auth = getAuth();
   signInWithEmailAndPassword(getAuth(), email, password)

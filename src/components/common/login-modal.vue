@@ -83,7 +83,7 @@
       </div>
       <slot></slot>
       <button
-        @click.prevent="buttonFunction(email, password, fullName)"
+        @click.prevent="buttonFunction(email, password, firstName, lastName)"
         class="mt-4 flex h-12 justify-center rounded-xl border border-black bg-amber-500 font-bold shadow-md shadow-black duration-150 hover:brightness-125 active:translate-y-1"
       >
         <p v-if="!renderLoadingSpinner" class="p-2.5">{{ buttonText }}</p>
@@ -110,7 +110,6 @@ const email = ref("");
 const password = ref("");
 const firstName = ref("");
 const lastName = ref("");
-const fullName = ref(lastName.value + firstName.value);
 
 defineProps([
   "showSignIn",
