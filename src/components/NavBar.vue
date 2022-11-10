@@ -79,6 +79,7 @@ import useProblemsStore from "@/stores/problems.store";
 import DropdownItems from "@/components/common/dropdown-items.vue";
 
 const problemsStore = useProblemsStore();
+const { fetchData } = problemsStore;
 const { showSolution, showLoginWindow } = storeToRefs(problemsStore);
 
 const isLoggedIn = ref(false);
@@ -91,6 +92,7 @@ function logoClicked() {
 const handleSignout = () => {
   signOut(auth).then(() => {
     console.log("signed out");
+    fetchData(null, null, null);
   });
 };
 
