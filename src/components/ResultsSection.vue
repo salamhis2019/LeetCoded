@@ -16,7 +16,7 @@
         <div
           v-for="({ name, param, difficulty }, index) in currentProblems"
           :key="index"
-          class="problem-card min-h-12 box-border flex items-center justify-between rounded-lg bg-[#353a3e] py-2 px-6"
+          class="problem-card min-h-12 box-border flex items-center justify-between rounded-lg bg-[#353a3e] py-2.5 px-6"
           :class="{ 'bg-transparent': index % 2 !== 0 }"
         >
           <div
