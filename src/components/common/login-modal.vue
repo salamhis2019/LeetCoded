@@ -21,7 +21,7 @@
         <img
           src="@/assets/google-icon.svg"
           class="h-full w-10 border-r border-black pr-2"
-          alt=""
+          alt="google sign in icon"
         />
         <div class="text-container w-full">
           <p class="font-semibold">Sign in with Google</p>
