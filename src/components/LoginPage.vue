@@ -3,7 +3,7 @@
     class="popup fixed top-0 left-0 right-0 bottom-0 z-50 flex items-center justify-center"
   >
     <div
-      class="popup-inner w-[600px] rounded-xl bg-[#1b1f22] p-6 shadow-lg shadow-black"
+      class="popup-inner mx-2 w-[600px] rounded-xl bg-[#1b1f22] p-6 shadow-lg shadow-black"
     >
       <LoginModal
         v-if="showSignIn"
