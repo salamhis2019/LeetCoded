@@ -19,10 +19,7 @@
           <router-link :to="'/solutions'" class="button duration-200">
             <span class="text">View Solutions</span>
             <span class="icon">
-              <i
-                class="fas fa-long-arrow-alt-right"
-                style="font-size: 24px"
-              ></i>
+              <img class="w-5" src="@/assets/double-arrow.svg" alt="" />
             </span>
           </router-link>
         </div>
