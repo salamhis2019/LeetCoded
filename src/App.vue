@@ -1,5 +1,5 @@
 <template>
-  <div class="app-wrapper h-full bg-black">
+  <div class="app-wrapper min-h-full bg-black">
     <NavBar />
     <router-view v-slot="{ Component, route }">
       <Transition>
