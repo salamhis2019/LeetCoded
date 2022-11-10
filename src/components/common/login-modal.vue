@@ -122,15 +122,4 @@ defineProps([
   "renderErrorMessage",
   "errorMessage",
 ]);
-
-const inputFields = [
-  {
-    id: "email",
-    placeholder: "Email...",
-  },
-  {
-    id: "password",
-    placeholder: "Password...",
-  },
-];
 </script>
