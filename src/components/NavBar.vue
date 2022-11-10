@@ -1,7 +1,7 @@
 <template>
   <div class="nav-parent-container h-14 bg-[#1b1f22]">
     <nav
-      class="nav-container flex h-full items-center justify-between gap-2 py-0 px-12 max-[450px]:px-8"
+      class="nav-container flex h-full items-center justify-between gap-2 py-0 px-12 max-[540px]:px-8"
     >
       <div class="logo-container flex items-center">
         <router-link
@@ -11,7 +11,7 @@
         >
           <h1 class="hero-text text-2xl text-white/90">
             <span
-              class="leetcoded-text flex items-center gap-2 font-semibold italic max-[450px]:text-xl"
+              class="leetcoded-text flex items-center gap-2 font-semibold italic max-[540px]:text-xl"
               >LeetCoded
               <span class="code-brackets 4xl font-medium text-amber-500"
                 >&lt;></span
@@ -36,7 +36,7 @@
           @click="showDropdown = !showDropdown"
         >
           <button class="flex items-center gap-2 text-white">
-            <span class="max-[450px]:hidden">Hello, </span
+            <span class="max-[540px]:hidden">Hello, </span
             ><span class="font-bold italic">{{ currentUser }}</span>
           </button>
           <i
@@ -53,7 +53,7 @@
             class="submenu-parent-container absolute top-[100%] translate-y-2 shadow-lg shadow-black"
           >
             <div
-              class="submenu w-48 rounded-md bg-[#282a35] p-2.5 max-[450px]:w-40"
+              class="submenu w-48 rounded-md bg-[#282a35] p-2.5 max-[540px]:w-40"
             >
               <div class="menu-item">
                 <button
@@ -65,7 +65,7 @@
               </div>
             </div>
             <div
-              class="triUp absolute top-[-29px] left-[150px] h-0 w-0 border-[15px] border-t-transparent border-l-transparent border-r-transparent border-b-[#282a35] max-[450px]:left-[120px]"
+              class="triUp absolute top-[-29px] left-[150px] h-0 w-0 border-[15px] border-t-transparent border-l-transparent border-r-transparent border-b-[#282a35] max-[540px]:left-[120px]"
             ></div>
           </div>
         </Transition>

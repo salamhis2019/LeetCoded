@@ -1,8 +1,8 @@
 <template>
   <div
-    class="search-bar-parent-container my-0 mx-8 flex h-36 items-center justify-center max-[450px]:mb-8 max-[450px]:pt-8"
+    class="search-bar-parent-container my-0 mx-8 flex h-36 items-center justify-center max-[540px]:h-44"
   >
-    <div class="search-bar-container flex gap-4 max-[450px]:flex-col">
+    <div class="search-bar-container flex gap-4 max-[540px]:flex-col">
       <form
         class="input-container relative h-10 w-full min-w-[200px] rounded-lg bg-[#1b1f22]"
       >
@@ -76,12 +76,6 @@ const inputText = ref("");
         }
       }
     }
-  }
-}
-
-@media only screen and (max-width: 450px) {
-  .search-bar-parent-container {
-    height: 150px;
   }
 }
 </style>

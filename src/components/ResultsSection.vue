@@ -22,7 +22,7 @@
           <div class="problem-card-left flex items-center gap-4">
             <router-link
               :to="`/solutions/${param}`"
-              class="problem-link m-0 text-lg font-semibold text-white/90 no-underline duration-200 hover:text-amber-500 focus:text-amber-500 focus:shadow-md focus:outline-0 max-[450px]:text-xs"
+              class="problem-link m-0 text-lg font-semibold text-white/90 no-underline duration-200 hover:text-amber-500 focus:text-amber-500 focus:shadow-md focus:outline-0 max-[540px]:text-xs"
               @click="setCurrentProblem(index)"
             >
               {{ name }}
