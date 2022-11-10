@@ -1,7 +1,7 @@
 <template>
   <div class="nav-parent-container h-14 bg-[#1b1f22]">
     <nav
-      class="nav-container flex h-full items-center justify-between py-0 px-12"
+      class="nav-container flex h-full items-center justify-between gap-2 py-0 px-12 max-[450px]:px-8"
     >
       <div class="logo-container flex items-center">
         <router-link
@@ -11,7 +11,7 @@
         >
           <h1 class="hero-text text-2xl text-white/90">
             <span
-              class="leetcoded-text flex items-center gap-2 font-semibold italic"
+              class="leetcoded-text flex items-center gap-2 font-semibold italic max-[450px]:text-xl"
               >LeetCoded
               <span class="code-brackets 4xl font-medium text-amber-500"
                 >&lt;></span
