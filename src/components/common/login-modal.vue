@@ -51,7 +51,6 @@
           />
         </form>
       </div>
-      <!-- Break here -->
       <form class="flex flex-col gap-2">
         <label for="email" class="text-white">Email:</label>
         <input
