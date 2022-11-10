@@ -2,7 +2,7 @@
   <div
     class="solutions-parent-container mx-0 flex h-[calc(100%_-_56px)] items-start justify-center pt-12 text-white/90"
   >
-    <div class="solution-content-container my-0 mx-4">
+    <div class="solution-content-container my-0 mx-4 max-[540px]:w-60">
       <div class="header-content mb-4 flex items-center justify-between">
         <div class="header-left flex items-center gap-4">
           <h3 class="m-0 text-2xl font-bold">
@@ -25,7 +25,7 @@
         </div>
       </div>
       <div
-        class="solutions-explanation-container rounded-xl bg-[#1b1f22] p-4"
+        class="solutions-explanation-container rounded-xl bg-[#1b1f22] p-5"
         v-if="solution"
       >
         <div class="solutions-content">
@@ -37,11 +37,15 @@
           </h3>
           <div class="code-block-container mt-4 rounded-xl bg-[#282a35] p-4">
             <code
-              class="flex flex-col gap-1 whitespace-pre text-base font-medium"
+              class="flex flex-col gap-1 whitespace-pre break-words break-all text-base font-medium max-[540px]:max-w-[350px]"
             >
-              <span v-for="line in solution?.code" :key="line" class="line">{{
-                line.replaceAll("*", " ")
-              }}</span>
+              <p
+                v-for="line in solution?.code"
+                :key="line"
+                class="line break-words break-all"
+              >
+                {{ line.replaceAll("*", " ") }}
+              </p>
             </code>
           </div>
         </div>
@@ -124,7 +128,6 @@ const solution = ref(currentProblemSolution.value.solution);
     }
     .solutions-explanation-container {
       margin-top: 1.5rem;
-      padding: 0.5rem;
       .solutions-content {
         h3 {
           font-size: 1rem;
