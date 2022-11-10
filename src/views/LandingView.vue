@@ -6,8 +6,8 @@
           Its All
           <span class="leetcoded-text font-semibold italic"
             >LeetCoded
-            <span class="code-brackets font-black text-amber-500"
-              >&lt; / ></span
+            <span class="code-brackets font-base text-amber-500"
+              >&lt; ></span
             ></span
           >
         </h1>
