@@ -16,10 +16,12 @@
         <div
           v-for="({ name, param, difficulty }, index) in currentProblems"
           :key="index"
-          class="problem-card box-border flex h-12 items-center justify-between rounded-lg bg-[#353a3e] py-2 px-6"
+          class="problem-card min-h-12 box-border flex items-center justify-between rounded-lg bg-[#353a3e] py-2 px-6"
           :class="{ 'bg-transparent': index % 2 !== 0 }"
         >
-          <div class="problem-card-left flex items-center gap-4">
+          <div
+            class="problem-card-left flex items-center gap-4 max-[540px]:flex-col max-[540px]:items-start max-[450px]:gap-2"
+          >
             <router-link
               :to="`/solutions/${param}`"
               class="problem-link m-0 text-lg font-semibold text-white/90 no-underline duration-200 hover:text-amber-500 focus:text-amber-500 focus:shadow-md focus:outline-0 max-[540px]:text-xs"
@@ -84,7 +86,6 @@ function setCurrentProblem(index: any) {
   }
   .results-container {
     width: 700px;
-    max-height: 550px;
   }
   @media only screen and (max-width: 750px) and (min-width: 550px) {
     .problem-link {
@@ -101,10 +102,6 @@ function setCurrentProblem(index: any) {
         .problem-card-left {
           .problem-link {
             font-size: 1rem;
-          }
-          .difficulty-badge {
-            display: none;
-            font-size: 0.6rem;
           }
         }
         .checkbox {
