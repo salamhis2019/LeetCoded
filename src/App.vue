@@ -1,9 +1,9 @@
 <template>
-  <div class="app-wrapper min-h-full bg-black">
+  <div class="app-wrapper h-full bg-black">
     <NavBar />
     <router-view v-slot="{ Component, route }">
       <Transition>
-        <div :key="route.path" class="h-full bg-black">
+        <div :key="route.path" class="min-h-full bg-black">
           <component :is="Component" />
         </div>
       </Transition>
