@@ -31,17 +31,20 @@
         v-else
         class="signed-in-container relative flex items-center gap-2 text-base text-white"
       >
-        <button
-          class="flex items-center gap-2 text-white"
+        <div
+          class="button-container flex cursor-pointer gap-2"
           @click="showDropdown = !showDropdown"
         >
-          Hello, <span class="font-bold italic">{{ currentUser }}</span>
-        </button>
-        <i
-          class="fa fa-angle-down cursor-pointer text-2xl font-bold"
-          data-v-71fbddf2
-          aria-hidden="true"
-        ></i>
+          <button class="flex items-center gap-2 text-white">
+            Hello, <span class="font-bold italic">{{ currentUser }}</span>
+          </button>
+          <i
+            class="fa fa-angle-down cursor-pointer text-2xl font-bold duration-200"
+            :class="{ 'rotate-180': showDropdown }"
+            data-v-71fbddf2
+            aria-hidden="true"
+          ></i>
+        </div>
         <Transition name="dropdown-content">
           <div
             v-if="showDropdown"
