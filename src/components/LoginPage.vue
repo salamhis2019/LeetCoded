@@ -3,7 +3,7 @@
     class="popup fixed top-0 left-0 right-0 bottom-0 z-50 flex items-center justify-center"
   >
     <div
-      class="popup-inner w-96 rounded-xl bg-[#1b1f22] p-6 shadow-lg shadow-black"
+      class="popup-inner w-[600px] rounded-xl bg-[#1b1f22] p-6 shadow-lg shadow-black"
     >
       <LoginModal
         v-if="showSignIn"
@@ -56,6 +56,7 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
@@ -70,11 +71,11 @@ const renderLoadingSpinner = ref<boolean>(false);
 const renderErrorMessage = ref<boolean>(false);
 const showSignIn = ref<boolean>(true);
 
-const register = (email: any, password: any) => {
+const register = async (email: any, password: any, name: any) => {
   console.log("register function fired");
   renderLoadingSpinner.value = true;
   const auth = getAuth();
-  createUserWithEmailAndPassword(getAuth(), email, password)
+  createUserWithEmailAndPassword(auth, email, password)
     .then((data) => {
       setTimeout(() => {
         console.log("successfully registered");
@@ -82,7 +83,15 @@ const register = (email: any, password: any) => {
         showLoginWindow.value = false;
         renderLoadingSpinner.value = false;
         renderErrorMessage.value = true;
-      }, 1000);
+      }, 0);
+    })
+    .then(() => {
+      console.log(auth.currentUser);
+      updateProfile(auth.currentUser, {
+        displayName: name,
+      }).then(() => {
+        console.log(auth.currentUser);
+      });
     })
     .catch((error) => {
       showLoginWindow.value = true;
@@ -92,7 +101,7 @@ const register = (email: any, password: any) => {
     });
 };
 
-const signIn = (email: any, password: any) => {
+const signIn = (email: any, password: any, fullName: any) => {
   console.log("sign in function fired");
   renderLoadingSpinner.value = true;
   const auth = getAuth();
@@ -100,7 +109,7 @@ const signIn = (email: any, password: any) => {
     .then((data) => {
       setTimeout(() => {
         console.log("successfully registered");
-        console.log(auth.currentUser);
+        console.log(auth.currentUser?.displayName);
         showLoginWindow.value = false;
         renderLoadingSpinner.value = false;
         renderErrorMessage.value = true;
