@@ -8,6 +8,7 @@ interface State {
   showSolution: any;
   showLoginWindow: any;
   dataLoading: any;
+  currentUser: any;
 }
 
 export const useProblemsStore = defineStore("problems", {
@@ -20,6 +21,7 @@ export const useProblemsStore = defineStore("problems", {
       showSolution: false,
       showLoginWindow: false,
       dataLoading: false,
+      currentUser: null,
     };
   },
   actions: {
