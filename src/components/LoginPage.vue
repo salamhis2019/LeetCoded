@@ -100,6 +100,21 @@ const register = async (email: any, password: any, name: any) => {
       renderLoadingSpinner.value = false;
       renderErrorMessage.value = true;
       console.log(error);
+      switch (error.code) {
+        case "auth/invalid-email":
+          errorMessage.value = "Invalid email, please try again";
+          break;
+        case "auth/user-not-found":
+          errorMessage.value =
+            "No account with that email was found, try again!";
+          break;
+        case "auth/wrong-password":
+          errorMessage.value = "Incorrect Password, please try again";
+          break;
+        default:
+          errorMessage.value = "Email or password was incorrect, try again!";
+          break;
+      }
     });
 };
 
