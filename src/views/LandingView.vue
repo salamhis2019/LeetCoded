@@ -6,9 +6,9 @@
           Its All
           <span class="leetcoded-text font-semibold italic"
             >LeetCoded
-            <span class="code-brackets font-base text-amber-500"
-              >&lt; ></span
-            ></span
+            <p class="code-brackets font-base inline-block text-amber-500">
+              &lt;>
+            </p></span
           >
         </h1>
         <div class="subcontent-container flex w-9/12 flex-col gap-8">
