@@ -142,7 +142,11 @@ const signInWithGoogle = () => {
   const provider = new GoogleAuthProvider();
   signInWithPopup(getAuth(), provider)
     .then((result) => {
-      console.log(result.user);
+      setTimeout(() => {
+        showLoginWindow.value = false;
+        renderLoadingSpinner.value = false;
+        renderErrorMessage.value = true;
+      }, 1000);
     })
     .catch((error) => {
       console.log(error);
