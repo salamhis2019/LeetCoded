@@ -36,7 +36,8 @@
           @click="showDropdown = !showDropdown"
         >
           <button class="flex items-center gap-2 text-white">
-            Hello, <span class="font-bold italic">{{ currentUser }}</span>
+            <span class="max-[450px]:hidden">Hello, </span
+            ><span class="font-bold italic">{{ currentUser }}</span>
           </button>
           <i
             class="fa fa-angle-down cursor-pointer text-2xl font-bold duration-200"
