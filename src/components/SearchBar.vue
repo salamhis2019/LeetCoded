@@ -1,6 +1,6 @@
 <template>
   <div
-    class="search-bar-parent-container my-0 mx-8 flex h-36 items-center justify-center"
+    class="search-bar-parent-container my-0 mx-8 flex items-center justify-center max-[450px]:mb-8 max-[450px]:pt-8 sm:h-36"
   >
     <div class="search-bar-container flex gap-4 max-[450px]:flex-col">
       <form
