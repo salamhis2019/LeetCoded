@@ -7,6 +7,7 @@
     >
       <LoginModal
         v-if="showSignIn"
+        :showSignIn="showSignIn"
         :headerText="'Sign In'"
         :buttonFunction="signIn"
         :buttonText="'Sign In'"
@@ -27,6 +28,7 @@
       </LoginModal>
       <LoginModal
         v-else
+        :showSignIn="showSignIn"
         :headerText="'Create Account'"
         :buttonFunction="register"
         :buttonText="'Create Account'"

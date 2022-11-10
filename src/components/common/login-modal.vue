@@ -27,7 +27,7 @@
           <p class="font-semibold">Sign in with Google</p>
         </div>
       </button>
-      <div class="name-info-container flex w-full gap-4">
+      <div v-if="showSignIn" class="name-info-container flex w-full gap-4">
         <form class="flex w-full flex-col gap-2">
           <label for="email" class="text-white">First Name:</label>
           <input
@@ -113,6 +113,7 @@ const lastName = ref("");
 const fullName = ref(lastName.value + firstName.value);
 
 defineProps([
+  "showSignIn",
   "headerText",
   "buttonFunction",
   "buttonText",
