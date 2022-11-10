@@ -45,6 +45,7 @@
         <Transition name="dropdown-content">
           <div
             v-if="showDropdown"
+            v-click-away="handleDropdown"
             class="submenu-parent-container absolute top-[100%] translate-y-2 shadow-lg shadow-black"
           >
             <div class="submenu w-48 rounded-md bg-[#282a35] p-2.5">
@@ -88,6 +89,10 @@ const handleSignout = () => {
   signOut(auth).then(() => {
     console.log("signed out");
   });
+};
+
+const handleDropdown = () => {
+  showDropdown.value = false;
 };
 
 const currentUser = ref<any>("");
