@@ -111,6 +111,10 @@ const register = async (email: any, password: any, name: any) => {
         case "auth/wrong-password":
           errorMessage.value = "Incorrect Password, please try again";
           break;
+        case "auth/email-already-in-use":
+          errorMessage.value =
+            "Sorry, the email you entered is already in use. Let's try another one!";
+          break;
         default:
           errorMessage.value = "Email or password was incorrect, try again!";
           break;
