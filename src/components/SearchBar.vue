@@ -2,9 +2,9 @@
   <div
     class="search-bar-parent-container my-0 mx-8 flex h-36 items-center justify-center"
   >
-    <div class="search-bar-container flex gap-4">
+    <div class="search-bar-container flex gap-4 max-[450px]:flex-col">
       <form
-        class="input-container relative w-full min-w-[200px] rounded-lg bg-[#1b1f22]"
+        class="input-container relative h-10 w-full min-w-[200px] rounded-lg bg-[#1b1f22]"
       >
         <input
           v-model="inputText"
@@ -40,7 +40,7 @@
       <div class="search-bar-right flex gap-4">
         <DropdownMenu
           :menuText="'Sort By'"
-          :icon="'fa fa-unsorted text-base'"
+          :icon="'fa fa-unsorted text-[15px]'"
           :type="'sort'"
         />
         <DropdownMenu

@@ -1,14 +1,14 @@
 <template>
   <div
-    class="sort dropdown relative flex items-center text-base text-white"
+    class="sort dropdown relative flex items-center text-base text-white max-[450px]:w-full"
     v-click-away="onClickAway"
   >
     <div
-      class="dropdown-button flex h-full justify-center"
+      class="dropdown-button flex h-full justify-center max-[450px]:w-full"
       @click="showDropdown = !showDropdown"
     >
       <button
-        class="sort-button ease box-border flex w-[120px] cursor-pointer items-center justify-between gap-2 rounded-lg border-none bg-[#1b1f22] px-4 py-1 text-white/90 shadow-lg duration-200 hover:opacity-80"
+        class="sort-button ease box-border flex w-[120px] cursor-pointer items-center justify-between gap-2 rounded-lg border-none bg-[#1b1f22] px-4 py-1 text-white/90 shadow-lg duration-200 hover:opacity-80 max-[450px]:w-full"
       >
         {{ menuText }}
         <i :class="icon" class="cursor-pointer text-2xl"></i>
