@@ -27,18 +27,41 @@
       >
         Login
       </button>
-      <div v-else class="signed-in-container">
+      <div
+        v-else
+        class="signed-in-container relative flex items-center gap-2 text-base text-white"
+      >
         <button
           class="flex items-center gap-2 text-white"
-          @click="handleSignout"
+          @click="showDropdown = !showDropdown"
         >
           Hello, <span class="font-bold italic">{{ currentUser }}</span>
-          <i
-            class="fa fa-angle-down cursor-pointer text-2xl font-bold"
-            data-v-71fbddf2
-            aria-hidden="true"
-          ></i>
         </button>
+        <i
+          class="fa fa-angle-down cursor-pointer text-2xl font-bold"
+          data-v-71fbddf2
+          aria-hidden="true"
+        ></i>
+        <Transition name="dropdown-content">
+          <div
+            v-if="showDropdown"
+            class="submenu-parent-container absolute top-[100%] translate-y-2 shadow-lg shadow-black"
+          >
+            <div class="submenu w-48 rounded-md bg-[#282a35] p-2.5">
+              <div class="menu-item">
+                <button
+                  class="duration-100 hover:text-amber-500"
+                  @click="handleSignout"
+                >
+                  Sign Out
+                </button>
+              </div>
+            </div>
+            <div
+              class="triUp absolute top-[-29px] left-[150px] h-0 w-0 border-[15px] border-t-transparent border-l-transparent border-r-transparent border-b-[#282a35]"
+            ></div>
+          </div>
+        </Transition>
       </div>
     </nav>
   </div>
@@ -49,11 +72,13 @@ import { onMounted, ref } from "vue";
 import { storeToRefs } from "pinia";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import useProblemsStore from "@/stores/problems.store";
+import DropdownItems from "@/components/common/dropdown-items.vue";
 
 const problemsStore = useProblemsStore();
 const { showSolution, showLoginWindow } = storeToRefs(problemsStore);
 
 const isLoggedIn = ref(false);
+const showDropdown = ref<boolean>(false);
 
 function logoClicked() {
   showSolution.value = false;
@@ -80,3 +105,15 @@ onMounted(() => {
   });
 });
 </script>
+
+<style lang="scss">
+.dropdown-content-enter-active,
+.dropdown-content-leave-active {
+  transition: all 0.2s;
+}
+.dropdown-content-enter,
+.dropdown-content-leave-to {
+  opacity: 0;
+  transform: translateY(-5px);
+}
+</style>
