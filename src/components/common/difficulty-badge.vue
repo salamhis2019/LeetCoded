@@ -24,7 +24,8 @@ defineProps({
 const baseClasses: any = "font-semibold text-black";
 
 const sizeClasses: any = {
-  primary: "text-base py-1 px-4 rounded-lg  max-[550px]:hidden",
+  primary:
+    "text-base py-1 px-4 rounded-lg max-[540px]:px-3 max-[540px]:text-sm",
   secondary: "text-sm py-1 px-3 rounded-md",
 };
 
