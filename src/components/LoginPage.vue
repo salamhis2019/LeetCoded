@@ -13,6 +13,7 @@
         :signInWithGoogle="signInWithGoogle"
         :renderLoadingSpinner="renderLoadingSpinner"
         :renderErrorMessage="renderErrorMessage"
+        :errorMessage="errorMessage"
       >
         <div class="signup-container flex gap-1 text-white">
           <p>Don't have an account yet,</p>
@@ -32,6 +33,7 @@
         :signInWithGoogle="signInWithGoogle"
         :renderLoadingSpinner="renderLoadingSpinner"
         :renderErrorMessage="renderErrorMessage"
+        :errorMessage="errorMessage"
       >
         <div class="signup-container flex gap-1 text-white">
           <p>Already have an account?</p>
@@ -63,6 +65,7 @@ import LoginModal from "@/components/common/login-modal.vue";
 const problemsStore = useProblemsStore();
 const { showLoginWindow } = storeToRefs(problemsStore);
 
+const errorMessage = ref("");
 const renderLoadingSpinner = ref<boolean>(false);
 const renderErrorMessage = ref<boolean>(false);
 const showSignIn = ref<boolean>(true);
@@ -107,6 +110,21 @@ const signIn = (email: any, password: any) => {
       showLoginWindow.value = true;
       renderLoadingSpinner.value = false;
       renderErrorMessage.value = true;
+      switch (error.code) {
+        case "auth/invalid-email":
+          errorMessage.value = "Invalid email, please try again";
+          break;
+        case "auth/user-not-found":
+          errorMessage.value =
+            "No account with that email was found, try again!";
+          break;
+        case "auth/wrong-password":
+          errorMessage.value = "Incorrect Password, please try again";
+          break;
+        default:
+          errorMessage.value = "Email or password was incorrect, try again!";
+          break;
+      }
       console.log(error);
     });
 };

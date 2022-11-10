@@ -54,7 +54,7 @@
         class="error-message-container rounded-md border-2 border-black bg-[#F7EAAB] p-2.5 shadow-md shadow-black"
       >
         <p class="text-black/80">
-          Please enter valid email address and password
+          {{ errorMessage }}
         </p>
       </div>
       <slot></slot>
@@ -92,6 +92,7 @@ defineProps([
   "signInWithGoogle",
   "renderLoadingSpinner",
   "renderErrorMessage",
+  "errorMessage",
 ]);
 
 const inputFields = [
