@@ -1,0 +1,85 @@
+{
+  "problems": [
+    {
+      "id": 1,
+      "name": "Two Sum",
+      "param": "twosum",
+      "difficulty": "Easy",
+      "solutions": [
+        {
+          "solutionTitle": "Optimal Solution Using Complement",
+          "solutionDescription": "This is the description for the solution",
+          "code": [
+            "var twoSum = function(nums, target) {",
+            "  const map = {}",
+            " ",
+            "  for (let i = 0; i < nums.length; i++) {",
+            "     const value = nums[i]",
+            "     const complement = target - nums[i]",
+            "     if (map[complement] !== undefined) {",
+            "         return [map[complement], i]",
+            "     } else {",
+            "         map[value] = i",
+            "     }",
+            "  }",
+            "};"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Valid Parens",
+      "param": "validparens",
+      "difficulty": "Easy"
+    },
+    {
+      "id": 3,
+      "name": "Add Two Numbers",
+      "param": "addtwonumbers",
+      "difficulty": "Medium"
+    },
+    {
+      "id": 4,
+      "name": "Reverse Linked List",
+      "param": "reverselinkedlist",
+      "difficulty": "Easy"
+    },
+    {
+      "id": 5,
+      "name": "Median of Two Sorted Arrays",
+      "param": "medianoftwosortedarrays",
+      "difficulty": "Hard"
+    },
+    {
+      "id": 6,
+      "name": "Merge Sorted Linked List",
+      "param": "mergesortedlinkedlist",
+      "difficulty": "Easy"
+    },
+    {
+      "id": 7,
+      "name": "Reverse Integer",
+      "param": "reverseinteger",
+      "difficulty": "Medium"
+    },
+    {
+      "id": 8,
+      "name": "Regular Expression Matching",
+      "param": "regularexpressionmatching",
+      "difficulty": "Hard"
+    },
+    {
+      "id": 9,
+      "name": "Palindrome Number",
+      "param": "palindromenumber",
+      "difficulty": "Easy"
+    },
+    {
+      "id": 10,
+      "name": "Palindrome Number",
+      "param": "palindromenumber",
+      "difficulty": "Easy"
+    }
+  ]
+}

@@ -1,42 +1,37 @@
 <template>
-  <div
-    class="difficulty-badge"
-    :class="
-      difficulty === 'Easy'
-        ? 'easy'
-        : difficulty === 'Medium'
-        ? 'medium'
-        : 'hard'
-    "
-  >
+  <div :class="clsx(baseClasses, sizeClasses[size], colorClasses[color])">
     <slot></slot>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { defineProps } from "vue";
+import { clsx } from "clsx";
 
-defineProps(["difficulty"]);
+defineProps({
+  size: {
+    type: String,
+    validator: (s: any) => ["primary", "secondary"].includes(s),
+    default: "pill",
+  },
+  color: {
+    type: String,
+    validator: (s: any) => ["easy", "medium", "hard"].includes(s),
+    default: "easy",
+  },
+});
+
+const baseClasses: any = "font-semibold text-black";
+
+const sizeClasses: any = {
+  primary:
+    "text-base py-1 px-4 rounded-lg max-[540px]:px-3 max-[540px]:text-sm",
+  secondary: "text-sm py-1 px-3 rounded-md",
+};
+
+const colorClasses: any = {
+  easy: "bg-[#52b5a3]",
+  medium: "bg-[#efbe48]",
+  hard: "bg-[#eb4b63]",
+};
 </script>
-
-<style lang="scss" scoped>
-.difficulty-badge {
-  font-weight: 600;
-  font-size: 0.9rem;
-  color: rgb(0, 0, 0);
-  padding: 0.3rem 1rem;
-  border-radius: 10px;
-  p {
-    margin: 0;
-  }
-}
-.easy {
-  background: #52b5a3;
-}
-.medium {
-  background: #efbe48;
-}
-.hard {
-  background: #eb4b63;
-}
-</style>

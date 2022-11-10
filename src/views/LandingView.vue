@@ -1,16 +1,29 @@
 <template>
-  <div class="landing-view-container">
-    <div class="parent-wrapper">
-      <div class="content-wrapper">
-        <h1 class="hero-text">Its All LeetCoded .</h1>
-        <div class="subcontent-container">
-          <p class="subtext">
+  <div class="landing-view-container h-full w-full bg-cover bg-center">
+    <div class="parent-wrapper ml-40 flex h-full items-center font-sans">
+      <div class="content-wrapper mb-8 flex flex-col gap-8">
+        <h1 class="hero-text text-6xl font-light text-white/90">
+          Its All
+          <span class="leetcoded-text font-semibold italic"
+            >LeetCoded
+            <span class="code-brackets font-black text-amber-500"
+              >&lt; / ></span
+            ></span
+          >
+        </h1>
+        <div class="subcontent-container flex w-9/12 flex-col gap-8">
+          <p class="subtext m-0 text-base text-white/90">
             Leetcode Solutions Visualized and journaled for personal use and use
             of others
           </p>
-          <router-link :to="'/solutions'" class="button">
-            View Solutions
-            <i class="fas fa-long-arrow-alt-right" style="font-size: 24px"></i>
+          <router-link :to="'/solutions'" class="button duration-200">
+            <span class="text">View Solutions</span>
+            <span class="icon">
+              <i
+                class="fas fa-long-arrow-alt-right"
+                style="font-size: 24px"
+              ></i>
+            </span>
           </router-link>
         </div>
       </div>
@@ -20,57 +33,75 @@
 
 <style lang="scss" scoped>
 .landing-view-container {
-  width: 100%;
-  height: 100%;
   background-image: url("@/assets/blob-background.svg");
-  background-size: cover;
-  background-position: center;
   .parent-wrapper {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    margin-left: 10rem;
-    font-family: sans-serif;
     .content-wrapper {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-      margin-bottom: 2rem;
-      .hero-text {
-        margin: 0;
-        color: #ffffffe0;
-        font-size: 3.5rem;
-      }
       .subcontent-container {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        width: 75%;
-        .subtext {
-          color: #ffffffe0;
-          margin: 0;
-        }
         .button {
+          width: 350px;
+          height: 40px;
+          cursor: pointer;
           display: flex;
           align-items: center;
-          justify-content: space-between;
-          width: 100%;
-          height: 2.5rem;
-          padding: 0 1.5rem;
           border: none;
-          border-radius: 0.5rem;
+          border-radius: 5px;
+          box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
           background: #1b1f22;
-          text-align: left;
-          text-decoration: none;
-          color: #ffffffe6;
-          font-weight: 600;
-          font-size: 1.2rem;
-          cursor: pointer;
-          transition: 0.2s;
+          span {
+            transition: 250ms ease-in-out;
+          }
+          .text {
+            transform: translateX(35px);
+            color: white;
+            font-weight: bold;
+          }
+          .icon {
+            position: absolute;
+            transform: translateX(300px);
+            height: 40px;
+            width: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .fa-long-arrow-alt-right {
+              width: 15px;
+              color: white;
+            }
+          }
           &:hover {
-            box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.54);
+            background: #353a3e;
+            .text {
+              color: transparent;
+            }
+            .icon {
+              width: 150px;
+              border-left: none;
+              transform: translateX(210px);
+            }
+          }
+          &:focus {
+            outline-color: white;
+            outline-width: 0.5px;
+          }
+          &:active {
+            transform: translateX(3px);
           }
         }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .landing-view-container {
+    background-image: url("@/assets/blob-scene-mobile.svg");
+    .parent-wrapper {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin: 0;
+      .content-wrapper {
+        max-width: 350px;
       }
     }
   }

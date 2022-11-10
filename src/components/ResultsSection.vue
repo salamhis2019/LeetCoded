@@ -1,53 +1,70 @@
 <template>
-  <div class="results-parent-container">
-    <div class="results-container">
+  <div
+    class="results-parent-container flex min-h-[504px] items-start justify-center"
+  >
+    <TransitionGroup>
+      <img
+        class="mt-40 h-full w-32"
+        src="@/assets/loading.svg"
+        v-if="dataLoading"
+        alt="loading image"
+      />
       <div
-        v-for="({ name, param, difficulty }, index) in currentProblems"
-        :key="index"
-        class="problem-card"
-        :class="{ 'card-dark': index % 2 !== 0 }"
+        class="results-container min-h-50 mx-8 mt-0 mb-8 box-border flex flex-col gap-2 rounded-xl bg-[#1b1f22] p-4"
+        v-if="allProblems.length !== 0 && !dataLoading"
       >
-        <div class="problem-card-left">
-          <router-link
-            :to="`/solutions/${param}`"
-            class="problem-link"
-            @click="setCurrentProblem(index)"
-          >
-            {{ name }}
-          </router-link>
+        <div
+          v-for="({ name, param, difficulty }, index) in currentProblems"
+          :key="index"
+          class="problem-card min-h-12 box-border flex items-center justify-between rounded-lg bg-[#353a3e] py-2 px-6"
+          :class="{ 'bg-transparent': index % 2 !== 0 }"
+        >
           <div
-            class="difficulty-badge"
-            :class="
-              difficulty === 'Easy'
-                ? 'easy'
-                : difficulty === 'Medium'
-                ? 'medium'
-                : 'hard'
-            "
+            class="problem-card-left flex items-center gap-4 max-[540px]:flex-col max-[540px]:items-start max-[450px]:gap-2"
           >
-            <p>{{ difficulty }}</p>
+            <router-link
+              :to="`/solutions/${param}`"
+              class="problem-link m-0 text-lg font-semibold text-white/90 no-underline duration-200 hover:text-amber-500 focus:text-amber-500 focus:shadow-md focus:outline-0 max-[540px]:text-xs"
+              @click="setCurrentProblem(index)"
+            >
+              {{ name }}
+            </router-link>
+            <DifficultyBadge
+              :size="'primary'"
+              :color="difficulty?.toLowerCase()"
+            >
+              {{ difficulty }}
+            </DifficultyBadge>
           </div>
+          <label class="checkbox bounce">
+            <input type="checkbox" />
+            <svg viewBox="0 0 21 21">
+              <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
+            </svg>
+          </label>
         </div>
-        <input
-          type="checkbox"
-          id="vehicle1"
-          name="vehicle1"
-          value="Bike"
-          class="checkbox"
-        />
       </div>
-    </div>
+    </TransitionGroup>
   </div>
 </template>
 
 <script lang="ts" setup>
 import ProblemsStore from "@/stores/problems.store";
+import DifficultyBadge from "@/components/common/difficulty-badge.vue";
 import { storeToRefs } from "pinia";
 
 const problemsStore = ProblemsStore();
 
-const { currentProblems, currentProblemSolution, showSolution } =
-  storeToRefs(problemsStore);
+const {
+  allProblems,
+  currentProblems,
+  currentProblemSolution,
+  showSolution,
+  dataLoading,
+} = storeToRefs(problemsStore);
+
+const { fetchData } = problemsStore;
+fetchData(null, null, null);
 
 function setCurrentProblem(index: any) {
   currentProblemSolution.value = currentProblems.value[index];
@@ -57,117 +74,34 @@ function setCurrentProblem(index: any) {
 
 <style lang="scss" scoped>
 .results-parent-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  .v-leave-from {
+    display: none;
+  }
+  .v-enter-from,
+  .v-leave-to {
+    opacity: 0;
+  }
+  .v-enter-active {
+    transition: opacity 0.3s ease-in;
+  }
   .results-container {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    box-sizing: border-box;
     width: 700px;
-    max-height: 550px;
-    min-height: 300px;
-    margin: 0 2rem 2rem 2rem;
-    padding: 1rem;
-    background-color: #1b1f22;
-    border-radius: 12px;
-    .problem-card {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 50px;
-      box-sizing: border-box;
-      background: #353a3e;
-      padding: 0.5rem 1.5rem;
-      border-radius: 10px;
-      .problem-card-left {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        .problem-link {
-          margin: 0;
-          color: white;
-          text-decoration: none;
-          font-weight: 600;
-          font-size: 1.2rem;
-          transition: 0.2s;
-          &:hover {
-            color: #ff9900;
-          }
-        }
-        .difficulty-badge {
-          font-weight: 600;
-          font-size: 0.9rem;
-          color: rgb(0, 0, 0);
-          padding: 0.3rem 1rem;
-          border-radius: 10px;
-          p {
-            margin: 0;
-          }
-        }
-        .easy {
-          background: #52b5a3;
-        }
-        .medium {
-          background: #efbe48;
-        }
-        .hard {
-          background: #eb4b63;
-        }
-      }
-      input[type="checkbox"] {
-        accent-color: #52b5a3;
-      }
-      .checkbox {
-        height: 24px;
-        width: 24px;
-        cursor: pointer;
-      }
-    }
-    .card-dark {
-      background: none;
-    }
   }
   @media only screen and (max-width: 750px) and (min-width: 550px) {
-    .results-container {
-      .problem-card {
-        .problem-card-left {
-          .problem-link {
-            font-size: 1.2rem;
-          }
-          .difficulty-badge {
-            font-size: 0.6rem;
-          }
-        }
-      }
+    .problem-link {
+      font-size: 1.2rem;
+    }
+    .difficulty-badge {
+      font-size: 0.75rem;
     }
   }
   @media only screen and (max-width: 550px) {
     .results-container {
       .problem-card {
+        gap: 0.5rem;
         .problem-card-left {
           .problem-link {
-            font-size: 1.2rem;
-          }
-          .difficulty-badge {
-            display: none;
-            font-size: 0.6rem;
-          }
-        }
-      }
-    }
-  }
-  @media only screen and (max-width: 550px) {
-    .results-container {
-      .problem-card {
-        .problem-card-left {
-          .problem-link {
-            font-size: 0.9rem;
-          }
-          .difficulty-badge {
-            display: none;
-            font-size: 0.6rem;
+            font-size: 1rem;
           }
         }
         .checkbox {
@@ -176,6 +110,111 @@ function setCurrentProblem(index: any) {
         }
       }
     }
+  }
+}
+.checkbox {
+  --background: #fff;
+  --border: #d1d6ee;
+  --border-hover: #bbc1e1;
+  --border-active: #52b5a3;
+  --tick: #fff;
+  position: relative;
+  input,
+  svg {
+    width: 21px;
+    height: 21px;
+    display: block;
+  }
+  input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+    outline: none;
+    background: var(--background);
+    border: none;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: box-shadow 0.2s;
+    box-shadow: inset 0 0 0 var(--s, 1px) var(--b, var(--border));
+    &:hover {
+      --s: 2px;
+      --b: var(--border-hover);
+    }
+    &:checked {
+      --b: var(--border-active);
+    }
+  }
+  svg {
+    pointer-events: none;
+    fill: none;
+    stroke-width: 2px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: var(--stroke, var(--border-active));
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 21px;
+    height: 21px;
+    transform: scale(var(--scale, 1)) translateZ(0);
+  }
+  &.path {
+    input {
+      &:checked {
+        --s: 2px;
+        transition-delay: 0.2s;
+        & + svg {
+          --a: 16.1 86.12;
+          --o: 102.22;
+        }
+      }
+    }
+    svg {
+      stroke-dasharray: var(--a, 86.12);
+      stroke-dashoffset: var(--o, 86.12);
+      transition: stroke-dasharray 0.2s, stroke-dashoffset 0.2s;
+    }
+  }
+  &.bounce {
+    --stroke: var(--tick);
+    input {
+      &:checked {
+        --s: 11px;
+        & + svg {
+          animation: bounce 0.2s linear forwards 0.2s;
+        }
+      }
+    }
+    svg {
+      --scale: 0;
+    }
+  }
+}
+
+@keyframes bounce {
+  50% {
+    transform: scale(1.2);
+  }
+  75% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+html {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: inherit;
+  &:before,
+  &:after {
+    box-sizing: inherit;
   }
 }
 </style>

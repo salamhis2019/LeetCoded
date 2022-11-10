@@ -7,21 +7,21 @@ export const problems: any = [
       {
         solutionTitle: "Optimal Solution Using Complement",
         solutionDescription: "This is the description for the solution",
-        code: `var twoSum = function(nums, target) {
-          const map = {}
-          
-          for (let i = 0; i < nums.length; i++) {
-            const value = nums[i]
-            const complement = target - nums[i]
-            
-            if (map[complement] !== undefined) {
-                return [map[complement], i]
-            } else {
-                map[value] = i
-            }
-          }
-        };
-      }`,
+        code: [
+          "var twoSum = function(nums, target) {",
+          "  const map = {}",
+          " ",
+          "  for (let i = 0; i < nums.length; i++) {",
+          "     const value = nums[i]",
+          "     const complement = target - nums[i]",
+          "     if (map[complement] !== undefined) {",
+          "         return [map[complement], i]",
+          "     } else {",
+          "         map[value] = i",
+          "     }",
+          "  }",
+          "};",
+        ],
       },
     ],
   },
@@ -90,38 +90,6 @@ export const problems: any = [
   {
     name: "Merge k Sorted Lists",
     difficulty: "Hard",
-  },
-  {
-    name: "Valid Parens",
-    difficulty: "Easy",
-  },
-  {
-    name: "Add Two Numbers",
-    difficulty: "Medium",
-  },
-  {
-    name: "Reverse Linked List",
-    difficulty: "Easy",
-  },
-  {
-    name: "Median of Two Sorted Arrays",
-    difficulty: "Hard",
-  },
-  {
-    name: "Two Sum",
-    difficulty: "Easy",
-  },
-  {
-    name: "Reverse Integer",
-    difficulty: "Medium",
-  },
-  {
-    name: "Regular Expression Matching",
-    difficulty: "Hard",
-  },
-  {
-    name: "Two Sum",
-    difficulty: "Easy",
   },
   {
     name: "Valid Parens",
