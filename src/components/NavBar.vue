@@ -52,7 +52,9 @@
             v-click-away="handleDropdown"
             class="submenu-parent-container absolute top-[100%] translate-y-2 shadow-lg shadow-black"
           >
-            <div class="submenu w-48 rounded-md bg-[#282a35] p-2.5">
+            <div
+              class="submenu w-48 rounded-md bg-[#282a35] p-2.5 max-[450px]:w-40"
+            >
               <div class="menu-item">
                 <button
                   class="duration-100 hover:text-amber-500"
@@ -63,7 +65,7 @@
               </div>
             </div>
             <div
-              class="triUp absolute top-[-29px] left-[150px] h-0 w-0 border-[15px] border-t-transparent border-l-transparent border-r-transparent border-b-[#282a35]"
+              class="triUp absolute top-[-29px] left-[150px] h-0 w-0 border-[15px] border-t-transparent border-l-transparent border-r-transparent border-b-[#282a35] max-[450px]:left-[120px]"
             ></div>
           </div>
         </Transition>
