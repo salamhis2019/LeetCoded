@@ -4,11 +4,7 @@
     v-if="allProblems.length !== 0"
   >
     <button
-<<<<<<< HEAD
-      class="button cursor-pointer rounded-lg border-0 bg-[#1b1f22] px-4 py-2 text-xl font-semibold text-white duration-200 hover:brightness-150 focus:shadow focus:shadow-white focus:outline-0 active:bg-[52b5a3] max-[540px]:px-6"
-=======
       class="button cursor-pointer rounded-lg border-0 bg-[#1b1f22] px-4 py-2 text-xl font-semibold text-white duration-200 hover:brightness-150 focus:shadow focus:shadow-white focus:outline-0 active:bg-[52b5a3]"
->>>>>>> 08d4612cf10683c87d34619ca4f812d87d9f2314
       :class="{ ['bg-[#52b5a3] text-black']: currentPage === index + 1 }"
       v-for="(item, index) in pages"
       :key="item"
@@ -77,17 +73,3 @@ function updateCurrentPage(index: number) {
   currentPage.value = index + 1;
 }
 </script>
-<<<<<<< HEAD
-=======
-
-<style lang="scss" scoped>
-@media only screen and (max-width: 750px) {
-  .pagination-container {
-    .button {
-      padding: 0.5rem 0.8rem;
-      font-size: 0.9rem;
-    }
-  }
-}
-</style>
->>>>>>> 08d4612cf10683c87d34619ca4f812d87d9f2314
