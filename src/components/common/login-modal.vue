@@ -27,7 +27,7 @@
           <p class="font-semibold">Sign in with Google</p>
         </div>
       </button>
-      <div v-if="showSignIn" class="name-info-container flex w-full gap-4">
+      <div v-if="!showSignIn" class="name-info-container flex w-full gap-4">
         <form class="flex w-full flex-col gap-2">
           <label for="email" class="text-white">First Name:</label>
           <input
