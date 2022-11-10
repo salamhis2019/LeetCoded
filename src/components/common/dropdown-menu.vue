@@ -14,7 +14,7 @@
         <i :class="icon" class="cursor-pointer text-2xl"></i>
       </button>
     </div>
-    <Transition>
+    <Transition name="dropdown-content">
       <DropdownItems :displayMenu="showDropdown" :type="type" />
     </Transition>
   </div>
@@ -43,14 +43,13 @@ function onClickAway() {
   transform: rotate(45);
 }
 
-// animations
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 0.4s ease;
+.dropdown-content-enter-active,
+.dropdown-content-leave-active {
+  transition: all 0.2s;
 }
-
-.v-enter-from,
-.v-leave-to {
+.dropdown-content-enter,
+.dropdown-content-leave-to {
   opacity: 0;
+  transform: translateY(-5px);
 }
 </style>
