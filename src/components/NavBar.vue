@@ -72,7 +72,7 @@ onMounted(() => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       console.log("user: ", user.email);
-      currentUser.value = user.email;
+      currentUser.value = user.displayName;
       isLoggedIn.value = true;
     } else {
       isLoggedIn.value = false;
