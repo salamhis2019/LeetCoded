@@ -63,18 +63,15 @@ import LoginModal from "@/components/common/login-modal.vue";
 const problemsStore = useProblemsStore();
 const { showLoginWindow } = storeToRefs(problemsStore);
 
-const email = ref<string>("");
-const password = ref<string>("");
-
 const renderLoadingSpinner = ref<boolean>(false);
 const renderErrorMessage = ref<boolean>(false);
 const showSignIn = ref<boolean>(true);
 
-const register = () => {
+const register = (email: any, password: any) => {
   console.log("register function fired");
   renderLoadingSpinner.value = true;
   const auth = getAuth();
-  createUserWithEmailAndPassword(getAuth(), email.value, password.value)
+  createUserWithEmailAndPassword(getAuth(), email, password)
     .then((data) => {
       setTimeout(() => {
         console.log("successfully registered");
@@ -92,11 +89,11 @@ const register = () => {
     });
 };
 
-const signIn = () => {
+const signIn = (email: any, password: any) => {
   console.log("sign in function fired");
   renderLoadingSpinner.value = true;
   const auth = getAuth();
-  signInWithEmailAndPassword(getAuth(), email.value, password.value)
+  signInWithEmailAndPassword(getAuth(), email, password)
     .then((data) => {
       setTimeout(() => {
         console.log("successfully registered");

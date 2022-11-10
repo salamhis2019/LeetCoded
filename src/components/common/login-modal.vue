@@ -27,20 +27,25 @@
           <p class="font-semibold">Sign in with Google</p>
         </div>
       </button>
-      <form
-        v-for="{ id, placeholder } in inputFields"
-        :key="id"
-        class="flex flex-col gap-2"
-      >
-        <label for="password" class="text-white">{{
-          id[0].toUpperCase() + id.substring(1) + ":"
-        }}</label>
+      <form class="flex flex-col gap-2">
+        <label for="email" class="text-white">Email:</label>
         <input
-          :v-model="id"
-          :type="id"
-          :id="id"
-          :name="id"
-          :placeholder="placeholder"
+          v-model="email"
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Email..."
+          class="w-full rounded-lg border-white/80 bg-[#353a3e] p-2 text-white accent-white outline-0 duration-200 focus:border-amber-500 focus:placeholder-transparent"
+        />
+      </form>
+      <form class="flex flex-col gap-2">
+        <label for="password" class="text-white">Password:</label>
+        <input
+          v-model="password"
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Password..."
           class="w-full rounded-lg border-white/80 bg-[#353a3e] p-2 text-white accent-white outline-0 duration-200 focus:border-amber-500 focus:placeholder-transparent"
         />
       </form>
@@ -54,7 +59,7 @@
       </div>
       <slot></slot>
       <button
-        @click.prevent="buttonFunction"
+        @click.prevent="buttonFunction(email, password)"
         class="mt-4 flex h-12 justify-center rounded-xl border border-black bg-amber-500 font-bold shadow-md shadow-black duration-150 hover:brightness-125 active:translate-y-1"
       >
         <p v-if="!renderLoadingSpinner" class="p-2.5">{{ buttonText }}</p>
@@ -70,12 +75,15 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps } from "vue";
+import { ref, defineProps } from "vue";
 import { storeToRefs } from "pinia";
 import useProblemsStore from "@/stores/problems.store";
 
 const problemsStore = useProblemsStore();
 const { showLoginWindow } = storeToRefs(problemsStore);
+
+const email = ref("");
+const password = ref("");
 
 defineProps([
   "headerText",
