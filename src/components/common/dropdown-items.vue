@@ -19,9 +19,12 @@
             >
               {{ text }}
             </button>
-            <i v-if="sortId === index" class="material-icons cursor-pointer"
-              >check</i
-            >
+            <img
+              v-if="sortId === index"
+              class="w-4"
+              src="@/assets/checkmark.svg"
+              alt="check mark"
+            />
           </div>
         </form>
         <form
