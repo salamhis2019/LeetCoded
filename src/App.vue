@@ -1,6 +1,6 @@
 <template>
   <div class="app-wrapper h-full bg-black">
-    <NavBar />
+    <NavBar v-if="route.path !== '/'" />
     <router-view v-slot="{ Component, route }">
       <Transition>
         <div :key="route.path" class="h-full bg-black">
@@ -12,7 +12,11 @@
 </template>
 
 <script lang="ts" setup>
+import { useRoute } from "vue-router";
+import { ref, watch } from "vue";
 import NavBar from "@/components/NavBar.vue";
+
+const route = useRoute();
 </script>
 
 <style lang="scss">
