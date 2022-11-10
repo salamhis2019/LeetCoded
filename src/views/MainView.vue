@@ -8,7 +8,10 @@
   <transition name="fadeUp">
     <LoginPage v-if="showLoginWindow" />
   </transition>
-  <div class="mainview-parent-container h-full" v-if="!showSolution">
+  <div
+    class="mainview-parent-container min-h-full bg-black"
+    v-if="!showSolution"
+  >
     <SearchBar />
     <Results />
     <PaginationBar />
