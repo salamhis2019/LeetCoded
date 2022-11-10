@@ -11,7 +11,10 @@
         class="sort-button ease box-border flex w-[120px] cursor-pointer items-center justify-between gap-2 rounded-lg border-none bg-[#1b1f22] px-4 py-1 text-white/90 shadow-lg duration-200 hover:opacity-80 max-[540px]:w-full"
       >
         {{ menuText }}
-        <i :class="icon" class="cursor-pointer text-2xl"></i>
+        <i
+          :class="showDropdown ? icon + ' rotate-180' : icon"
+          class="cursor-pointer text-2xl font-bold duration-200"
+        ></i>
       </button>
     </div>
     <Transition name="dropdown-content">
