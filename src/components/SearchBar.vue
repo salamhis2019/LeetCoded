@@ -2,13 +2,13 @@
   <div
     class="search-bar-parent-container my-0 mx-8 flex h-36 items-center justify-center"
   >
-    <div class="search-bar-container flex gap-4">
+    <div class="search-bar-container flex gap-4 max-[540px]:flex-col">
       <form
         class="input-container relative w-full min-w-[200px] rounded-lg bg-[#1b1f22]"
       >
         <input
           v-model="inputText"
-          class="search-bar block h-full w-full rounded-lg bg-[#1b1f22] py-2 px-4 text-base text-white/90 placeholder-white duration-100 focus:placeholder-transparent focus:outline focus:outline-white"
+          class="search-bar block h-full w-full rounded-lg bg-[#1b1f22] py-2 px-4 text-base text-white/90 placeholder-white duration-100 focus:placeholder-transparent focus:outline focus:outline-white max-[540px]:h-10"
           type="text"
           placeholder="Search..."
           @keydown.enter.prevent="
