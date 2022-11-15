@@ -1,8 +1,9 @@
 import { defineStore } from "pinia";
+import { Problem } from "@/types/problems.store.types";
 
 interface State {
-  allProblems: any;
-  currentProblems: any;
+  allProblems: Problem[];
+  currentProblems: Problem[];
   currentProblemSolution: any;
   currentPage: any;
   showSolution: any;
@@ -83,6 +84,7 @@ export const useProblemsStore = defineStore("problems", {
           sortBy
         );
         this.allProblems = fireBaseArr;
+        console.log(this.allProblems);
         setTimeout(() => {
           this.dataLoading = false;
         }, 1000);
