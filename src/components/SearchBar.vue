@@ -1,14 +1,14 @@
 <template>
   <div
-    class="search-bar-parent-container my-0 mx-8 flex h-36 items-center justify-center max-[540px]:h-44"
+    class="search-bar-parent-container my-0 mx-8 flex h-36 items-center justify-center"
   >
-    <div class="search-bar-container flex gap-4 max-[540px]:flex-col">
+    <div class="search-bar-container flex gap-4">
       <form
-        class="input-container relative h-10 w-full min-w-[200px] rounded-lg bg-[#1b1f22]"
+        class="input-container relative w-full min-w-[200px] rounded-lg bg-[#1b1f22]"
       >
         <input
           v-model="inputText"
-          class="search-bar block h-full w-full rounded-lg bg-[#1b1f22] py-2 px-4 text-base text-white/90 placeholder-white duration-100 focus:outline focus:outline-white"
+          class="search-bar block h-full w-full rounded-lg bg-[#1b1f22] py-2 px-4 text-base text-white/90 placeholder-white duration-100 focus:placeholder-transparent focus:outline focus:outline-white"
           type="text"
           placeholder="Search..."
           @keydown.enter.prevent="
@@ -40,7 +40,7 @@
       <div class="search-bar-right flex gap-4">
         <DropdownMenu
           :menuText="'Sort By'"
-          :icon="'fa fa-unsorted text-[15px]'"
+          :icon="'fa fa-unsorted text-base'"
           :type="'sort'"
         />
         <DropdownMenu
@@ -76,6 +76,12 @@ const inputText = ref("");
         }
       }
     }
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .search-bar-parent-container {
+    height: 150px;
   }
 }
 </style>
