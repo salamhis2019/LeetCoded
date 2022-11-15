@@ -28,6 +28,14 @@
   </div>
 </template>
 
+<script lang="ts" setup>
+import { onMounted } from "vue";
+
+onMounted(() => {
+  document.title = "LeetCoded";
+});
+</script>
+
 <style lang="scss" scoped>
 .landing-view-container {
   background-image: url("@/assets/blob-background.svg");

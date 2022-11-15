@@ -117,6 +117,7 @@ onMounted(() => {
       isLoggedIn.value = false;
     }
   });
+  document.title = "LeetCoded/solutions";
 });
 </script>
 
