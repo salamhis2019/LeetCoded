@@ -2,14 +2,14 @@ import { defineStore } from "pinia";
 import { Problem } from "@/types/problems.store.types";
 
 interface State {
-  allProblems: Problem[];
+  allProblems: Problem[] | unknown;
   currentProblems: Problem[];
-  currentProblemSolution: any;
-  currentPage: any;
-  showSolution: any;
-  showLoginWindow: any;
-  dataLoading: any;
-  currentUser: any;
+  currentProblemSolution: Problem | null;
+  currentPage: number;
+  showSolution: boolean;
+  showLoginWindow: boolean;
+  dataLoading: boolean;
+  currentUser: string | null;
 }
 
 export const useProblemsStore = defineStore("problems", {
@@ -28,20 +28,21 @@ export const useProblemsStore = defineStore("problems", {
   actions: {
     async resolveData(
       data: any,
-      searchText: any,
-      filterValue: any,
-      sortBy: any
+      searchText: string,
+      filterValue: string,
+      sortBy: string
     ) {
-      let newArr: any = [];
+      console.log("data: ", data);
+      let newArr: Problem[] = [];
       return new Promise((resolve) => {
         for (const item in data) {
           newArr.push(data[item]);
         }
 
-        let filteredItems: any;
+        let filteredItems: Problem[];
 
         if (searchText && searchText !== "") {
-          filteredItems = newArr.filter((item: any) => {
+          filteredItems = newArr.filter((item: Problem) => {
             return item.param === searchText;
           });
           newArr = filteredItems;
@@ -49,7 +50,7 @@ export const useProblemsStore = defineStore("problems", {
 
         if (filterValue && filterValue !== "All") {
           console.log(newArr);
-          const data = newArr.filter((item: any) => {
+          const data = newArr.filter((item: Problem) => {
             return item.difficulty === filterValue;
           });
           newArr = data;
@@ -57,11 +58,11 @@ export const useProblemsStore = defineStore("problems", {
 
         if (sortBy) {
           if (sortBy === "Easy to Hard") {
-            newArr.sort(function (a: any, b: any) {
+            newArr.sort(function (a: Problem, b: Problem) {
               return a.difficultyId - b.difficultyId;
             });
           } else if (sortBy === "Hard to Easy") {
-            newArr.sort(function (a: any, b: any) {
+            newArr.sort(function (a: Problem, b: Problem) {
               return b.difficultyId - a.difficultyId;
             });
           }
@@ -69,7 +70,7 @@ export const useProblemsStore = defineStore("problems", {
         resolve(newArr);
       });
     },
-    async fetchData(searchText: any, filterValue: any, sortBy: any) {
+    async fetchData(searchText: string, filterValue: string, sortBy: string) {
       this.dataLoading = true;
       this.currentPage = 1;
       try {
@@ -77,7 +78,7 @@ export const useProblemsStore = defineStore("problems", {
           "https://leetcoded-14a63-default-rtdb.firebaseio.com/problems.json"
         );
         const data = await response.json();
-        const fireBaseArr = await this.resolveData(
+        const fireBaseArr: Problem[] | unknown = await this.resolveData(
           data,
           searchText,
           filterValue,
