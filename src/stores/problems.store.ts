@@ -32,7 +32,6 @@ export const useProblemsStore = defineStore("problems", {
       filterValue: string,
       sortBy: string
     ) {
-      console.log("data: ", data);
       let newArr: Problem[] = [];
       return new Promise((resolve) => {
         for (const item in data) {
@@ -49,7 +48,6 @@ export const useProblemsStore = defineStore("problems", {
         }
 
         if (filterValue && filterValue !== "All") {
-          console.log(newArr);
           const data = newArr.filter((item: Problem) => {
             return item.difficulty === filterValue;
           });
@@ -85,7 +83,6 @@ export const useProblemsStore = defineStore("problems", {
           sortBy
         );
         this.allProblems = fireBaseArr;
-        console.log(this.allProblems);
         setTimeout(() => {
           this.dataLoading = false;
         }, 1000);
