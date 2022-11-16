@@ -13,7 +13,7 @@
         class="results-container min-h-50 mx-8 mt-0 mb-8 box-border flex flex-col gap-2 rounded-xl bg-[#1b1f22] p-4"
         v-if="allProblems.length !== 0 && !dataLoading"
       >
-        <div
+        <li
           v-for="({ name, param, difficulty }, index) in currentProblems"
           :key="index"
           class="problem-card min-h-12 box-border flex items-center justify-between rounded-lg bg-[#353a3e] py-2.5 px-6"
@@ -39,7 +39,7 @@
           <label class="checkbox flex items-center accent-[#52b5a3]">
             <input type="checkbox" class="h-6 w-6 cursor-pointer" />
           </label>
-        </div>
+        </li>
       </div>
     </TransitionGroup>
   </div>
