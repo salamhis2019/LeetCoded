@@ -25,20 +25,20 @@ const problemsStore = ProblemsStore();
 const { allProblems, currentProblems, currentPage }: any =
   storeToRefs(problemsStore);
 
-const pages = computed(() => {
+const pages = computed<number>(() => {
   if (allProblems.value.length === 0 || undefined || NaN) {
     return 1;
   }
   if (allProblems.value.length % 8 === 0) {
     return allProblems.length / 8;
   } else {
-    const remainder = allProblems.value.length % 8;
+    const remainder: number = allProblems.value.length % 8;
     return (allProblems.value.length - remainder + 8) / 8;
   }
 });
 
-const pageStart = ref(0);
-const pageEnd = ref(8);
+const pageStart = ref<number>(0);
+const pageEnd = ref<number>(8);
 
 onBeforeUpdate(() => {
   currentProblems.value = ref(
@@ -46,7 +46,7 @@ onBeforeUpdate(() => {
   );
 });
 
-watch(currentPage, (newPage: any, oldPage: any) => {
+watch(currentPage, (newPage: number, oldPage: number) => {
   if (newPage > oldPage) {
     pageStart.value += (currentPage.value - oldPage) * 8;
     pageEnd.value += (currentPage.value - oldPage) * 8;

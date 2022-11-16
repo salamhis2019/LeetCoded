@@ -2,7 +2,7 @@
   <div
     class="search-bar-parent-container my-0 mx-8 flex h-36 items-center justify-center"
   >
-    <div class="search-bar-container flex gap-4 max-[540px]:flex-col">
+    <div class="search-bar-container flex w-[600px] gap-4 max-[540px]:flex-col">
       <form
         class="input-container relative w-full min-w-[200px] rounded-lg bg-[#1b1f22]"
       >
@@ -60,28 +60,5 @@ import DropdownMenu from "@/components/common/dropdown-menu.vue";
 
 const { fetchData } = useProblemsStore();
 
-const inputText = ref("");
+const inputText = ref<string>("");
 </script>
-
-<style lang="scss" scoped>
-.search-bar-parent-container {
-  .search-bar-container {
-    width: 600px;
-    .search-bar-right {
-      .dropdown-button {
-        .sort-button {
-          .chevron-clicked {
-            transform: rotate(270deg);
-          }
-        }
-      }
-    }
-  }
-}
-
-@media only screen and (max-width: 450px) {
-  .search-bar-parent-container {
-    height: 150px;
-  }
-}
-</style>

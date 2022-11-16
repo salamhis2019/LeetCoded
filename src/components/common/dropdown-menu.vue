@@ -29,7 +29,7 @@ import DropdownItems from "@/components/common/dropdown-items.vue";
 
 defineProps(["type", "menuText", "icon"]);
 
-const showDropdown = ref(false);
+const showDropdown = ref<boolean>(false);
 
 function onClickAway() {
   showDropdown.value = false;
