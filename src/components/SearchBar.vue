@@ -60,7 +60,7 @@ import DropdownMenu from "@/components/common/dropdown-menu.vue";
 
 const { fetchData } = useProblemsStore();
 
-const inputText = ref("");
+const inputText = ref<string>("");
 </script>
 
 <style lang="scss" scoped>
