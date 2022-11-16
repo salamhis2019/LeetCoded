@@ -75,8 +75,9 @@
       </form>
       <div
         v-if="renderErrorMessage"
-        class="error-message-container rounded-md border-2 border-black bg-[#F7EAAB] p-2.5 shadow-md shadow-black"
+        class="error-message-container flex gap-2 rounded-md border-2 border-black bg-[#F7EAAB] p-2.5 shadow-md shadow-black"
       >
+        <img class="error-icon w-6" src="@/assets/exclamation.svg" alt="">
         <p class="text-black/80">
           {{ errorMessage }}
         </p>
