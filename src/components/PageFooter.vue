@@ -8,12 +8,16 @@
     <h3 class="mt-2 mb-8 text-center text-3xl font-black text-white">
       Connect with me!
     </h3>
-    <div class="flex justify-evenly gap-6 text-white">
+    <div class="flex items-center justify-evenly gap-8 text-white">
       <a href="mailto:salamehh@msu.edu" target="blank" class="underline"
         >salamehh@msu.edu</a
       >
-      <div class="flex items-center gap-3">
-        <i class="fa fa-phone text-2xl"></i>
+      <div class="flex items-center gap-2">
+        <img
+          src="@/assets/phone-icon.svg"
+          alt="footer phone icon"
+          class="h-10 w-10"
+        />
         <p>(989) 992-3416</p>
       </div>
     </div>
@@ -24,5 +28,6 @@
       ></i>
       <i class="fa fa-github text-5xl"></i>
     </div>
+    <p class="mt-4 text-sm text-white/40">&copy; 2022 - Hisham Salameh</p>
   </div>
 </template>
