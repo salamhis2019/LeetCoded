@@ -1,6 +1,6 @@
 <template>
   <div
-    class="footer-parent-container mx-4 flex min-h-[200px] flex-col items-center justify-start gap-2 py-6"
+    class="footer-parent-container mx-10 flex min-h-[200px] flex-col items-center justify-start gap-2 py-6"
   >
     <p class="text-center text-sm italic text-white/70">
       Like what you see or have feedback?
