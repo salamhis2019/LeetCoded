@@ -3,11 +3,14 @@
     <NavBar v-if="route.path !== '/'" />
     <router-view v-slot="{ Component, route }">
       <Transition>
-        <div :key="route.path" class="h-full bg-black">
+        <div :key="route.path" class="min-h-full bg-black">
           <component :is="Component" />
         </div>
       </Transition>
     </router-view>
+    <div class="block">
+      <h1>poo</h1>
+    </div>
   </div>
 </template>
 
