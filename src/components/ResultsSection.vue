@@ -1,6 +1,6 @@
 <template>
   <div
-    class="results-parent-container flex min-h-[504px] items-start justify-center"
+    class="results-parent-container flex min-h-[536px] items-start justify-center"
   >
     <TransitionGroup>
       <img
