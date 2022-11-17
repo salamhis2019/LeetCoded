@@ -3,12 +3,12 @@
     <NavBar v-if="route.path !== '/'" />
     <router-view v-slot="{ Component, route }">
       <Transition>
-        <div :key="route.path" class="min-h-full bg-black">
+        <div :key="route.path" class="h-full bg-black">
           <component :is="Component" />
         </div>
       </Transition>
     </router-view>
-    <PageFooter />
+    <PageFooter v-if="route.path !== '/'" />
   </div>
 </template>
 
