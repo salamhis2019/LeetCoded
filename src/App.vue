@@ -3,7 +3,7 @@
     <NavBar v-if="route.path !== '/'" />
     <router-view v-slot="{ Component, route }">
       <Transition>
-        <div :key="route.path" class="h-full bg-black">
+        <div :key="route.path" class="h-[calc(100%+50px)] bg-black">
           <component :is="Component" />
         </div>
       </Transition>
