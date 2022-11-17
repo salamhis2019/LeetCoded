@@ -8,15 +8,14 @@
         </div>
       </Transition>
     </router-view>
-    <div class="block">
-      <h1>poo</h1>
-    </div>
+    <PageFooter />
   </div>
 </template>
 
 <script lang="ts" setup>
 import { useRoute } from "vue-router";
 import NavBar from "@/components/NavBar.vue";
+import PageFooter from "@/components/PageFooter.vue";
 
 const route = useRoute();
 </script>
