@@ -37,6 +37,11 @@
             name="firstName"
             placeholder="First Name"
             class="w-full rounded-lg border-white/80 bg-[#353a3e] p-2 text-white accent-white outline-0 duration-200 focus:border-amber-500 focus:placeholder-transparent"
+            :class="
+              renderErrorMessage && firstName.length === 0
+                ? 'border-2 border-red-600'
+                : renderErrorMessage
+            "
           />
         </form>
         <form class="flex w-full flex-col gap-2">
@@ -48,6 +53,11 @@
             name="lastName"
             placeholder="Last Name"
             class="w-full rounded-lg border-white/80 bg-[#353a3e] p-2 text-white accent-white outline-0 duration-200 focus:border-amber-500 focus:placeholder-transparent"
+            :class="
+              renderErrorMessage && lastName.length === 0
+                ? 'border-2 border-red-600'
+                : renderErrorMessage
+            "
           />
         </form>
       </div>
@@ -72,7 +82,11 @@
           name="password"
           placeholder="Password..."
           class="w-full rounded-lg border-white/80 bg-[#353a3e] p-2 text-white accent-white outline-0 duration-200 focus:border-amber-500 focus:placeholder-transparent"
-          :class="{ 'border-2 border-red-600': renderErrorMessage }"
+          :class="
+            renderErrorMessage && lastName.length === 0
+              ? 'border-2 border-red-600'
+              : renderErrorMessage
+          "
         />
       </form>
       <div
