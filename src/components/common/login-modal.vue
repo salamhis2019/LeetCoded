@@ -59,7 +59,8 @@
           id="email"
           name="email"
           placeholder="Email..."
-          class="w-full rounded-lg border-white/80 bg-[#353a3e] p-2 text-white accent-white outline-0 duration-200 focus:border-amber-500 focus:placeholder-transparent"
+          class="w-full rounded-lg border-white/80 bg-[#353a3e] p-2 text-white accent-white duration-200 focus:border-amber-500 focus:placeholder-transparent"
+          :class="{ 'border-2 border-red-600': renderErrorMessage }"
         />
       </form>
       <form class="flex flex-col gap-2">
@@ -71,6 +72,7 @@
           name="password"
           placeholder="Password..."
           class="w-full rounded-lg border-white/80 bg-[#353a3e] p-2 text-white accent-white outline-0 duration-200 focus:border-amber-500 focus:placeholder-transparent"
+          :class="{ 'border-2 border-red-600': renderErrorMessage }"
         />
       </form>
       <div
