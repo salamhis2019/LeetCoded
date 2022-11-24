@@ -81,43 +81,49 @@ const register = async (
 ) => {
   renderLoadingSpinner.value = true;
   const auth = getAuth();
-  createUserWithEmailAndPassword(auth, email, password)
-    .then(() => {
-      setTimeout(() => {
-        showLoginWindow.value = false;
+  if (firstName === "" || lastName === "") {
+    renderErrorMessage.value = true;
+    renderLoadingSpinner.value = false;
+    errorMessage.value = "Please Enter First and Last Name to Register";
+  } else {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        setTimeout(() => {
+          showLoginWindow.value = false;
+          renderLoadingSpinner.value = false;
+          renderErrorMessage.value = true;
+        }, 0);
+        updateProfile(auth.currentUser, {
+          displayName: firstName + " " + lastName,
+        }).then(() => {
+          currentUser.value = firstName + " " + lastName;
+        });
+      })
+      .catch((error) => {
+        showLoginWindow.value = true;
         renderLoadingSpinner.value = false;
         renderErrorMessage.value = true;
-      }, 0);
-      updateProfile(auth.currentUser, {
-        displayName: firstName + " " + lastName,
-      }).then(() => {
-        currentUser.value = firstName + " " + lastName;
+        switch (error.code) {
+          case "auth/invalid-email":
+            errorMessage.value = "Invalid email, please try again";
+            break;
+          case "auth/user-not-found":
+            errorMessage.value =
+              "No account with that email was found, try again!";
+            break;
+          case "auth/wrong-password":
+            errorMessage.value = "Incorrect Password, please try again";
+            break;
+          case "auth/email-already-in-use":
+            errorMessage.value =
+              "Sorry, the email you entered is already in use. Let's try another one!";
+            break;
+          default:
+            errorMessage.value = "Email or password was incorrect, try again!";
+            break;
+        }
       });
-    })
-    .catch((error) => {
-      showLoginWindow.value = true;
-      renderLoadingSpinner.value = false;
-      renderErrorMessage.value = true;
-      switch (error.code) {
-        case "auth/invalid-email":
-          errorMessage.value = "Invalid email, please try again";
-          break;
-        case "auth/user-not-found":
-          errorMessage.value =
-            "No account with that email was found, try again!";
-          break;
-        case "auth/wrong-password":
-          errorMessage.value = "Incorrect Password, please try again";
-          break;
-        case "auth/email-already-in-use":
-          errorMessage.value =
-            "Sorry, the email you entered is already in use. Let's try another one!";
-          break;
-        default:
-          errorMessage.value = "Email or password was incorrect, try again!";
-          break;
-      }
-    });
+  }
 };
 
 const signIn = (email: string, password: string) => {
