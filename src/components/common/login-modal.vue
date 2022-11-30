@@ -5,7 +5,11 @@
       @click.prevent="showLoginWindow = false"
       class="close-window text-xl text-white duration-100 hover:text-amber-500"
     >
-      X
+      <img
+        class="w-5 duration-100 hover:scale-110"
+        src="@/assets/x-icon.svg"
+        alt="X icon for login page"
+      />
     </button>
   </div>
   <p class="my-6 text-base text-white/80">
