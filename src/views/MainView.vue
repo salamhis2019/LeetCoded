@@ -48,16 +48,6 @@ watch(param, (newParam) => {
 </script>
 
 <style lang="scss" scoped>
-.parent-container {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  .mainview-parent-container {
-    max-width: 700px;
-    min-width: 300px;
-  }
-}
-
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.3s ease;

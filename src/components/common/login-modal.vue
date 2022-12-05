@@ -5,7 +5,11 @@
       @click.prevent="showLoginWindow = false"
       class="close-window text-xl text-white duration-100 hover:text-amber-500"
     >
-      X
+      <img
+        class="w-5 duration-100 hover:scale-110"
+        src="@/assets/x-icon.svg"
+        alt="X icon for login page"
+      />
     </button>
   </div>
   <p class="my-6 text-base text-white/80">
@@ -37,6 +41,11 @@
             name="firstName"
             placeholder="First Name"
             class="w-full rounded-lg border-white/80 bg-[#353a3e] p-2 text-white accent-white outline-0 duration-200 focus:border-amber-500 focus:placeholder-transparent"
+            :class="
+              renderErrorMessage && firstName.length === 0
+                ? 'border-2 border-red-600'
+                : renderErrorMessage
+            "
           />
         </form>
         <form class="flex w-full flex-col gap-2">
@@ -48,6 +57,11 @@
             name="lastName"
             placeholder="Last Name"
             class="w-full rounded-lg border-white/80 bg-[#353a3e] p-2 text-white accent-white outline-0 duration-200 focus:border-amber-500 focus:placeholder-transparent"
+            :class="
+              renderErrorMessage && lastName.length === 0
+                ? 'border-2 border-red-600'
+                : renderErrorMessage
+            "
           />
         </form>
       </div>
@@ -59,7 +73,8 @@
           id="email"
           name="email"
           placeholder="Email..."
-          class="w-full rounded-lg border-white/80 bg-[#353a3e] p-2 text-white accent-white outline-0 duration-200 focus:border-amber-500 focus:placeholder-transparent"
+          class="w-full rounded-lg border-white/80 bg-[#353a3e] p-2 text-white accent-white duration-200 focus:border-amber-500 focus:placeholder-transparent"
+          :class="{ 'border-2 border-red-600': renderErrorMessage }"
         />
       </form>
       <form class="flex flex-col gap-2">
@@ -71,12 +86,18 @@
           name="password"
           placeholder="Password..."
           class="w-full rounded-lg border-white/80 bg-[#353a3e] p-2 text-white accent-white outline-0 duration-200 focus:border-amber-500 focus:placeholder-transparent"
+          :class="
+            renderErrorMessage && lastName.length === 0
+              ? 'border-2 border-red-600'
+              : renderErrorMessage
+          "
         />
       </form>
       <div
         v-if="renderErrorMessage"
-        class="error-message-container rounded-md border-2 border-black bg-[#F7EAAB] p-2.5 shadow-md shadow-black"
+        class="error-message-container flex gap-2 rounded-md border-2 border-black bg-[#F7EAAB] p-2.5 shadow-md shadow-black"
       >
+        <img class="error-icon w-6" src="@/assets/exclamation.svg" alt="" />
         <p class="text-black/80">
           {{ errorMessage }}
         </p>
@@ -84,7 +105,8 @@
       <slot></slot>
       <button
         @click.prevent="buttonFunction(email, password, firstName, lastName)"
-        class="mt-4 flex h-12 justify-center rounded-xl border border-black bg-amber-500 font-bold shadow-md shadow-black duration-150 hover:brightness-125 active:translate-y-1"
+        class="mt-4 flex h-12 justify-center rounded-xl border border-black font-bold shadow-md shadow-black duration-150 hover:brightness-125 active:translate-y-1"
+        :class="showSignIn ? 'bg-amber-500' : 'bg-[#52b5a3]'"
       >
         <p v-if="!renderLoadingSpinner" class="p-2.5">{{ buttonText }}</p>
         <img

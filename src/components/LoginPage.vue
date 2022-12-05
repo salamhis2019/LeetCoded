@@ -68,71 +68,69 @@ import LoginModal from "@/components/common/login-modal.vue";
 const problemsStore = useProblemsStore();
 const { showLoginWindow, currentUser } = storeToRefs(problemsStore);
 
-const errorMessage = ref("");
+const errorMessage = ref<string>("");
 const renderLoadingSpinner = ref<boolean>(false);
 const renderErrorMessage = ref<boolean>(false);
 const showSignIn = ref<boolean>(true);
 
 const register = async (
-  email: any,
-  password: any,
-  firstName: any,
-  lastName: any
+  email: string,
+  password: string,
+  firstName: string,
+  lastName: string
 ) => {
-  console.log("register function fired");
   renderLoadingSpinner.value = true;
   const auth = getAuth();
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((data) => {
-      setTimeout(() => {
-        console.log("successfully registered");
-        console.log(auth.currentUser);
-        showLoginWindow.value = false;
+  if (firstName === "" || lastName === "") {
+    renderErrorMessage.value = true;
+    renderLoadingSpinner.value = false;
+    errorMessage.value = "Please Enter First and Last Name to Register";
+  } else {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        setTimeout(() => {
+          showLoginWindow.value = false;
+          renderLoadingSpinner.value = false;
+          renderErrorMessage.value = true;
+        }, 0);
+        updateProfile(auth.currentUser, {
+          displayName: firstName + " " + lastName,
+        }).then(() => {
+          currentUser.value = firstName + " " + lastName;
+        });
+      })
+      .catch((error) => {
+        showLoginWindow.value = true;
         renderLoadingSpinner.value = false;
         renderErrorMessage.value = true;
-      }, 0);
-      updateProfile(auth.currentUser, {
-        displayName: firstName + " " + lastName,
-      }).then(() => {
-        console.log(auth.currentUser?.displayName);
-        currentUser.value = firstName + " " + lastName;
+        switch (error.code) {
+          case "auth/invalid-email":
+            errorMessage.value = "Invalid email, please try again";
+            break;
+          case "auth/user-not-found":
+            errorMessage.value =
+              "No account with that email was found, try again!";
+            break;
+          case "auth/wrong-password":
+            errorMessage.value = "Incorrect Password, please try again";
+            break;
+          case "auth/email-already-in-use":
+            errorMessage.value =
+              "Sorry, the email you entered is already in use. Let's try another one!";
+            break;
+          default:
+            errorMessage.value = "Email or password was incorrect, try again!";
+            break;
+        }
       });
-    })
-    .catch((error) => {
-      showLoginWindow.value = true;
-      renderLoadingSpinner.value = false;
-      renderErrorMessage.value = true;
-      console.log(error);
-      switch (error.code) {
-        case "auth/invalid-email":
-          errorMessage.value = "Invalid email, please try again";
-          break;
-        case "auth/user-not-found":
-          errorMessage.value =
-            "No account with that email was found, try again!";
-          break;
-        case "auth/wrong-password":
-          errorMessage.value = "Incorrect Password, please try again";
-          break;
-        case "auth/email-already-in-use":
-          errorMessage.value =
-            "Sorry, the email you entered is already in use. Let's try another one!";
-          break;
-        default:
-          errorMessage.value = "Email or password was incorrect, try again!";
-          break;
-      }
-    });
+  }
 };
 
-const signIn = (email: any, password: any) => {
+const signIn = (email: string, password: string) => {
   renderLoadingSpinner.value = true;
-  const auth = getAuth();
   signInWithEmailAndPassword(getAuth(), email, password)
-    .then((data) => {
+    .then(() => {
       setTimeout(() => {
-        console.log("successfully registered");
-        console.log(auth.currentUser?.displayName);
         showLoginWindow.value = false;
         renderLoadingSpinner.value = false;
         renderErrorMessage.value = true;
@@ -157,14 +155,13 @@ const signIn = (email: any, password: any) => {
           errorMessage.value = "Email or password was incorrect, try again!";
           break;
       }
-      console.log(error);
     });
 };
 
 const signInWithGoogle = () => {
   const provider = new GoogleAuthProvider();
   signInWithPopup(getAuth(), provider)
-    .then((result) => {
+    .then(() => {
       setTimeout(() => {
         showLoginWindow.value = false;
         renderLoadingSpinner.value = false;

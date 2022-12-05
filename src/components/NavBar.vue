@@ -95,8 +95,7 @@ function logoClicked() {
 
 const handleSignout = () => {
   signOut(auth).then(() => {
-    console.log("signed out");
-    fetchData(null, null, null);
+    fetchData("", "", "");
   });
 };
 
@@ -106,17 +105,17 @@ const handleDropdown = () => {
 
 let auth: any;
 onMounted(() => {
-  console.log("mounted fired");
   auth = getAuth();
+  console.log(auth);
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      console.log("user: ", user.email);
       currentUser.value = user.displayName;
       isLoggedIn.value = true;
     } else {
       isLoggedIn.value = false;
     }
   });
+  document.title = "LeetCoded/solutions";
 });
 </script>
 

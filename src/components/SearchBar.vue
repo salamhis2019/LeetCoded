@@ -1,14 +1,14 @@
 <template>
   <div
-    class="search-bar-parent-container my-0 mx-8 flex h-36 items-center justify-center max-[540px]:h-44"
+    class="search-bar-parent-container my-0 mx-8 flex h-36 items-center justify-center"
   >
-    <div class="search-bar-container flex gap-4 max-[540px]:flex-col">
+    <div class="search-bar-container flex w-[600px] gap-4 max-[540px]:flex-col">
       <form
-        class="input-container relative h-10 w-full min-w-[200px] rounded-lg bg-[#1b1f22]"
+        class="input-container relative w-full min-w-[200px] rounded-lg bg-[#1b1f22]"
       >
         <input
           v-model="inputText"
-          class="search-bar block h-full w-full rounded-lg bg-[#1b1f22] py-2 px-4 text-base text-white/90 placeholder-white duration-100 focus:outline focus:outline-white"
+          class="search-bar block h-full w-full rounded-lg bg-[#1b1f22] py-2 px-4 text-base text-white/90 placeholder-white duration-100 focus:placeholder-transparent focus:outline focus:outline-white max-[540px]:h-10"
           type="text"
           placeholder="Search..."
           @keydown.enter.prevent="
@@ -40,7 +40,7 @@
       <div class="search-bar-right flex gap-4">
         <DropdownMenu
           :menuText="'Sort By'"
-          :icon="'fa fa-unsorted text-[15px]'"
+          :icon="'fa fa-unsorted text-base'"
           :type="'sort'"
         />
         <DropdownMenu
@@ -60,22 +60,5 @@ import DropdownMenu from "@/components/common/dropdown-menu.vue";
 
 const { fetchData } = useProblemsStore();
 
-const inputText = ref("");
+const inputText = ref<string>("");
 </script>
-
-<style lang="scss" scoped>
-.search-bar-parent-container {
-  .search-bar-container {
-    width: 600px;
-    .search-bar-right {
-      .dropdown-button {
-        .sort-button {
-          .chevron-clicked {
-            transform: rotate(270deg);
-          }
-        }
-      }
-    }
-  }
-}
-</style>
