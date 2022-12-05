@@ -14,6 +14,12 @@
         v-if="allProblems.length !== 0 && !dataLoading"
       >
         <div
+          class="column-labels mx-2 flex justify-between text-sm text-white/60"
+        >
+          <p>Problems</p>
+          <p>Completed?</p>
+        </div>
+        <div
           v-for="({ name, param, difficulty }, index) in currentProblems"
           :key="index"
           class="problem-card min-h-12 box-border flex items-center justify-between rounded-lg bg-[#353a3e] py-2.5 px-6"
