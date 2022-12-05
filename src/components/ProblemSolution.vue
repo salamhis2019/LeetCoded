@@ -30,13 +30,16 @@
       >
         <div
           class="solutions-content"
-          v-for="{ title, lclink, explanation, imageLabel, image } in steps"
+          v-for="(
+            { title, lclink, explanation, imageLabel, image }, index
+          ) in steps"
           :key="explanation"
         >
           <a
+            v-if="index === 0"
             :href="lclink"
             target="blank"
-            class="flex w-40 justify-center gap-2 rounded-md bg-[#353a3e] p-2 text-white"
+            class="flex w-40 justify-center gap-2 rounded-md bg-[#353a3e] p-2 text-white duration-100 hover:underline hover:brightness-125"
           >
             LeetCode Link
             <img src="@/assets/external-link.svg" class="w-4" alt="" />
@@ -44,7 +47,7 @@
           <h3 class="solution-title my-4 text-xl font-bold">
             {{ title }}
           </h3>
-          <p class="solution-description mb-4 font-normal">
+          <p class="solution-description mb-4 font-normal text-white/90">
             {{ explanation }}
           </p>
           <h3 class="solution-title text-lg font-bold">
