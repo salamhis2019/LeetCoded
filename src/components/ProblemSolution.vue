@@ -25,7 +25,7 @@
         </div>
       </div>
       <div
-        class="solutions-explanation-container rounded-xl bg-[#1b1f22] p-5"
+        class="solutions-explanation-container mb-6 rounded-xl bg-[#1b1f22] p-5"
         v-if="solution"
       >
         <div
@@ -44,7 +44,7 @@
             LeetCode Link
             <img src="@/assets/external-link.svg" class="w-4" alt="" />
           </a>
-          <h3 class="solution-title my-4 text-xl font-bold">
+          <h3 class="solution-title mt-10 mb-4 text-xl font-bold">
             {{ title }}
           </h3>
           <p class="solution-description mb-4 font-normal text-white/90">
