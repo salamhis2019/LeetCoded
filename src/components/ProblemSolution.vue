@@ -4,7 +4,15 @@
   >
     <div class="solution-content-container my-0 mx-4 max-[540px]:w-60">
       <div class="header-content mb-4 flex items-center justify-between">
-        <div class="header-left flex items-center gap-4">
+        <div class="header-left">
+          <router-link
+            :to="'/solutions/'"
+            class="button solutions rounded-lg bg-[#353a3e] py-2 px-4 font-semibold text-white no-underline hover:bg-[#363b3fcc]"
+          >
+            Back to Solutions
+          </router-link>
+        </div>
+        <div class="header-right flex items-center gap-4">
           <h3 class="m-0 text-2xl font-bold">
             {{ currentProblemSolution.name }}
           </h3>
@@ -15,32 +23,50 @@
             {{ currentProblemSolution.difficulty }}</DifficultyBadge
           >
         </div>
-        <div class="header-right">
-          <router-link
-            :to="'/solutions/'"
-            class="button solutions rounded-lg bg-[#353a3e] py-2 px-4 font-semibold text-white no-underline hover:bg-[#363b3fcc]"
-          >
-            Back to Solutions
-          </router-link>
-        </div>
       </div>
       <div
-        class="solutions-explanation-container rounded-xl bg-[#1b1f22] p-5"
+        class="solutions-explanation-container mb-6 rounded-xl bg-[#1b1f22] p-5"
         v-if="solution"
       >
-        <div class="solutions-content">
-          <p class="solution-description mb-4 font-normal">
-            {{ solution?.solutionDescription }}
-          </p>
-          <h3 class="solution-title text-xl font-bold">
-            {{ solution?.solutionTitle }}
+        <div
+          class="solutions-content"
+          v-for="(
+            { title, lclink, explanation, imageLabel, image, codeLabel, code },
+            index
+          ) in steps"
+          :key="explanation"
+        >
+          <a
+            v-if="index === 0"
+            :href="lclink"
+            target="blank"
+            class="flex w-40 justify-center gap-2 rounded-md bg-[#353a3e] p-2 text-white duration-100 hover:underline hover:brightness-125"
+          >
+            LeetCode Link
+            <img src="@/assets/external-link.svg" class="w-4" alt="" />
+          </a>
+          <h3 class="solution-title mt-10 mb-4 text-xl font-bold">
+            {{ title }}
           </h3>
-          <div class="code-block-container mt-4 rounded-xl bg-[#282a35] p-4">
+          <p class="solution-description mb-4 font-normal text-white/90">
+            {{ explanation }}
+          </p>
+          <h3 class="solution-title text-lg font-bold">
+            {{ imageLabel }}
+          </h3>
+          <img :src="image" alt="step 1 image" class="my-3" />
+          <h3 class="solution-title text-lg font-bold">
+            {{ codeLabel }}
+          </h3>
+          <div
+            v-if="code"
+            class="code-block-container mt-4 rounded-xl bg-[#282a35] p-4"
+          >
             <code
               class="flex flex-col gap-1 whitespace-pre break-words break-all text-base font-medium max-[540px]:max-w-[350px]"
             >
               <p
-                v-for="line in solution?.code"
+                v-for="line in code"
                 :key="line"
                 class="line break-words break-all"
               >
@@ -81,6 +107,19 @@ const problemsStore = useProblemsStore();
 const { currentProblemSolution }: any = storeToRefs(problemsStore);
 
 const solution = ref(currentProblemSolution.value.solution);
+console.log(solution.value);
+
+const steps = ref<any>([]);
+
+function setStepArray() {
+  for (const item in solution.value) {
+    steps.value.push(solution.value[item]);
+  }
+}
+
+console.log(steps);
+
+setStepArray();
 </script>
 
 <style lang="scss" scoped>
