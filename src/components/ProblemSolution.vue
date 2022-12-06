@@ -2,7 +2,9 @@
   <div
     class="solutions-parent-container mx-0 flex h-[calc(100%_-_56px)] items-start justify-center pt-12 text-white/90"
   >
-    <div class="solution-content-container my-0 mx-4 max-[540px]:w-60">
+    <div
+      class="solution-content-container my-0 mx-4 w-[700px] max-[540px]:w-[540px]"
+    >
       <div class="header-content mb-4 flex items-center justify-between">
         <div class="header-left">
           <router-link
@@ -12,8 +14,10 @@
             Back to Solutions
           </router-link>
         </div>
-        <div class="header-right flex items-center gap-4">
-          <h3 class="m-0 text-2xl font-bold">
+        <div
+          class="header-right flex items-center gap-4 max-[540px]:flex-col max-[540px]:items-end"
+        >
+          <h3 class="m-0 text-2xl font-bold max-[540px]:text-xl">
             {{ currentProblemSolution.name }}
           </h3>
           <DifficultyBadge
@@ -61,17 +65,17 @@
           </h3>
           <div
             v-if="code"
-            class="code-block-container mt-4 rounded-xl bg-[#282a35] p-4"
+            class="code-block-container mt-4 box-border rounded-xl bg-[#282a35] p-4"
           >
             <code
-              class="flex flex-col gap-1 whitespace-pre break-words break-all text-base font-medium max-[540px]:max-w-[350px]"
+              class="box-border flex flex-col gap-1 whitespace-normal text-base font-medium max-[540px]:max-w-[540px]"
             >
               <p
                 v-for="line in code"
                 :key="line"
-                class="line break-words break-all"
+                class="line whitespace-pre-wrap break-words break-all max-[540px]:text-xs"
               >
-                {{ line.replaceAll("*", " ") }}
+                {{ line?.replaceAll("*", " ") }}
               </p>
             </code>
           </div>
@@ -124,25 +128,9 @@ setStepArray();
 </script>
 
 <style lang="scss" scoped>
-.solution-content-container {
-  width: 700px;
-  .solutions-explanation-container {
-    .solutions-content {
-      .code-block-container {
-        code {
-          @media only screen and (max-width: 400px) {
-            .line {
-              font-size: 0.7rem;
-            }
-          }
-        }
-      }
-    }
-  }
-}
 @media only screen and (max-width: 500px) {
   .solutions-parent-container {
-    margin: 2rem;
+    // margin: 2rem;
     .solution-content-container {
       .header-content {
         align-items: flex-start;
