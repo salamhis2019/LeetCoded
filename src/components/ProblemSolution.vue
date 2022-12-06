@@ -31,7 +31,8 @@
         <div
           class="solutions-content"
           v-for="(
-            { title, lclink, explanation, imageLabel, image }, index
+            { title, lclink, explanation, imageLabel, image, codeLabel, code },
+            index
           ) in steps"
           :key="explanation"
         >
@@ -54,19 +55,25 @@
             {{ imageLabel }}
           </h3>
           <img :src="image" alt="step 1 image" class="my-3" />
-          <!-- <div class="code-block-container mt-4 rounded-xl bg-[#282a35] p-4">
+          <h3 class="solution-title text-lg font-bold">
+            {{ codeLabel }}
+          </h3>
+          <div
+            v-if="code"
+            class="code-block-container mt-4 rounded-xl bg-[#282a35] p-4"
+          >
             <code
               class="flex flex-col gap-1 whitespace-pre break-words break-all text-base font-medium max-[540px]:max-w-[350px]"
             >
               <p
-                v-for="line in solution?.code"
+                v-for="line in code"
                 :key="line"
                 class="line break-words break-all"
               >
                 {{ line.replaceAll("*", " ") }}
               </p>
             </code>
-          </div> -->
+          </div>
         </div>
       </div>
       <div
@@ -91,7 +98,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
 import { storeToRefs } from "pinia";
 import useProblemsStore from "@/stores/problems.store";
 import DifficultyBadge from "@/components/common/difficulty-badge.vue";
