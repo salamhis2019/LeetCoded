@@ -35,17 +35,18 @@
             index
           ) in steps"
           :key="explanation"
+          :class="{ 'mb-16': index !== steps.length - 1 }"
         >
           <a
             v-if="index === 0"
             :href="lclink"
             target="blank"
-            class="flex w-40 justify-center gap-2 rounded-md bg-[#353a3e] p-2 text-white duration-100 hover:underline hover:brightness-125"
+            class="mb-4 flex w-40 justify-center gap-2 rounded-md bg-[#353a3e] p-2 text-white duration-100 hover:underline hover:brightness-125"
           >
             LeetCode Link
             <img src="@/assets/external-link.svg" class="w-4" alt="" />
           </a>
-          <h3 class="solution-title mt-10 mb-4 text-xl font-bold">
+          <h3 class="solution-title text-xl font-bold">
             {{ title }}
           </h3>
           <p class="solution-description mb-4 font-normal text-white/90">
