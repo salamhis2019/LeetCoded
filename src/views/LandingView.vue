@@ -3,7 +3,7 @@
     <div class="parent-wrapper ml-40 flex h-full items-center font-sans">
       <div class="content-wrapper mb-8 flex flex-col gap-8">
         <h1 class="hero-text text-6xl font-light text-white/90">
-          Its All
+          It's All
           <span class="leetcoded-text font-semibold italic"
             >LeetCoded
             <p class="code-brackets font-base inline-block text-amber-500">
