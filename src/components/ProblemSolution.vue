@@ -59,7 +59,7 @@
           <h3 class="solution-title text-lg font-bold">
             {{ imageLabel }}
           </h3>
-          <img :src="image" alt="step 1 image" class="my-3" />
+          <img v-if="image" :src="image" alt="step 1 image" class="my-3" />
           <h3 class="solution-title text-lg font-bold">
             {{ codeLabel }}
           </h3>
