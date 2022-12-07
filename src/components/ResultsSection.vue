@@ -13,6 +13,10 @@
         class="results-container min-h-50 mx-8 mt-0 mb-8 box-border flex w-[700px] flex-col gap-2 rounded-xl bg-[#1b1f22] p-4"
         v-if="allProblems.length !== 0 && !dataLoading"
       >
+        <div class="results-label flex justify-between text-sm text-white/60">
+          <p class="">Problems</p>
+          <p class="">Completed</p>
+        </div>
         <li
           v-for="({ name, param, difficulty }, index) in currentProblems"
           :key="index"
