@@ -24,6 +24,7 @@
         @click="showLoginWindow = true"
         v-if="!isLoggedIn"
         class="login-button ease cursor-pointer rounded-lg border-none bg-[#353a3e] py-1.5 px-6 text-base font-semibold text-white/90 duration-200 hover:scale-105 focus:scale-105 focus:shadow-lg focus:outline-0"
+        role="button"
       >
         Login
       </button>
@@ -34,8 +35,9 @@
         <div
           class="button-container flex cursor-pointer gap-2"
           @click="showDropdown = !showDropdown"
+          role="button"
         >
-          <button class="flex items-center gap-2 text-white">
+          <button class="flex items-center gap-2 text-white" role="button">
             <span class="max-[540px]:hidden">Hello, </span
             ><span class="font-bold italic">{{ currentUser }}</span>
           </button>
@@ -59,6 +61,7 @@
                 <button
                   class="duration-100 hover:text-amber-500"
                   @click="handleSignout"
+                  role="button"
                 >
                   Sign Out
                 </button>
