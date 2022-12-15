@@ -10,6 +10,7 @@
           <router-link
             :to="'/solutions/'"
             class="button solutions rounded-lg bg-[#353a3e] py-2 px-4 font-semibold text-white no-underline hover:bg-[#363b3fcc]"
+            role="button"
           >
             Back to Solutions
           </router-link>
