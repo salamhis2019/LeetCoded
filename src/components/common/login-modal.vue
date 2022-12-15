@@ -4,6 +4,7 @@
     <button
       @click.prevent="showLoginWindow = false"
       class="close-window text-xl text-white duration-100 hover:text-amber-500"
+      role="button"
     >
       <img
         class="w-5 duration-100 hover:scale-110"
@@ -21,6 +22,7 @@
       <button
         @click.prevent="signInWithGoogle"
         class="flex h-12 items-center justify-between rounded-md bg-white/90 px-3 shadow-sm shadow-black duration-100 hover:bg-[#353a3e] hover:text-white active:translate-y-0.5"
+        role="button"
       >
         <img
           src="@/assets/google-icon.svg"
@@ -107,6 +109,7 @@
         @click.prevent="buttonFunction(email, password, firstName, lastName)"
         class="mt-4 flex h-12 justify-center rounded-xl border border-black font-bold shadow-md shadow-black duration-150 hover:brightness-125 active:translate-y-1"
         :class="showSignIn ? 'bg-amber-500' : 'bg-[#52b5a3]'"
+        role="button"
       >
         <p v-if="!renderLoadingSpinner" class="p-2.5">{{ buttonText }}</p>
         <img
