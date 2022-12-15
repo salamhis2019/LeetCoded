@@ -21,6 +21,7 @@
           @click.prevent="
             fetchData(inputText.replace(/\s/g, '').toLowerCase(), null, null)
           "
+          role="button"
         >
           <svg
             aria-hidden="true"
