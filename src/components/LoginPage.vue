@@ -21,6 +21,7 @@
           <button
             @click.prevent="showSignIn = false"
             class="text-[#52b5a3] underline duration-100 hover:brightness-125"
+            role="button"
           >
             sign up!
           </button>
@@ -42,6 +43,7 @@
           <button
             @click="showSignIn = true"
             class="text-[#52b5a3] underline duration-100 hover:brightness-125"
+            role="button"
           >
             Sign In!
           </button>
