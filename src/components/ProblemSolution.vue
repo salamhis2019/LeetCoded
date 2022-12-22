@@ -86,7 +86,7 @@
         class="solution-unavailable-container flex justify-center rounded-xl bg-[#1b1f22]"
         v-else
       >
-        <figure class="content-container">
+        <figure class="content-container pt-4">
           <img
             class="waiting-image flex w-64 justify-center"
             src="@/assets/waiting.svg"
@@ -131,7 +131,6 @@ setStepArray();
 <style lang="scss" scoped>
 @media only screen and (max-width: 500px) {
   .solutions-parent-container {
-    // margin: 2rem;
     .solution-content-container {
       .header-content {
         align-items: flex-start;
