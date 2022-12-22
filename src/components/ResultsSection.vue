@@ -43,7 +43,7 @@
           <label
             class="checkbox flex items-center accent-[#52b5a3] max-[540px]:h-5 max-[540px]:w-5"
           >
-            <input type="checkbox" class="h-6 w-6 cursor-pointer" />
+            <ProblemCheckbox />
           </label>
         </li>
       </div>
@@ -52,9 +52,11 @@
 </template>
 
 <script lang="ts" setup>
+import { ref } from "vue";
+import { storeToRefs } from "pinia";
 import ProblemsStore from "@/stores/problems.store";
 import DifficultyBadge from "@/components/common/difficulty-badge.vue";
-import { storeToRefs } from "pinia";
+import ProblemCheckbox from "@/components/common/problem-checkbox.vue";
 
 const problemsStore = ProblemsStore();
 
@@ -67,6 +69,9 @@ const {
 } = storeToRefs(problemsStore);
 
 const { fetchData } = problemsStore;
+
+const checked = ref();
+
 fetchData("", "", "");
 
 function setCurrentProblem(index: number) {
